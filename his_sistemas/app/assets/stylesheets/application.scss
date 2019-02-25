@@ -1,0 +1,99 @@
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Lato|Montserrat|Raleway');
+
+html, body{ height:100%;}
+
+body{ 
+  display:flex; 
+  flex-direction:column; 
+}
+
+footer{
+  margin-top:auto; 
+}
+
+.mont{
+	font-family: 'Montserrat' ,sans-serif;
+	font-weight: bolder;
+}
+
+.rale{
+	font-family: 'Raleway',sans-serif;
+}
+
+.lato{
+	font-family: 'Lato', sans-serif;
+}
+
+
+.wl{
+	color: #FFFFFF;
+}
+
+
+.btn1{
+	border-color: #39BDDC;
+	color: #5CB1F7;
+}
+
+.btn1:hover{
+	background-color: #5CB1F7;
+	border-color: #39BDDC;
+	color: white;
+	
+}
+
+.btn2{
+	background-color: #5CB1F7;
+	border-color: #39BDDC;
+	color: white;
+}
+
+.btn2:hover{
+	background-color: white;
+	border-color: #39BDDC;
+	color: #5CB1F7;
+}
+
+.btn3{
+	border-color: white;
+	color: white;
+}
+
+.btn3:hover{
+	background-color: white;
+	border-color: #39BDDC;
+	color: #5CB1F7;
+}
+
+h1{font-size: 1.2rem;}
+h2{font-size: 1rem;}
+
+p{
+	text-align: justify;
+	font-size: .8rem;
+}
+
+@media (min-width: 544px) {  
+	h1{font-size: 1.5rem;}
+	h2{font-size: 1.2rem;}
+	p{font-size: 1rem;}
+}
+
+@media (min-width: 768px) {
+	h1{font-size:1.75rem;}
+	h2{font-size: 1.5rem}
+	p{font-size: 1.1rem}
+}
+
+@media (min-width: 992px) { 
+	h1{font-size:1.8rem;}
+	h2{font-size: 1.75rem}
+}
+ 
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {     
+	h1{font-size:2rem;} 
+	h2{font-size: 1.8rem;}
+}
+

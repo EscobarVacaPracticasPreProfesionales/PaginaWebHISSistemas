@@ -1,0 +1,50 @@
+.ik{
+	height: 120px;
+	width: 120px;
+}
+
+.tituloP{
+	height: 30%;
+}
+
+.textoP{
+	height: 25%;
+}
+
+#clientes{
+	background-color: #5CB1F7;
+}
+
+div[id^=prodDato]{
+	height: 100px;
+	background-color: black;
+}
+
+div[id^=prodDato]:first-child{
+	max-height: 100%;
+}
+
+
+@media (min-width: 544px) {  
+	.ik{height: 140px;width: 140px;}
+	.serviceHolder p{padding: 10px 50px;}
+}
+
+ 
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+	.ik{height: 145px;width: 145px;}
+	.serviceHolder p{padding: 10px 25%;}
+}
+ 
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+	div[id^=prodDato] {height:100%;}
+	.ik{height: 150px;width: 150px;}
+	.serviceHolder p{padding: 10px 50px;}
+}
+ 
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {     
+	.ik{height: 155px;width: 155px;}
+}
