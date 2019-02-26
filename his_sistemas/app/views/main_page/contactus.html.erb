@@ -10,6 +10,7 @@
 				<h1 class="wl mt-3">Consultas</h1>
 				<form class="wl lato mt-4" title="Consulta" method="post">
 					<div class="form-group">
+						<%=label_tag(:name,"Nombre: )%>
 						<label for="name">Nombre:</label>
 						<input class="form-control" type="text" id="name" name="name" value="" pattern="[A-za-z ]+" placeholder="John Doe" required/>
 					</div>
@@ -80,9 +81,3 @@
 </div>
 		
 <%= render "layouts/footer_main" %>
-
-<% content_for :foot do %>
-    <%= javascript_include_tag 'picker', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'picker.date', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'picker.time', 'data-turbolinks-track': 'reload' %>
-<% end %>
