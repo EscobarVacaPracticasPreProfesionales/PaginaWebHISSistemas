@@ -5,36 +5,77 @@
 <body>
 	<div class="container" id="noticias">
         <div class="row pb-3" id="noticia1">
-            <div class="imgHoverImpar col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-                <%= image_tag(image_path("referencias/estatal.png"),:class=>"img-fluid",:alt=>"imgNoticia1") %>
-                <div class="overlay">
-                    <p class="texto">Proyecto donde se implementó un aula activa, que es un espacio de los salones de clases modernos, que tiene tres aspectos fundamentales: flexibilidad, conectividad y colaboración.
-                    <br>
-                    <br>
-                    -Flexibilidad: Capacidad de poder organizar el salón de clases segun la necesidad que tengan tanto maestros como alumnos, es decir, existe total movibilidad.
-                    <br>
-                    <br>
-                    -Conectividad: Poseer en el salón las tecnologías de la información con sistemas multiplataformas.
-                    <br>
-                    <br>
-                    -Colaboración: Aspecto que permite desarrollar diferentes formatos en los grupos de trabajo para la integración de destrezas de los estudiantes.</p>
+            <div id="SLIDES1" class="carousel slide col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8"" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#SLIDES1" data-slide-to="0" class="active"></li>
+                <li data-target="#SLIDES1" data-slide-to="1"></li>
+                <li data-target="#SLIDES1" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <%= image_tag(image_path("referencias/estatal.png"),:class=>"img-fluid",:alt=>"imgNoticia2") %>
                 </div>
+                <div class="carousel-item">
+                  <%= image_tag(image_path("referencias/monasterio.png"),:class=>"img-fluid",:alt=>"imgNoticia2") %>
+                </div>
+                <div class="carousel-item">
+                  <%= image_tag(image_path("referencias/fae.png"),:class=>"img-fluid",:alt=>"imgNoticia2") %>
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#SLIDES1" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#SLIDES1" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
             </div>
-            <div class="infoImpar col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                <h2 class="mont">Equipamiento de sala de exelencia en la Facultad de Economía de la Universidad Estatal de Guayaquil</h2>
-				<p class="lato">2018</p>
+            <div class="info col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                <div class="contenido">
+                    <h2 class="mont wl">Equipamiento de sala de excelencia en la Facultad de Economía de la Universidad Estatal de Guayaquil</h2>
+    				<p class="lato wl">2018</p>
+                    <div class="boton">
+                        <button class="btn btn3">Conoce más</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row pb-3" id="noticia2">
-            <div class="infoPar col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                <h2 class="mont">Reingeniería eléctrica e instalación de transformadores trifásicos en el Monasterio de Nuestra Señora de la Eucaristía</h2>
-                <p  class="lato">2015</p>    
-            </div>
-            <div class="imgHoverPar col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-                <%= image_tag(image_path("referencias/monasterio.png"),:class=>"img-fluid",:alt=>"imgNoticia2") %>
-                <div class="overlay">
-                    <p class="texto rale">Proyecto de reingeniería eléctrica, construcción de cámara para transformadores, instalación de dos transformadores trifásicos de 250 kva y 200 kva respectivamente, cambio de todo el sistema de acometidas y tableros de bifásico a trifásico, soterramiento de acometidas con cable TTU2 y de media tensión, conversión de generador de bifásico a trifásico, instalación de dos tableros automáticos de transferencia, cambio de sistema de iluminación del templo a luminarias LED, instalación de elevador eléctrico e hidráulico.</p>
+            <div class="info col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                <div class="contenido">
+                    <h2 class="mont wl">Reingeniería eléctrica e instalación de transformadores trifásicos en el Monasterio de Nuestra Señora de la Eucaristía</h2>
+                    <p class="lato wl">2015</p>
+                    <div class="boton">
+                        <button class="btn btn3">Conoce más</button>
+                    </div>
                 </div>
+            </div>
+            <div id="SLIDES2" class="carousel slide col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8"" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#SLIDES2" data-slide-to="0" class="active"></li>
+                <li data-target="#SLIDES2" data-slide-to="1"></li>
+                <li data-target="#SLIDES2" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <%= image_tag(image_path("referencias/estatal.png"),:class=>"img-fluid",:alt=>"imgNoticia2") %>
+                </div>
+                <div class="carousel-item">
+                  <%= image_tag(image_path("referencias/monasterio.png"),:class=>"img-fluid",:alt=>"imgNoticia2") %>
+                </div>
+                <div class="carousel-item">
+                  <%= image_tag(image_path("referencias/fae.png"),:class=>"img-fluid",:alt=>"imgNoticia2") %>
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#SLIDES2" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#SLIDES2" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
             </div>
         </div>
         <div class="row pb-3" id="noticia3">
@@ -97,14 +138,6 @@
                 <p class="lato">2007</p>
             </div>
         </div>
-    
-
-		<div class="row" id="grafico">
-			<div class="grafico center col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-				<canvas id="graficoBarras"></canvas>
-
-			</div>
-		</div>
 	</div>
 </body>
 <%= render "layouts/footer_main" %>

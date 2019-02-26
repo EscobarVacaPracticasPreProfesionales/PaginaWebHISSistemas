@@ -1,3 +1,39 @@
+h1{font-size: 1.2rem;}
+h2{font-size: 1rem;}
+
+p{
+  text-align: justify;
+  font-size: .8rem;
+}
+
+.contenido{margin:5%;}
+
+@media (min-width: 544px) {  
+  h1{font-size: 1.5rem;}
+  h2{font-size: 1.2rem;}
+  p{font-size: 1rem;}
+  .contenido{margin:5%;}
+}
+
+@media (min-width: 768px) {
+  h1{font-size:1.75rem;}
+  h2{font-size: 1.5rem}
+  p{font-size: 1.1rem}
+  .contenido{margin:5%;}
+}
+
+@media (min-width: 992px) { 
+  h1{font-size:1.8rem;}
+  h2{font-size: 1.75rem}
+  .contenido{margin:5%;}
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {     
+  h1{font-size:2rem;} 
+  h2{font-size: 1.8rem;}
+  .contenido{margin:15%;}
+}
 
 canvas{
 	width:100%;
@@ -27,24 +63,26 @@ canvas{
   transform: translate(-50%, -50%);
 }
 
-.infoImpar > h2,.infoImpar > p{
-	text-align: right;
+.info{
+  background-color: #5CB1F7;
+  
 }
 
-.infoPar > p {
-	text-align: left;
+
+h2{
+  text-align:center;
 }
 
-.imgHoverImpar:hover .overlay {
-  	bottom: 0;
-  	height: 100%;
+p{
+  text-align:center;
+  margin-top:5%;
 }
 
-.imgHoverPar:hover .overlay {
-  	bottom: 0;
-  	height: 100%;
+.boton{
+  text-align:center;
 }
 
-.imgHoverImpar,.imgHoverPar{
-	padding:0;
+
+div[id^=SLIDES]{
+  padding:0;
 }
