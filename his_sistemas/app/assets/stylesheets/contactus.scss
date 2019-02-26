@@ -9,10 +9,12 @@
   border-radius: 0;
   border-bottom: 1px solid #737373;
 }
+
 .form-group .form-control:focus {
   background-color: black;
   outline: none;
   color: white;
+  border-bottom: 1px solid white;
 }
 
 #corr {
