@@ -8,45 +8,44 @@
 		<div class="row">
 			<div class="col col-12 col-sm-12 col-md-12 col-lg-8">
 				<h1 class="wl mt-3">Consultas</h1>
-				<form class="wl lato mt-4" title="Consulta" method="post">
+				<%= form_tag("send_form", method:"post",:class=>"wl lato mt-4",multipart: true) do %>
 					<div class="form-group">
-						<%=label_tag(:name,"Nombre: )%>
-						<label for="name">Nombre:</label>
-						<input class="form-control" type="text" id="name" name="name" value="" pattern="[A-za-z ]+" placeholder="John Doe" required/>
+						<%=label_tag(:nombre,"Nombre: ")%>
+						<%=text_field_tag(:nombre,"",:class=>"form-control",:pattern=>"[A-za-z ]+", :placeholder=>"John Doe", :required=>true)%>
 					</div>
 					<div class="form-group">
-						<label for="email">Email: </label>
-						<input class="form-control" type="email" id="email" name="email" value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="your@email.com" required>
+						<%=label_tag(:empresa,"Empresa: ")%>
+						<%=text_field_tag(:empresa,"",:class=>"form-control",:pattern=>"[A-za-z ]+", :placeholder=>"HIS Sistemas")%>
 					</div>
 					<div class="form-group">
-						<label for="tel">Teléfono (Celular): </label>
-						<input class="form-control" type="tel" id="tel" name="tel" value="" pattern="[0-9]{10}" placeholder="0999999999" required>
+						<%=label_tag(:email,"Email: ")%>
+						<%=email_field(:email,"",:class=>"form-control", :pattern=>"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$", :placeholder=>"your@email.com",:required=>true)%>
+					</div>
+					<div class="form-group">
+						<%=label_tag(:tel,"Teléfono: ")%>
+						<%= telephone_field(:tel,"", :pattern =>"[0-9]{10}" , :placeholder=>"0999999999", :required=>true,:class=>"form-control")%>
 					</div>
 					
 					<div class="form-group">
-						<label for="subject">Asunto: </label>
-						<input class="form-control" type="text" id="subject" name="subject" value="" placeholder="Servicio de cableado, por ejemplo" required>
+						<%=label_tag(:asunto,"Asunto: ")%>
+						<%=text_field_tag(:asunto,"",:class=>"form-control",:pattern=>"[A-za-z ]+", :placeholder=>"Servicio de cableado", :required=>true)%>
 					</div>
 					<div class="form-group">
-						<label for="message">Mensaje: </label>
-						<textarea class="form-control" id="message" name="message" placeholder="Escribe tu mensaje/consulta aquí" required></textarea>
+						<%=label_tag(:mensaje,"Mensaje: ")%>
+						<%=text_area_tag(:mensaje,"",:class=>"form-control",:placeholder=>"Escribe tu mensaje/consulta aquí", :required=>true)%>
 					</div>
 					<div class="form-group">
-						<label for="date">Fecha: </label>
-						<input class="form-control" type="text" id="date" name="date" value="" placeholder="dd/mm/aaaa" required>
-					</div>
-					<div class="form-group">
-						<label for="file">Adjuntar documento: </label>
-						<input class="form-control-file" type="file" name="file" id="file" accept="application/pdf">
+						<%=label_tag(:doc,"Adjuntar documento: ")%>
+						<%=file_field_tag('doc',:class=>"form-control-file",accept:".doc, .docx,.pdf,.odt,image/*")%>
 					</div>
 					<div>
-						<input class="btn btn2" type="submit" value="Enviar" id="submit">
+						<%= submit_tag("Enviar",:class => "btn btn2") %>
 					</div>
 					<br>
-				</form>
+				<%end%>
 			</div>
 			<div id="corr" class="col col-12 col-lg-4 d-none d-lg-block">
-				<img class="img-fluid" src="../img/mail.png" alt="correo">
+				<%= image_tag(image_path("mail.png"),:class=>"img-fluid",:alt=>"correo") %>		
 			</div>
 		</div>
 	</section>
