@@ -3,18 +3,17 @@
 
 html, body{ height:100%;}
 
-body{ 
-  display:flex; 
-  flex-direction:column; 
+#contenido {
+  min-height: calc(100vh - 72px);
+}
+
+footer {
+  height: 72px;
 }
 
 .center{
 	margin: auto;
 	text-align: center;
-}
-
-footer{
-  margin-top:auto; 
 }
 
 .mont{

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'main_page/references'
   get 'main_page/index'
   get 'main_page/search'
+  get 'main_page/news'
   get 'main_page/services'
   get 'main_page/us'
 
