@@ -8,14 +8,31 @@
 			<div class="row justify-content-center" id="filaServicios1">
 				<div id="servicios1" class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
 					<div class=" center imgServicios">
-						<%= image_tag(image_path("aula.png"),:alt=>"servicio1") %>
+			            <div id="SLIDES1" class="carousel slide" data-ride="carousel">
+			              <div class="carousel-inner">
+			                <div class="carousel-item active">
+			                  <%= image_tag(image_path("aula.png"),:alt=>"servicio1") %>
+			                </div>
+			                <div class="carousel-item">
+			                  <%= image_tag(image_path("servicios/aula.jpg"),:alt=>"servicio2") %>
+			                </div>
+			              </div>
+			              <a class="carousel-control-prev" href="#SLIDES1" role="button" data-slide="prev">
+			                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			                <span class="sr-only">Previous</span>
+			              </a>
+			              <a class="carousel-control-next" href="#SLIDES1" role="button" data-slide="next">
+			                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			                <span class="sr-only">Next</span>
+			              </a>
+			            </div>						
 					</div>
 					<div class="center infoServicios">
 						<div class="titulo">
-							<h2>Equipamiento de aulas activas</h2>
+							<h2 class="mont">Equipamiento de aulas activas</h2>
 						</div>	
 						<div>
-							<p class="parrafo">Proporcionamos equipos de última generación que nos permitan trabajar a la par con aplicaciones de ingeniería,
+							<p class="rale parrafo">Proporcionamos equipos de última generación que nos permitan trabajar a la par con aplicaciones de ingeniería,
 							desarrolladas para ambientes multimedios de 64 bits, como Autocad, Adobe, MathLab, etc.</p>
 						</div>
 					</div>
@@ -26,10 +43,10 @@
 					</div>
 					<div class="center infoServicios">
 						<div class="titulo">
-							<h2>Data Center y Cableado Estructurado</h2>
+							<h2 class="mont">Data Center y Cableado Estructurado</h2>
 						</div>	
 						<div>
-							<p class="parrafo">Ofrecemos soluciones para el cableado de su oficina u edificio, con el fin de ofrecerle conectividad de todos sus equipos activos, permitiendo la integración con los diferentes servicios referentes al cableado voz-datos.</p>
+							<p class="rale parrafo">Ofrecemos soluciones para el cableado de su oficina u edificio, con el fin de ofrecerle conectividad de todos sus equipos activos, permitiendo la integración con los diferentes servicios referentes al cableado voz-datos.</p>
 						</div>
 					</div>
 				</div>
@@ -39,10 +56,10 @@
 					</div>
 					<div class="center infoServicios">
 						<div class="titulo">
-							<h2>Redes e Instalaciones eléctricas</h2>
+							<h2 class="mont">Redes e Instalaciones eléctricas</h2>
 						</div>	
 						<div>
-							<p class="parrafo">Ofrecemos redes eléctricas y subestaciones en media y baja tensión, instalaciones eléctricas internas, iluminación interior, exterior, ornamental y alumbrado público.</p>
+							<p class="rale parrafo">Ofrecemos redes eléctricas y subestaciones en media y baja tensión, instalaciones eléctricas internas, iluminación interior, exterior, ornamental y alumbrado público.</p>
 						</div>
 					</div>
 				</div>
@@ -54,10 +71,10 @@
 					</div>
 					<div class="infoServicios">
 						<div class="center titulo">
-							<h2>Equipamiento de laboratorios</h2>
+							<h2 class="mont">Equipamiento de laboratorios</h2>
 						</div>	
 						<div>
-							<p class="parrafo">Creación de laboratorios para computadoras de última generación con aplicaciones para el aprendizaje de los estudiantes.</p>
+							<p class="rale parrafo">Creación de laboratorios para computadoras de última generación con aplicaciones para el aprendizaje de los estudiantes.</p>
 						</div>
 					</div>
 				</div>
@@ -67,10 +84,10 @@
 					</div>
 					<div class="center infoServicios">
 						<div class="titulo">
-							<h2>Automatización de salas de audio/video</h2>
+							<h2 class="mont">Automatización de salas de audio/video</h2>
 						</div>	
 						<div>
-							<p class="parrafo">Automatización de salas de audio y video, auditorios, coliseos, edificios inteligentes, oficinas, hogar, entre otros.</p>
+							<p class="rale parrafo">Automatización de salas de audio y video, auditorios, coliseos, edificios inteligentes, oficinas, hogar, entre otros.</p>
 						</div>
 					</div>
 				</div>
@@ -80,10 +97,10 @@
 					</div>
 					<div class="center infoServicios">
 						<div class="titulo">
-							<h2>Seguridad y Control Biométrico</h2>
+							<h2 class="mont">Seguridad y Control Biométrico</h2>
 						</div>	
 						<div>
-							<p class="parrafo">Videovigilancia, control de acceso y control de entrada/salida de personal; utilizando dispositivos biométricos y software de administración de marcaciones.</p>
+							<p class="rale parrafo">Videovigilancia, control de acceso y control de entrada/salida de personal; utilizando dispositivos biométricos y software de administración de marcaciones.</p>
 						</div>
 					</div>
 				</div>
