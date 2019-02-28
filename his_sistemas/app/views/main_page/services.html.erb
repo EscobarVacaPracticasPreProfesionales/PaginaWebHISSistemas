@@ -92,4 +92,6 @@
 		
 	</section>
 </body>
-<%= render "layouts/footer_main" %>
+<% content_for :foot do %>
+	<%= render "layouts/footer_main" %>
+<% end %>
