@@ -4,6 +4,7 @@
 }
 
 
+
 #timeline{
 	margin-top: 50px;
 	font-size: .9rem;
@@ -25,7 +26,9 @@
     margin-left: 1em;
     border-left: solid #5CB1F7;
     text-align: left;
+
 }
+
 
 #timeline time::after {
     content: ' -';
@@ -52,7 +55,11 @@ figure img{
 
 aside{
 	background-color: black;
+	border-radius:4px;
+	padding-top:4%;
+
 }
+
 
 
 #objholder li{
