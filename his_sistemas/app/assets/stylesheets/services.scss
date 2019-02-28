@@ -10,18 +10,20 @@ div[id^=servicios]:hover {
 div[id^=servicios]{
   border-style:solid;
   border-width:2px;
-  border-radius:10px;
+  border-radius:4px;
   border-color:rgba(0, 0, 0, 0.15);
   margin-top:15px;
   height:280px;
-  padding:5px;
+  
 
 }
 
 img{
   height:140px;
+  margin-top:10px;
   margin-bottom:10px;
-  border-radius:10px;
+  border-radius:4px;
+  width:100%;
   
 }
 
@@ -35,7 +37,7 @@ img{
 
 @media (min-width: 544px) {  
   div[id^=servicios]{
-    height:320px;
+    height:330px;
   }
 
   img{
@@ -45,7 +47,7 @@ img{
 
 @media (min-width: 768px) {
   div[id^=servicios]{
-    height:320px;
+    height:330px;
   }
 
   img{
@@ -55,7 +57,7 @@ img{
 
 @media (min-width: 992px) { 
   div[id^=servicios]{
-    height:500px;
+    height:510px;
   }
 
   img{
@@ -66,7 +68,7 @@ img{
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {     
   div[id^=servicios]{
-    height:500px;
+    height:510px;
   }
 
   img{
