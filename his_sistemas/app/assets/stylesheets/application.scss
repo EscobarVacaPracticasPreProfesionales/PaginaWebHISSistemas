@@ -91,6 +91,24 @@ p{
 	font-size: .8rem;
 }
 
+.btn-circle {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  border-radius: 50%;
+  font-size: 30px;
+  background-color: black;
+  color:white;
+  position: fixed;
+  bottom: 85px;
+  right: 30px;
+}
+
+.btn-circle:hover{
+  color:white;
+	
+}
+
 @media (min-width: 544px) {  
 	h1{font-size: 1.1rem;}
 	h2{font-size: 1rem;}
