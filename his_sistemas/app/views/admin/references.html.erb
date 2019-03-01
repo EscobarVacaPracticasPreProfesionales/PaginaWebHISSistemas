@@ -1,1 +1,14 @@
+
+<% content_for :crud do %>
+	<div class="center mb-3">
+		<span class="btn btn3 mr-3">
+  			<%= link_to( octicon("pencil")) %>
+  		</span>
+		<span class="btn btn3">
+  			<%= link_to( octicon("trashcan")) %>
+  		</span>
+	</div>
+	<button id= "btn1" class="btn btn-circle" data-toggle="modal" data-target="#newModal">+</button>
+<% end %>
+
 <%= render "layouts/references" %>
