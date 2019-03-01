@@ -1,0 +1,22 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "news", media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+<%= render "layouts/header_main" %>
+<div class="container">
+	<a href="">
+		<div class="row new mr-lg-5 ml-lg-5 pr-lg-5 pl-lg-5">
+			<div class="col-7 col-md-9">
+				<h1 class="mont">Lorem ipsum</h1>
+				<small class="rale">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor dictum sem, in placerat erat elementum id. Cras ullamcorper vel diam id congue. Vestibulum sed hendrerit dolor. Mauris ultrices semper enim, non molestie lacus aliquet eget. Nulla placerat dui quis augue dictum imperdiet. 
+				</small>
+			</div>
+			<div class="col-5 col-md-3 center">
+				<img class="img-thumbnail view" src="https://placeimg.com/640/480/any">
+			</div>
+		</div>
+	</a>
+</div>
+<% content_for :foot do %>
+	<%= render "layouts/footer_main" %>
+<% end %>
