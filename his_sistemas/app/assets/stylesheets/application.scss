@@ -34,36 +34,53 @@ html, body{ height:100%;}
 .btn1{
 	border-color: #39BDDC;
 	color: #5CB1F7;
+	.octicon{
+	    fill: #5CB1F7;
+	};
 }
 
 .btn1:hover{
 	background-color: #5CB1F7;
 	border-color: #39BDDC;
 	color: white;
-	
+	.octicon{
+	    fill: white;
+	};
 }
 
 .btn2{
 	background-color: #5CB1F7;
 	border-color: #39BDDC;
 	color: white;
+	.octicon{
+	    fill: white;
+	};
 }
 
 .btn2:hover{
 	background-color: white;
 	border-color: #39BDDC;
 	color: #5CB1F7;
+	.octicon{
+	    fill: #5CB1F7;
+	};
 }
 
 .btn3{
 	border-color: white;
 	color: white;
+	.octicon{
+	    fill: white;
+	};
 }
 
 .btn3:hover{
 	background-color: white;
 	border-color: #39BDDC;
 	color: #5CB1F7;
+	.octicon{
+	    fill: #5CB1F7;
+	};
 }
 
 h1{font-size: 1rem;}
