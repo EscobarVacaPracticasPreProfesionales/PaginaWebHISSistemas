@@ -8,6 +8,13 @@ Rails.application.routes.draw do
   get 'main_page/news'
   get 'main_page/services'
   get 'main_page/us'
-  get 'main_page/newsTemplate'
+  get 'admin/contactus'
+  get 'admin/references'
+  get 'admin/index'
+  get 'admin/search'
+  get 'admin/news'
+  get 'admin/services'
+  get 'admin/us'
+  get 'admin/newsTemplate'
 
 end
