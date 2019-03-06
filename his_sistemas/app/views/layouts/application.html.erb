@@ -1,21 +1,15 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Jose Escobar, Fernando Vaca">
-    <title>HIS Sistemas</title>
+    <title>HisSistemas</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= yield :head %>
   </head>
 
   <body>
-    <div id="contenido">
-      <%= yield %>
-    </div>
-      <%= yield :foot %>
+    <%= yield %>
   </body>
 </html>
