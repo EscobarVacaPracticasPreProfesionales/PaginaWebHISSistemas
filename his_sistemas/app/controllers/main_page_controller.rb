@@ -1,3 +1,0 @@
-class MainPageController < ApplicationController
-
-end
