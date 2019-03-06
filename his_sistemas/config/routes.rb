@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'us/index'
   resources :home, only: [:index]
 
   root to: redirect('/home')
