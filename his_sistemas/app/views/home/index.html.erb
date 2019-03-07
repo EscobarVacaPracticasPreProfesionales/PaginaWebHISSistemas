@@ -1,0 +1,299 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "index", media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+<%= render "layouts/header_main" %>
+		
+<div class="container-fluid" id="content">
+	<div id="slide" class="carousel slide row" data-ride="carousel">
+	  <!-- Indicators -->
+	  <ul class="carousel-indicators">
+		<li data-target="#slide" data-slide-to="0" class="active"></li>
+		<li data-target="#slide" data-slide-to="1"></li>
+		<li data-target="#slide" data-slide-to="2"></li>
+	  </ul>
+	  <!-- The slideshow -->
+	  <div class="carousel-inner">
+	    <div class="carousel-item active col-12">
+	    	<div id="producto1" class="row">
+				<div class="p-0 col col-12 col-lg-7 col-xl-8">
+					<%= image_tag(image_path("slides/datacenter.jpg"),:class=>"img-fluid",:alt=>"producto1") %>		
+				</div>
+				<div class="col col-12 col-lg-5 col-xl-4">
+					<div id="prodDato2" class="row wl">
+						<div class="tituloP center col col-12">
+							<h1 class="mont">
+								DATA CENTER Y CABLEADO ESTRUCTURADO
+							</h1>
+						</div>
+						<div class="textoP center col col-12 d-none d-lg-block">
+							<h2 class="rale">
+								En instituciones educativas, compañias y oficinas
+							</h2>
+						</div>
+						<div class="center col col-12">
+							<a href="contactus" class="lato btn btn1">Contáctenos</a>
+						</div>
+					</div>
+				</div>
+			</div>
+	    </div>
+	    <div class="carousel-item col-12">
+	    	<div id="producto2" class="row">
+	      		<div class="p-0 col col-12 col-lg-7 col-xl-8">
+					<%= image_tag(image_path("slides/proyectoraula.jpg"),:class=>"img-fluid", :alt=>"producto2") %>		
+				</div>
+				<div class="col col-12 col-lg-5 col-xl-4">
+					<div id="prodDato1" class="row wl">
+						<div class="tituloP center col col-12">
+							<h1 class="mont">
+								PROYECTORES Y PIZARRAS DIGITALES
+							</h1>
+						</div>
+						<div class="textoP center col col-12 d-none d-lg-block">
+							<h2 class="rale">
+								Para instituciones educativas y compañías
+							</h2>
+						</div>
+						<div class="center col col-12">
+							<a href="contactus" class="lato btn btn1">Contáctenos</a>
+						</div>
+					</div>
+				</div>
+			</div>
+	    </div>
+	    <div class="carousel-item col-12">
+	    	<div id="producto3" class="row">
+	      		<div class="p-0 col col-12 col-lg-7 col-xl-8">
+					<%= image_tag(image_path("slides/equiposcomp.jpg"), :class=>"img-fluid",:alt=>"producto3") %>		
+				</div>
+				<div class="col col-12 col-lg-5 col-xl-4">
+					<div id="prodDato3" class="row wl">
+						<div class="tituloP center col col-12">
+							<h1 class="mont">
+								VENTAS DE EQUIPOS DE COMPUTACIÓN
+							</h1>
+						</div>
+						<div class="textoP center col col-12 d-none d-lg-block">
+							<h2 class="rale">
+								Monitores, CPU's, Teclados, Ratones, Parlantes y mucho más
+							</h2>
+						</div>
+						<div class="center col col-12">
+							<a href="contactus" class="lato btn btn1">Contáctenos</a>
+						</div>
+					</div>
+				</div>
+			</div>
+	    </div>
+	  </div>
+
+	  <!-- Left and right controls -->
+	  <a class="carousel-control-prev" href="#slide" data-slide="prev">
+	    <span class="carousel-control-prev-icon"></span>
+	  </a>
+	  <a class="carousel-control-next" href="#slide" data-slide="next">
+	    <span class="carousel-control-next-icon"></span>
+	  </a>
+	</div>
+	<div class="row pt-3 pt-lg-5 pb-3 pb-lg-5" id="servicios">
+		<section class="col col-12">
+			<div class="row" id="serviciosImg">
+				<div class="col col-12 mb-3">
+					<h1 class="mont">Nuestros Servicios</h1>
+				</div>
+				<div class="serviceHolder col col-12 col-sm-12 col-lg-4">
+					<div class="row">
+						<div class="center col col-12">
+							<%= image_tag(image_path("servicios/cabEstruc.png"), :class=>"ik",:alt=>"service1") %>		
+
+						</div>
+
+						<div class="center col col-12">
+							<h2 class="rale">
+								Cableado Estructurado	
+							</h2>
+						</div>
+
+						<div class="col col-12">
+							<p class="lato d-none d-md-block">
+								HIS Sistemas ofrece una solución completa para sistemas de cableado para redes lan y eléctricas.
+								<br>
+								Soluciones de Cableado de Fibra Óptica.
+								<br>
+								Instalación de Armarios y Rack.
+							</p>
+						</div>
+
+					</div>
+				</div>
+				<div class="serviceHolder col col-12 col-sm-12 col-lg-4">
+					<div class="row">
+						<div class="center col col-12">
+							<%= image_tag(image_path("servicios/sopTec.png"), :class=>"ik",:alt=>"service2") %>		
+						</div>
+
+						<div class="center col col-12">
+							<h2 class="rale">
+								Soporte Técnico	
+							</h2>
+						</div>
+
+						<div class="col col-12">
+							<p class="lato d-none d-md-block">
+								Soporte Técnico para reparación de equipos, instalación y configuración de Software.
+							</p>
+						</div>
+
+					</div>
+				</div>
+				<div class="serviceHolder col col-12 col-sm-12 col-lg-4">
+					<div class="row">
+						<div class="center col col-12">
+							<%= image_tag(image_path("servicios/eqComp.png"), :class=>"ik",:alt=>"service3") %>		
+						</div>
+
+						<div class="center col col-12">
+							<h2 class="rale">
+								Equipos de Computación	
+							</h2>
+						</div>
+
+						<div class="col col-12">
+							<p class="lato d-none d-md-block">
+								Venta de computadoras personales, laptops y periféricos de uso general.
+								<br>
+								Servidores de Red y equipos de energía continua (UPS) y reguladores.
+							</p>
+						</div>
+
+					</div>
+				</div>
+				
+				<div class="center col col-12">
+					<a class="lato btn btn2" href="services">Conoce más</a>
+				</div>
+			</div>
+		</section>
+	</div>
+	
+	<div class="row pt-3 pt-lg-5 pb-3 pb-lg-5" id="clientes">
+		<section class="col col-12">
+			<div class="row" id="clientesHolder">
+				<div class="col col-12 mb-3">
+					<h1 class="mont wl">Nuestros Clientes</h1>
+				</div>
+				<div id="carousel2" class="carousel slide col-12" data-ride="carousel">
+				  <!-- The slideshow -->
+				  <div class="carousel-inner">
+				    <div class="carousel-item active">
+				    	<div class="row">
+				    		<div class="center col col-6 col-sm-6 col-md-3">
+								<%= image_tag(image_path("clientes/minLaborales.png"), :class=>"ik",:alt=>"clientes1") %>		
+							</div>
+							<div class="center col col-6 col-sm-6 col-md-3">
+								<%= image_tag(image_path("clientes/minTurismo.png"), :class=>"ik",:alt=>"clientes2") %>		
+							</div>
+							<div class="center col col-6 col-sm-6 col-md-3">
+								<%= image_tag(image_path("clientes/presidencia.png"), :class=>"ik",:alt=>"clientes3") %>		
+							</div>
+							<div class="center col col-6 col-sm-6 col-md-3">
+								<%= image_tag(image_path("clientes/uguayaquil.png"), :class=>"ik",:alt=>"clientes4") %>		
+							</div>
+						</div>	
+				    </div>
+				    <div class="carousel-item">
+				    	<div class="row">
+				    		<div class="center col col-6 col-sm-6 col-md-3">
+								<%= image_tag(image_path("clientes/ups.png"), :class=>"ik",:alt=>"clientes5") %>		
+							</div>
+							<div class="center col col-6 col-sm-6 col-md-3 d-none d-md-block">
+								<%= image_tag(image_path("clientes/ds.png"), :class=>"ik",:alt=>"clientes6") %>		
+							</div>
+							<div class="center col col-6 col-sm-6 col-md-3 d-none d-md-block">
+								<%= image_tag(image_path("clientes/alcMilagro.png"), :class=>"ik",:alt=>"clientes7") %>		
+							</div>
+							<div class="center col col-6 col-sm-6 col-md-3 d-none d-md-block">
+								<%= image_tag(image_path("clientes/favesa.png"), :class=>"ik",:alt=>"clientes8") %>		
+							</div>
+						</div>
+				    </div>
+				  </div>
+				  <!-- Left and right controls -->
+				  <a class="carousel-control-prev" href="#carousel2" data-slide="prev">
+				    <span class="carousel-control-prev-icon"></span>
+				  </a>
+				  <a class="carousel-control-next" href="#carousel2" data-slide="next">
+				    <span class="carousel-control-next-icon"></span>
+				  </a>
+				</div>
+			</div>
+			<div class="center col col-md-6 col-lg-2">
+				<a class="lato btn btn3" href="references">Conoce más</a>
+			</div>
+		</section>
+	</div>
+	
+	
+	<div class="row pt-3 pt-lg-5 pb-3 pb-lg-5" id="proovedores">
+		<section class="col col-12">
+			<div class="row" id="proovedoresHolder">
+				<div class="col col-12 mb-3">
+					<h1 class="mont">Nuestros Proovedores</h1>
+				</div>
+				<div id="carousel3" class="carousel slide col-12" data-ride="carousel">
+				  <div class="carousel-inner">
+				    <div class="carousel-item active">
+				    	<div class="row">
+				    		<div class="center col col-6 col-sm-6 col-md-3">
+								<%= image_tag(image_path("proveedores/cisco_gg.png"), :class=>"ik img-fluid",:alt=>"clientes1") %>		
+							</div>
+							<div class="center col col-6 col-sm-6 col-md-3">
+								<%= image_tag(image_path("proveedores/hp_gg.png"), :class=>"ik img-fluid",:alt=>"clientes2") %>		
+							</div>
+							<div class="center col col-6 col-sm-6 col-md-3">
+								<%= image_tag(image_path("proveedores/intel_gg.png"), :class=>"ik img-fluid",:alt=>"clientes3") %>		
+							</div>
+							<div class="center col col-6 col-sm-6 col-md-3">
+								<%= image_tag(image_path("proveedores/samsung_gg.png"), :class=>"ik img-fluid",:alt=>"clientes4") %>		
+							</div>
+						</div>	
+				    </div>
+				    <div class="carousel-item">
+				    	<div class="row">
+				    		<div class="center col col-6 col-sm-6 col-md-3 d-none d-md-block">
+								<%= image_tag(image_path("proveedores/ubiquiti.png"), :class=>"ik img-fluid",:alt=>"clientes5") %>		
+							</div>
+							<div class="center col col-6 col-sm-6 col-md-3 d-none d-md-block">
+								<%= image_tag(image_path("proveedores/genius.png"), :class=>"ik img-fluid",:alt=>"clientes6") %>		
+							</div>
+							<div class="center col col-6 col-sm-6 col-md-3 d-none d-md-block">
+								<%= image_tag(image_path("proveedores/wd.png"), :class=>"ik img-fluid",:alt=>"clientes7") %>		
+							</div>
+							<div class="center col col-6 col-sm-6 col-md-3 d-none d-md-block">
+								<%= image_tag(image_path("proveedores/elastix_gg.png"), :class=>"ik img-fluid",:alt=>"clientes8") %>		
+							</div>
+						</div>
+				    </div>
+				  </div>
+				  <!-- Left and right controls -->
+				  <a class="carousel-control-prev" href="#carousel3" data-slide="prev">
+				    <span class="carousel-control-prev-icon"></span>
+				  </a>
+				  <a class="carousel-control-next" href="#carousel3" data-slide="next">
+				    <span class="carousel-control-next-icon"></span>
+				  </a>
+				</div>
+			</div>
+		
+
+		</section>
+	</div>
+
+</div>
+
+<% content_for :foot do %>
+	<%= render "layouts/footer_main" %>
+<% end %>
+
+
+	

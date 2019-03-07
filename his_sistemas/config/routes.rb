@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :home, only: [:index]
+  resources :us, only: [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: redirect('/main_page/index')
   get 'main_page/contactus'
