@@ -1,0 +1,1 @@
+document.getElementById("user_email").value=String(document.getElementById("user_contact_attributes_emailcontact").value)

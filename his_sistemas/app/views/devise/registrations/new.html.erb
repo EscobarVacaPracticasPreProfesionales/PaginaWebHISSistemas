@@ -1,0 +1,55 @@
+<% content_for :foot do %>
+  <%= javascript_include_tag 'autoc', 'data-turbolinks-track': 'reload' %>
+<% end %>
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= f.fields_for :contact do |c| %>
+    <div class="field">
+      <%= c.label :name %>
+      <%= c.text_field :name , autofocus: true%>
+    </div>
+    <div class="field">
+      <%= c.label :lastname %>
+      <%= c.text_field :lastname %>
+    </div>
+    
+    <div class="field">
+      <%= c.label :company %>
+      <%= c.text_field :company %>
+    </div>
+    <div class="field">
+      <%= c.label :emailcontact %>
+      <%= c.email_field :emailcontact %>
+    </div>
+    <div class="field">
+      <%= c.label :phone1 %>
+      <%= c.text_field :phone1 %>
+    </div>
+    <div class="field">
+      <%= c.label :phone2 %>
+      <%= c.text_field :phone2 %>
+    </div>
+  <% end %>
+  <%= f.select(:user_type_id,options_from_collection_for_select(@user_types, 'id', 'tipo'))%>
+  <%=f.hidden_field :email %>
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
