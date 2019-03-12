@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :services
   devise_for :users, controllers: {registrations: 'users/registrations'}
   resources :home, only: [:index]
   resources :us, only: [:index]

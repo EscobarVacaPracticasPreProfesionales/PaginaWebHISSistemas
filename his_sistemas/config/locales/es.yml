@@ -1,7 +1,5 @@
 es:
   activerecord:
-    models:
-      user: "Usuario"
     attributes:
       contact:
         name: "Nombres"
@@ -9,3 +7,22 @@ es:
     errors:
       messages:
         blank: ": Este campo es obligatorio"
+  devise:
+    registrations:
+      new:
+        sign_in: "Iniciar Sesión"
+        have_an_account?: "¿Tienes una cuenta?"
+        phone1: "Teléfono 1"
+        phone2: "Teléfono 2"
+      edit:
+        cancel: "Anular"
+    sessions:
+      new:
+        sign_up: "Registrarse"
+        you_dont_have_an_account?: "¿No tienes una cuenta?"
+  layouts:
+    header_main:
+      sign_up: "Registrarse"
+      sign_in: "Iniciar Sesión"
+      edit_profile: "Editar perfil"
+      sign_out: "Cerrar Sesión"

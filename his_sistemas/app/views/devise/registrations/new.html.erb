@@ -15,7 +15,7 @@
     <div class="col-md-6">
       <div class="card">
       <header class="card-header">
-        <a href="" class="float-right btn btn3 mt-1">Ingresar</a>
+        <%= link_to t(".sign_in"), new_session_path(resource_name) , :class=>"float-right btn btn3 mt-1" %>
         <h4 class="card-title mt-2 wl mont"><%=t(".sign_up")%></h4>
       </header>
       <article class="card-body rale">
@@ -32,15 +32,12 @@
                 <%= c.text_field :lastname, class: 'form-control' %>
               </div>
             </div>
-            
             <div class="field form-group">
               <%= c.label :company, 'Compañía'  %>
               <%= c.text_field :company, class: 'form-control'  %>
             </div>
-            <div class="field form-group">
-              <%= c.label :emailcontact, 'Email' %>
-              <%= c.email_field :emailcontact, class: 'form-control'  %>
-            </div>
+            <%=c.hidden_field :emailcontact %>
+            
             <div class="form-row">
               <div class="field col form-group">
                 <%= c.label :phone1, 'Teléfono 1' %>
@@ -53,11 +50,14 @@
             </div>
           <% end %>
           <div class="field form-group">
+              <%= f.label :email, 'Email' %>
+              <%= f.email_field :email, class: 'form-control'  %>
+            </div>
+          <div class="field form-group">
 
             <%= f.label :user_type_id, 'Tipo de Usuario' %>
             <%= f.select(:user_type_id,options_from_collection_for_select(@user_types, 'id', 'tipo'), {}, { :class => 'form-control' } )%>
           </div>
-          <%=f.hidden_field :email %>
           <div class="field form-group">
             <%= f.label :password, 'Contraseña' %>
             <% if @minimum_password_length %>
@@ -65,19 +65,16 @@
             <% end %><br />
             <%= f.password_field :password, autocomplete: "new-password", class: 'form-control'   %>
           </div>
-
           <div class="field form-group">
             <%= f.label :password_confirmation, 'Confirmar contraseña' %><br />
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
           </div>
-
-
           <div class="actions">
-            <%= f.submit t(".sign_up"), class: "btn btn-block btn2 lato" %>
+            <%= f.submit t(".sign_up"), id: "submit" ,class: "btn btn-block btn2 lato" %>
           </div>
         <% end %>
       </article> <!-- card-body end .// -->
-      <div class="border-top card-body text-center lato">¿Tienes una cuenta? <a href="">Ingresar</a></div>
+      <div class="border-top card-body text-center lato"><%= t('.have_an_account?') %> <a href=""><%=t(".sign_in")%></a></div>
       </div> <!-- card.// -->
     </div> <!-- col.//-->
 
