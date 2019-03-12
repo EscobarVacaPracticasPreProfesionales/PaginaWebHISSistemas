@@ -10,11 +10,6 @@ class ServicesController < ApplicationController
   # GET /services/1
   # GET /services/1.json
   def show
-    @service.each do |serv|
-      serv.pictures.each do |pic|
-        puts pic.url
-      end
-    end
   end
 
   # GET /services/new

@@ -1,10 +1,9 @@
 <%= render "layouts/header_main" %>
+
 <% content_for :foot do %>
   <%= render "layouts/footer_main" %>
   <%= javascript_include_tag 'autoc', 'data-turbolinks-track': 'reload' %>
 <% end %>
-
-
 
 <div class="container mt-4">
   <div class="row justify-content-between">

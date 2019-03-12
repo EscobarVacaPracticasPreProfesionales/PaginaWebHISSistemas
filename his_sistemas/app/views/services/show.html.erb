@@ -19,7 +19,9 @@
 
 <p>
   <strong>User:</strong>
-  <%= @service.user %>
+  <%= @service.user.contact.name %>
+  <%= @service.user.contact.lastname %>
+
 </p>
 
 <%= link_to 'Edit', edit_service_path(@service) %> |

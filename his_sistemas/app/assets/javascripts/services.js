@@ -1,0 +1,1 @@
+document.getElementsByClassName("carousel-item")[0].className+=" active";
