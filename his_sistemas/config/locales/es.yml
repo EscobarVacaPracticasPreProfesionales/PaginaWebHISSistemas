@@ -1,10 +1,11 @@
 es:
   activerecord:
+    models:
+      user: "Usuario"
     attributes:
       contact:
-        name: "Nombre"
-        lastname: "Apellido"
+        name: "Nombres"
+        lastname: "Apellidos"
     errors:
       messages:
-        format: "%{attribute} %{message}"
-        blank: "Este campo es obligatorio"
+        blank: ": Este campo es obligatorio"

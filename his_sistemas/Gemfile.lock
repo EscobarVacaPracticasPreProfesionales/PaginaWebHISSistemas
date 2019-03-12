@@ -93,6 +93,8 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.8.0)
+      devise (>= 4.6)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
@@ -292,6 +294,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  devise-i18n
   jbuilder (~> 2.5)
   jekyll-octicons (~> 8.3)
   jquery-rails
