@@ -1,5 +1,10 @@
 class Service < ApplicationRecord
-  belongs_to :user
-  mount_uploaders :pictures, PictureUploader
-  serialize :pictures, JSON
+  	belongs_to :user
+
+	accepts_nested_attributes_for :user
+
+  	mount_uploaders :pictures, PictureUploader
+  	serialize :pictures, JSON
+  	
+	validates_presence_of :pictures
 end

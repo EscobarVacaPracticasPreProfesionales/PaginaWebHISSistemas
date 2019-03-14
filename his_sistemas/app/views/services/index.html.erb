@@ -4,48 +4,58 @@
 <%= render "layouts/header_main" %>
 <section>
   <div class="container" id="contenedorServicios">
-    <div class="row justify-content-center">
-      <% @services.each do |service| %>
-        <div class=" servicios col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-          <div class="center imgServicios">
-              <div class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                  <% if service.pictures.any?%>
-                    <% service.pictures.each do |pic| %>
-                      <div class="carousel-item">
-                        <%= image_tag(pic.url,:alt=>"servicio") %>
-                      </div>
-                    <%end%>
-                  <%end%>
+    <% @services.each_with_index do |service, i| %>
+      <%if i%3==0%>
+        <div class="row justify-content-around">
+      <%end%>
+          <div class="servicios col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+            <div class="cont">
+              <div class="center imgServicios">
+                  <div class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                      <% if service.pictures.any?%>
+                        <% service.pictures.each do |pic| %>
+                          <div class="carousel-item">
+                            <%= image_tag(pic.url,:alt=>"servicio") %>
+                          </div>
+                        <%end%>
+                      <%end%>
+                    </div>
+                  </div>            
+              </div>
+              <div class="center infoServicios">
+                <div class="titulo">
+                  <h2 class="mont"><%= service.title %></h2>
+                </div>  
+                <div>
+                  <p class="rale parrafo"><%= service.description %></p>
                 </div>
-              </div>            
-          </div>
-          <div class="center infoServicios">
-            <div class="titulo">
-              <h2 class="mont"><%= service.title %></h2>
-            </div>  
-            <div>
-              <p class="rale parrafo"><%= service.description %></p>
+              </div>
             </div>
+
+            <% if user_signed_in? %>
+              <div class="mb-3 gg center">
+                <span class="btn btn1">
+                    <%= link_to octicon("pencil"), edit_service_path(service) %>
+                </span>
+                <span class="btn btn1">
+                  <%= link_to octicon("trashcan"), service, method: :delete, data: { confirm: 'Are you sure?' }%>
+                </span>
+              </div>
+            <%end%>
           </div>
-          <div class="center mb-3">
-            <span class="btn btn1 mr-3">
-                <%= link_to octicon("pencil"), edit_service_path(service) %>
-              </span>
-            <span class="btn btn1">
-                <%= link_to octicon("trashcan"), service, method: :delete, data: { confirm: 'Are you sure?' }%>
-              </span>
-          </div>
+      <%if i>0 && i%2==0%>
         </div>
       <%end%>
+    <%end%>  
+    <% if user_signed_in? %>
       <%= link_to '+', new_service_path, :class=>"btn btn-circle shadow-lg" %>
-    </div>
+    <%end%>
   </div>
 </section>
 
 <% content_for :foot do %>
-  <%= render "layouts/footer_main" %>
-  <%= javascript_include_tag 'services', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'class_adder', 'data-turbolinks-track': 'reload' %>
 <% end %>
 
 

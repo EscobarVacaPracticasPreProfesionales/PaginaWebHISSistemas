@@ -10,28 +10,26 @@
       </ul>
     </div>
   <% end %>
+  <div class="form-row">
+      <div class="field col form-group">
+        <%= form.label :pictures %>
+        <%= form.file_field :pictures, multiple: true, class: 'form-control'%>
+    </div>
 
-  <div class="field">
-    <%= form.label :pictures %>
-    <%= form.file_field :pictures, multiple: true %>
-  </div>
+    <div class="field col form-group">
+      <%= form.label :title %>
+      <%= form.text_field :title, required: true, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+    <div class="field col form-group">
+      <%= form.label :description %>
+      <%= form.text_area :description, required: true, class: 'form-control'%>
+    </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+    <%= form.hidden_field :user_id, value: current_user.id %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <div class="actions">
+      <%= form.submit t('.pub'),class: "btn btn-block btn2 lato"%>
+    </div>
   </div>
 <% end %>

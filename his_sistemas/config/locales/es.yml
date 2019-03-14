@@ -4,9 +4,14 @@ es:
       contact:
         name: "Nombres"
         lastname: "Apellidos"
+      service:
+        title: "Título"
+        description: "Descripción"
+        pictures: "Imágenes"
     errors:
       messages:
         blank: ": Este campo es obligatorio"
+        required: "Este campo es obligatorio"
   devise:
     registrations:
       new:
@@ -26,3 +31,10 @@ es:
       sign_in: "Iniciar Sesión"
       edit_profile: "Editar perfil"
       sign_out: "Cerrar Sesión"
+  services:
+    edit:
+      edit_service: "Editar servicio"
+    new:
+      new_service: "Nuevo servicio"
+    form:
+      pub: "Publicar"
