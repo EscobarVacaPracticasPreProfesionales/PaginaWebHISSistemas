@@ -8,9 +8,9 @@
       <div class="row" id="noticia<%= reference.id %>">
         <div id="slides<%= reference.id %>" class="carousel slide col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" data-ride="carousel">
           <ol class="carousel-indicators">
-            <li data-target="#slides<%= reference.id %>" data-slide-to="0" class="active"></li>
-            <li data-target="#slides<%= reference.id %>" data-slide-to="1"></li>
-            <li data-target="#slides<%= reference.id %>" data-slide-to="2"></li>
+            <% reference.pictures.each_with_index do |indicator,index|%>
+            <li data-target="slides<%= reference.id %>" data-slide-to=index class=""></li>
+            <%end%>           
           </ol>
           <div class="carousel-inner">
             <% if reference.pictures.any?%>  
@@ -72,6 +72,5 @@
   </div>
 </body>
 <% content_for :foot do %>
-    <%= render "layouts/footer_main" %>
     <%= javascript_include_tag 'class_adder', 'data-turbolinks-track': 'reload' %>
 <% end %>
