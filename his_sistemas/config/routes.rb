@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :contacts
+  resources :articles
   resources :references
   resources :services
   devise_for :users, controllers: {registrations: 'users/registrations'}

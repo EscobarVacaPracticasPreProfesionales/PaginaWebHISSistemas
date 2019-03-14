@@ -1,0 +1,52 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "newsTemplate", media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+<%= render "layouts/header_main" %>
+
+<div class="container" id="content">
+  <div class="row titleImage">
+    <div class="titulo col-xl-12">
+      <h1><%= @article.title %></h1>
+    </div>
+    <div  id="noticia" class="carousel slide imagen col-xl-6" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <% @article.pictures.each_with_index do |indicator,index|%>
+            <li data-target="#noticia" data-slide-to=index class=""></li>
+            <%end%>           
+          </ol>
+          <div class="carousel-inner">
+            <% if @article.pictures.any?%>  
+              <% @article.pictures.each do |pic| %>
+                <div class="carousel-item">
+                  <%= image_tag(pic.url,:class=>"img-fluid", :alt=>"imgNoticia")%> 
+                </div>
+              <%end%>
+            <%end%>
+          </div>
+
+          <figcaption class="rale"><%= @article.figcaption %></figcaption>
+          <a class="carousel-control-prev" href="#noticia" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#noticia" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+      </div>
+  </div>
+  <div class="row contenido">
+    <div class="fecha col-xl-12">
+      <p><%= @article.fecha %></p>
+    </div>
+    <div class="info col-xl-8">
+      <%= @article.content %>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
+<% content_for :foot do %>
+    <%= javascript_include_tag 'class_adder', 'data-turbolinks-track': 'reload' %>
+<% end %>
