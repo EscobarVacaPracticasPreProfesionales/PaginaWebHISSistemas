@@ -1,0 +1,88 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "contactus", media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+<%= render "layouts/header_main"%>
+
+<div id="formulario">
+	<section class="container" id="consultasHolder">
+		<div class="row">
+			<div class="col col-12 col-sm-12 col-md-12 col-lg-8">
+				<h1 class="wl mt-3">Consultas</h1>
+				<%= form_with(model: @contact, local: true, :class=>"wl lato mt-4") do |f| %>
+					<div class="row">
+						<div class="form-group col-12 col-md-6">
+							<%=f.label(:name,"Nombre: ")%>
+							<%=f.text_field(:name,:class=>"form-control",:pattern=>"[A-za-z ]+", :placeholder=>"John", :required=>true)%>
+						</div>
+						<div class="form-group col-12 col-md-6">
+							<%=f.label(:lastname,"Apellido: ")%>
+							<%=f.text_field(:lastname,:class=>"form-control",:pattern=>"[A-za-z ]+", :placeholder=>"Doe", :required=>true)%>
+						</div>
+					</div>
+					<div class="form-group">
+						<%=f.label(:company,"Empresa: ")%>
+						<%=f.text_field(:company,:class=>"form-control",:pattern=>"[A-za-z ]+", :placeholder=>"HIS Sistemas")%>
+					</div>
+					<div class="row">
+						<div class="form-group col-12 col-md-6">
+							<%=f.label(:phone1,"Teléfono 1: ")%>
+							<%= f.telephone_field(:phone1, :pattern =>"[0-9]{10}" , :placeholder=>"0999999999", :required=>true,:class=>"form-control")%>
+						</div>
+						<div class="form-group col-12 col-md-6">
+							<%=f.label(:phone2,"Teléfono 2: ")%>
+							<%= f.telephone_field(:phone2, :pattern =>"[0-9]{10}" , :placeholder=>"0999999999", :required=>true,:class=>"form-control")%>
+						</div>
+					</div>
+					<div class="form-group">
+						<%=f.label(:emailcontact,"Email: ")%>
+						<%=f.email_field(:emailcontact,:class=>"form-control", :pattern=>"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$", :placeholder=>"your@email.com",:required=>true)%>
+					</div>
+					<div class="form-group">
+						<%=f.label(:asunto,"Asunto: ")%>
+						<%=f.text_field(:asunto,:class=>"form-control",:pattern=>"[A-za-z ]+", :placeholder=>"Servicio de cableado", :required=>true)%>
+					</div>
+					<div class="form-group">
+						<%=f.label(:mensaje,"Mensaje: ")%>
+						<%=f.text_area(:mensaje,:class=>"form-control",:placeholder=>"Escribe tu mensaje/consulta aquí", :required=>true)%>
+					</div>
+					<div class="form-group">
+						<%=f.label(:doc,"Adjuntar documento: ")%>
+						<%=f.file_field('doc',:class=>"form-control-file",accept:".doc, .docx,.pdf,.odt,image/*")%>
+					</div>
+					<div>
+						<%= f.submit("Enviar",:class => "btn btn2") %>
+					</div>
+					<br>
+				<%end%>
+			</div>
+			<div id="corr" class="col col-12 col-lg-4 d-none d-lg-block">
+				<%= image_tag(image_path("mail.png"),:class=>"img-fluid",:alt=>"correo") %>		
+			</div>
+		</div>
+	</section>
+</div>
+<div class="container">
+	<section class ="row mt-3 mb-3" id="datos">
+		<div class="col col-12">
+			<h1> Información de contacto </h1>
+		</div>
+
+		<div class="col col-12 col-sm-12 col-md-6">
+			<div  id="info">
+				<p>
+					<strong>Dirección:</strong> Urb. La Saiba, calle Germania Garaicoa Terán y Primer Callejón 43B Mz. H Solar 9. Guayaquil, Ecuador.
+				</p>
+				<p>
+					<strong>Teléfonos:</strong> (04) 2347574 -  2580379
+				</p>
+				<p>
+					<strong>Email:</strong> hissistemasgye@gmail.com
+				</p>
+			</div>
+		</div>
+
+		<div class="col col-12 col-sm-12 col-md-6" >
+			<iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.807305629318!2d-79.89472308524472!3d-2.226100798377445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902d6f72355727e7%3A0xa2d46c47543dd4f0!2sHIS+Sistemas!5e0!3m2!1ses!2sec!4v1552582603798" frameborder="0" allowfullscreen></iframe>
+		</div>
+	</section>
+</div>
