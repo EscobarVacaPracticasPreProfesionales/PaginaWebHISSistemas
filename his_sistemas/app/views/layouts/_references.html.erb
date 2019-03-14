@@ -4,70 +4,60 @@
 <%= render "layouts/header_main" %>
 <body>
 	<div class="container" id="news">
-        <div class="row" id="noticia1">
-            <div id="SLIDES1" class="carousel slide col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li data-target="#SLIDES1" data-slide-to="0" class="active"></li>
-                <li data-target="#SLIDES1" data-slide-to="1"></li>
-                <li data-target="#SLIDES1" data-slide-to="2"></li>
-              </ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <%= image_tag(image_path("referencias/estatal.png"),:class=>"img-fluid",:alt=>"imgNoticia2") %>
-                </div>
+    <% @references.each do |reference| %>
+      <div class="row" id="noticia">
+        <div id=reference.id class="carousel slide col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target=reference.id data-slide-to="0" class="active"></li>
+            <li data-target=reference.id data-slide-to="1"></li>
+            <li data-target=reference.id data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <% if service.pictures.any?%>  
+              <% service.pictures.each do |pic| %>
                 <div class="carousel-item">
-                  <%= image_tag(image_path("referencias/monasterio.png"),:class=>"img-fluid",:alt=>"imgNoticia2") %>
+                  <%= image_tag(pic.url,:alt=>"imgNoticia") %>
                 </div>
-                <div class="carousel-item">
-                  <%= image_tag(image_path("referencias/fae.png"),:class=>"img-fluid",:alt=>"imgNoticia2") %>
-                </div>
+              <%end%>
+            <%end%>
+          </div>
+          <a class="carousel-control-prev" href=reference.id role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href=reference.id role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        <div class="info pt-4 col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+            <div class="contenido">
+              <h2 class="mont wl"><%= reference.title %></h2>
+			        <p class="fecha pt-2 lato wl"><%= reference.year %></p>
+              <div class="boton pb-2">
+                  <button type="button" class="btn btn3" data-toggle="modal" data-target="#modalServicio1">Conoce más</button>
               </div>
-              <a class="carousel-control-prev" href="#SLIDES1" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#SLIDES1" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-            </div>
-            <div class="info pt-4 col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                <div class="contenido">
-                  <h2 class="mont wl">Equipamiento de sala de excelencia en la Facultad de Economía de la Universidad Estatal de Guayaquil</h2>
-  				        <p class="fecha pt-2 lato wl">2018</p>
-                  <div class="boton pb-2">
-                      <button type="button" class="btn btn3" data-toggle="modal" data-target="#modalServicio1">Conoce más</button>
-                  </div>
-                  <%= yield :crud %>
-                  <!-- Modal -->
-                  <div class="modal fade" id="modalServicio1" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title mont" id="modalTitulo">Equipamiento de sala de excelencia en la Facultad de Economía de la Universidad Estatal de Guayaquil</h5>
-                        </div>
-                        <div class="modal-body">
-                          <p class="textoModal rale">Proyecto donde se implementó un aula activa, que es un espacio de los salones de clases modernos, que tiene tres aspectos fundamentales: flexibilidad, conectividad y colaboración.
-                          <br>
-                          <br>
-                          -Flexibilidad: Capacidad de poder organizar el salón de clases segun la necesidad que tengan tanto maestros como alumnos, es decir, existe total movibilidad.
-                          <br>
-                          <br>
-                          -Conectividad: Poseer en el salón las tecnologías de la información con sistemas multiplataformas.
-                          <br>
-                          <br>
-                      -Colaboración: Aspecto que permite desarrollar diferentes formatos en los grupos de trabajo para la integración de destrezas de los estudiantes.</p>
-                          
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn1" data-dismiss="modal">Cerrar</button>
-                        </div>
-                      </div>
+              <%= yield :crud %>
+              <!-- Modal -->
+              <div class="modal fade" id="modalServicio1" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title mont" id="modalTitulo"><%= reference.title %></h5>
+                    </div>
+                    <div class="modal-body">
+                      <p class="textoModal rale"><%= reference.content %></p>
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn1" data-dismiss="modal">Cerrar</button>
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
         </div>
+      </div>
         <div class="row" id="noticia2">
             <div class="info pt-4 col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
                 <div class="contenido">
