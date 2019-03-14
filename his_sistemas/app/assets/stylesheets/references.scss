@@ -11,12 +11,16 @@ h2{font-size: 1rem;}
   margin-top:5px;
 }
 
-.contenido{margin:5%;}
+.imagen{
+  width:100%;
+  height:235px;
+}
 
 @media (min-width: 544px) {  
   h1{font-size: 1.5rem;}
   h2{font-size: 1.2rem;}
   p{font-size: 1rem;}
+  .imagen{height:300px;}
   
 }
 
@@ -24,11 +28,14 @@ h2{font-size: 1rem;}
   h1{font-size:1.75rem;}
   h2{font-size: 1.5rem}
   p{font-size: 1.1rem}
+  .imagen{height:325px;}
+  
 }
 
 @media (min-width: 992px) { 
   h1{font-size:1.8rem;}
   h2{font-size: 1.75rem}
+  .imagen{height:375px;}
   
 }
 
@@ -36,15 +43,15 @@ h2{font-size: 1rem;}
 @media (min-width: 1200px) {     
   h1{font-size:2rem;} 
   h2{font-size: 1.8rem;}
+  .imagen{height:430px;}
+
   
 }
 
-canvas{
-	width:100%;
-}
 
 .info{
   background-color: #5CB1F7;
+  padding: 2% 0;
 }
 
 
@@ -58,7 +65,7 @@ h2{
 }
 
 
-div[id^=SLIDES]{
+div[id^=slides]{
   padding:0;
 }
 
@@ -69,14 +76,9 @@ div[id^=noticia]{
   overflow:hidden;
 }
 
-.contenido{
-  position:relative;
-}
 
-.contenidoInterior{
-  margin: 0;
-  position: absolute;
+.contenido{
+  position: relative;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
 }

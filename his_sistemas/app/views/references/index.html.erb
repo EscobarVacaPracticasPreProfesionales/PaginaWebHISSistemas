@@ -1,0 +1,77 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "references", media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+<%= render "layouts/header_main" %>
+<body>
+  <div class="container" id="news">
+    <% @references.each do |reference| %>
+      <div class="row" id="noticia<%= reference.id %>">
+        <div id="slides<%= reference.id %>" class="carousel slide col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#slides<%= reference.id %>" data-slide-to="0" class="active"></li>
+            <li data-target="#slides<%= reference.id %>" data-slide-to="1"></li>
+            <li data-target="#slides<%= reference.id %>" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <% if reference.pictures.any?%>  
+              <% reference.pictures.each do |pic| %>
+                <div class="carousel-item">
+                  <%= image_tag(pic.url,:class=>"imagen", :alt=>"imgNoticia") %>
+                </div>
+              <%end%>
+            <%end%>
+          </div>
+          <a class="carousel-control-prev" href="#slides<%= reference.id %>" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#slides<%= reference.id %>" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        <div class="info col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+            <div class="contenido">
+              <h2 class="mont wl"><%= reference.title %></h2>
+              <p class="fecha pt-2 lato wl"><%= reference.year %></p>
+              <div class="boton pb-2">
+                  <button type="button" class="btn btn3" data-toggle="modal" data-target="#modalReferencia<%= reference.id %>">Conoce más</button>
+              </div> 
+              <% if user_signed_in? %>
+              <div class="center">
+                <span class="btn btn3 mr-3">
+                  <%= link_to octicon("pencil"), edit_reference_path(reference) %>
+                </span>
+                <span class="btn btn3">
+                  <%= link_to octicon("trashcan"), reference, method: :delete, data: { confirm: 'Are you sure?' }%>
+                </span>
+              </div>
+              <%end%>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="modalReferencia<%= reference.id %>" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title mont" id="modalTitulo"><%= reference.title %></h5>
+              </div>
+              <div class="modal-body">
+                <p class="textoModal rale"><%= reference.content %></p>
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn1" data-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+    <%= link_to '+', new_reference_path, :class=>"btn btn-circle shadow-lg" %>
+  </div>
+</body>
+<% content_for :foot do %>
+    <%= render "layouts/footer_main" %>
+    <%= javascript_include_tag 'class_adder', 'data-turbolinks-track': 'reload' %>
+<% end %>

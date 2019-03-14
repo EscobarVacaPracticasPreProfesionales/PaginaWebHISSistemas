@@ -1,0 +1,40 @@
+<%= form_with(model: reference, local: true) do |form| %>
+  <% if reference.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reference.errors.count, "error") %> prohibited this reference from being saved:</h2>
+
+      <ul>
+      <% reference.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :pictures %>
+    <%= form.file_field :pictures, multiple: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_field :content, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.number_field :year, required: true %>
+  </div>
+
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
