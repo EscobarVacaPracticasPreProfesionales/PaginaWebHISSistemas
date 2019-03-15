@@ -1,6 +1,22 @@
-<h1><%= t('.edit_service')%></h1>
+<div class="container">
+	<h1 class="py-3"><%= t('.edit_service')%></h1>
 
-<%= render 'form', service: @service %>
+	<div class="row">
+		<div class="col-12 col-md-6">
+			<%= render 'form', service: @service %>
 
-<%= link_to 'Show', @service %> |
-<%= link_to 'Back', services_path %>
+			<%= link_to 'Back', services_path,class: "btn btn1 mt-3" %>
+		</div>
+		<div class="col-12 col-md-6">
+			<% if @service.pictures.any? %>
+				<div class="row">
+					<%@service.pictures.each do |pic|%>
+						<div class="col-12 col-lg-6 pt-2 pb-2">
+							<%= image_tag(pic.url, class: "img-fluid")%>
+						</div>
+					<%end%>
+				</div>
+			<%end%>
+		</div>
+	</div>
+</div>

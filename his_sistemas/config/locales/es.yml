@@ -34,8 +34,10 @@ es:
   services:
     edit:
       edit_service: "Editar servicio"
+      service_was_successfully_created: "Se ha creado el servicio exitosamente"
     new:
       new_service: "Nuevo servicio"
+      service_was_successfully_updated: "Se ha actualizado el servicio exitosamente"
     form:
       pub: "Publicar"
   date:

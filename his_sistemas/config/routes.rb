@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :contacts
   resources :articles
   resources :references
-  resources :services
+  resources :services do
+    resources :images, :only => [:create, :destroy]
+  end
   devise_for :users, controllers: {registrations: 'users/registrations'}
   resources :home, only: [:index]
   resources :us, only: [:index]
