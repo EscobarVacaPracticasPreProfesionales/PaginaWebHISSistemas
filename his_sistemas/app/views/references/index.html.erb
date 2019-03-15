@@ -16,7 +16,7 @@
             <% if reference.pictures.any?%>  
               <% reference.pictures.each do |pic| %>
                 <div class="carousel-item">
-                  <%= image_tag(pic.url,:class=>"imagen", :alt=>"imgNoticia") %>
+                  <div class="center"><%= image_tag(pic.url,:class=>"imagen", :alt=>"imgNoticia") %></div>
                 </div>
               <%end%>
             <%end%>
@@ -68,7 +68,9 @@
         </div>
       </div>
     <%end%>
-    <%= link_to '+', new_reference_path, :class=>"btn btn-circle shadow-lg" %>
+    <% if user_signed_in? %>
+      <%= link_to '+', new_reference_path, :class=>"btn btn-circle shadow-lg" %>
+    <%end%>
   </div>
 </body>
 <% content_for :foot do %>
