@@ -16,21 +16,26 @@
             <div class="col-12">
               <%= link_to image_tag(article.pictures[0].url,:class=>"img-thumbnail view", :alt=>"imgNoticia"), article %>
             </div>
-            <div class="col-12">
-              <div class="center mt-3">
-                <span class="btn btn2 mr-md-3">
-                  <%= link_to octicon("pencil"), edit_article_path(article) %>  
-                </span>
-                <span class="btn btn2">
-                  <%= link_to octicon("trashcan"), article, method: :delete, data: { confirm: 'Are you sure?' }%>
-                </span>
+            <% if user_signed_in? %>
+              <div class="col-12">
+                <div class="center mt-3">
+                  <span class="btn btn2 mr-md-3">
+                    <%= link_to octicon("pencil"), edit_article_path(article) %>  
+                  </span>
+                  <span class="btn btn2">
+                    <%= link_to octicon("trashcan"), article, method: :delete, data: { confirm: 'Are you sure?' }%>
+                  </span>
+                </div>
               </div>
-            </div>
+            <%end%>
           </div>
         </div>
       </div>
     <%end%>
-    <%= link_to '+', new_article_path, :class=>"btn btn-circle shadow-lg" %>  
+    <% if user_signed_in? %>
+      <%= link_to '+', new_article_path, :class=>"btn btn-circle shadow-lg" %>
+    <%end%>
+      
 </div>
 
 
