@@ -28,8 +28,8 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       if @service.save
-        format.html { redirect_to @service, notice: 'Service was successfully created.' }
-        format.json { render :show, status: :created, location: @service }
+        format.html { redirect_to @service, notice: t('.service_was_successfully_created.') }
+        format.json { render :index, status: :created, location: @service }
       else
         format.html { render :new }
         format.json { render json: @service.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class ServicesController < ApplicationController
   def update
     respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to @service, notice: 'Service was successfully updated.' }
-        format.json { render :show, status: :ok, location: @service }
+        format.html { redirect_to @service, notice: t('.service_was_successfully_updated.') }
+        format.json { render :index, status: :ok, location: @service }
       else
         format.html { render :edit }
         format.json { render json: @service.errors, status: :unprocessable_entity }

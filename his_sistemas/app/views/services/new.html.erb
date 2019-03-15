@@ -1,5 +1,9 @@
 <div class="container">
-	<h1><%=t(".new_service")%></h1>
-	<%= render 'form', service: @service %>
-	<%= link_to 'Back', services_path, class: "btn btn1" %>
+	<div class="row">
+		<div class="col-12 col-md-7 col-lg-6">
+			<h1 class="py-3"><%=t(".new_service")%></h1>
+			<%= render 'form', service: @service %>
+			<%= link_to 'Back', services_path, class: "btn btn1 mt-3" %>
+		</div>
+	</div>
 </div>

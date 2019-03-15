@@ -1,8 +1,12 @@
 <%= form_with(model: service, local: true) do |form| %>
   <% if service.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(service.errors.count, "error") %> prohibited this service from being saved:</h2>
-
+      <h2>
+      <%= I18n.t("errors.messages.not_saved",
+                 count: service.errors.count,
+                 resource: service.class.model_name.human.downcase)
+       %>
+      </h2>
       <ul>
       <% service.errors.full_messages.each do |message| %>
         <li><%= message %></li>

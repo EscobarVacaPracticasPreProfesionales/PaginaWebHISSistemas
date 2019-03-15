@@ -11,17 +11,17 @@
           <div class="servicios col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
             <div class="cont">
               <div class="center imgServicios">
-                  <div class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                      <% if service.pictures.any?%>
-                        <% service.pictures.each do |pic| %>
-                          <div class="carousel-item">
-                            <%= image_tag(pic.url,:alt=>"servicio") %>
-                          </div>
-                        <%end%>
+                <div class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                    <% if service.pictures.any?%>
+                      <% service.pictures.each do |pic| %>
+                        <div class="carousel-item">
+                          <%= image_tag(pic.url,:alt=>"servicio") %>
+                        </div>
                       <%end%>
-                    </div>
-                  </div>            
+                    <%end%>
+                  </div>
+                </div>            
               </div>
               <div class="center infoServicios">
                 <div class="titulo">

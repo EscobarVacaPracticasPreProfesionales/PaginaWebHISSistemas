@@ -11,7 +11,7 @@ Rojito, celestito,gris oscuro, blanquito hueso, gris medio, celestito medio
 */
 
 #line {
-	border: .5px solid gray;
+	border: .5px solid light-gray;
 }
 
 .sticky-top{
@@ -23,7 +23,7 @@ Rojito, celestito,gris oscuro, blanquito hueso, gris medio, celestito medio
 }
 
 .navbar{
-	padding: 0.5rem;
+	padding: 0.3rem;
 }
 
 .footer{
@@ -31,31 +31,20 @@ Rojito, celestito,gris oscuro, blanquito hueso, gris medio, celestito medio
 }
 
 img[id^=logo]{
-	height: 50px;
+	height: 35px;
 	width: auto;
-	margin-top: 15px;
+	margin-top: 4px;
 }
 
 
 /*Small devices (smartphones, 544 and up)*/
 @media (min-width: 544px) {  
-	.sticky-top{ 
-		div[class^=container] a,.footer p{
-			font-size: 0.9rem;
-		};
-	}
+
 }
 
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @media (min-width: 768px) {
-	.sticky-top {
-		input , div[class^=container] a{
-			font-size: 1rem;
-		}
-	}
-	.footer p{
-		font-size: 1rem;
-	}
+
 }
 
 @media (max-width: 992px) { 
