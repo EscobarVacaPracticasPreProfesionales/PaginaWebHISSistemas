@@ -1,26 +1,51 @@
-<p>
-  <strong>Pictures:</strong>
-  <% @service.pictures.each do |pic| %>
-  	<%= image_tag(pic.url,:alt=>"servicio") %>
-  <%end%>
-</p>
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-12">
+       <p>
+        <strong><%=t('pictures')%></strong>
+      </p>
+    </div>
+    <% @service.pictures.each do |pic| %>
+      <div class="col-6 col-lg-4 col-xl-3">
+        <%= image_tag(pic.url,:alt=>"servicio", :class=>"img-fluid") %>
+      </div>
+    <%end%>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p>
+        <strong><%=t('title')%></strong>
+        <%= @service.title %>
+      </p>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+        <div>
+          <strong><%=t('description')%></strong>          
+        </div>
+        <div>
+          <p>
+            <%= @service.description %>
+          </p>
+        </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @service.title %>
-</p>
+  
 
-<p>
-  <strong>Description:</strong>
-  <%= @service.description %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @service.user.contact.name %>
-  <%= @service.user.contact.lastname %>
-
-</p>
-
-<%= link_to 'Edit', edit_service_path(@service) %> |
-<%= link_to 'Back', services_path %>
+  <p>
+    <strong><%=t('user')%></strong>
+    <%= @service.user.contact.name %>
+    <%= @service.user.contact.lastname %>
+  </p>
+  <div class="mb-3 gg">
+    <span class="btn btn1">
+        <%= link_to octicon("pencil"), edit_service_path(@service) %>
+    </span>
+    <span class="btn btn1">
+      <%= link_to octicon("arrow-left"), services_path%>
+    </span>
+  </div>
+</div>
