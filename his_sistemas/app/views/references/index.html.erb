@@ -4,32 +4,9 @@
 <%= render "layouts/header_main" %>
 <body>
   <div class="container" id="news">
-    <% @references.each do |reference| %>
+    <% @references.each_with_index do |reference,indice| %>
       <div class="row" id="noticia<%= reference.id %>">
-        <div id="slides<%= reference.id %>" class="carousel slide col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <% reference.pictures.each_with_index do |indicator,index|%>
-            <li data-target="slides<%= reference.id %>" data-slide-to=index class=""></li>
-            <%end%>           
-          </ol>
-          <div class="carousel-inner">
-            <% if reference.pictures.any?%>  
-              <% reference.pictures.each do |pic| %>
-                <div class="carousel-item">
-                  <div class="center"><%= image_tag(pic.url,:class=>"imagen", :alt=>"imgNoticia") %></div>
-                </div>
-              <%end%>
-            <%end%>
-          </div>
-          <a class="carousel-control-prev" href="#slides<%= reference.id %>" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#slides<%= reference.id %>" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
+        <% if indice%2!=0 %>
         <div class="info col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
             <div class="contenido">
               <h2 class="mont wl"><%= reference.title %></h2>
@@ -49,6 +26,55 @@
               <%end%>
             </div>
         </div>
+        <%end%>
+        <div id="slides<%= reference.id %>" class="carousel slide col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" data-ride="carousel">
+          
+          <div class="carousel-inner">
+            <% if reference.pictures.any?%>  
+              <% reference.pictures.each do |pic| %>
+                <div class="carousel-item">
+                  <div class="center"><%= image_tag(pic.url,:class=>"imagen", :alt=>"imgNoticia") %></div>
+                </div>
+              <%end%>
+            <%end%>
+          </div>
+          <% if reference.pictures.length >1 %>
+            <ol class="carousel-indicators">
+              <% reference.pictures.each_with_index do |indicator,index|%>
+              <li data-target="slides<%= reference.id %>" data-slide-to=index class=""></li>
+              <%end%>           
+            </ol>
+            <a class="carousel-control-prev" href="#slides<%= reference.id %>" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#slides<%= reference.id %>" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          <%end%>
+        </div>
+        <% if indice%2==0 %>
+        <div class="info col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+            <div class="contenido">
+              <h2 class="mont wl"><%= reference.title %></h2>
+              <p class="fecha pt-2 lato wl"><%= reference.year %></p>
+              <div class="boton pb-2">
+                  <button type="button" class="btn btn3" data-toggle="modal" data-target="#modalReferencia<%= reference.id %>">Conoce más</button>
+              </div> 
+              <% if user_signed_in? %>
+              <div class="center">
+                <span class="btn btn3 mr-3">
+                  <%= link_to octicon("pencil"), edit_reference_path(reference) %>
+                </span>
+                <span class="btn btn3">
+                  <%= link_to octicon("trashcan"), reference, method: :delete, data: { confirm: 'Are you sure?' }%>
+                </span>
+              </div>
+              <%end%>
+            </div>
+        </div>
+        <%end%>
         <!-- Modal -->
         <div class="modal fade" id="modalReferencia<%= reference.id %>" tabindex="-1" role="dialog">
           <div class="modal-dialog modal-dialog-centered" role="document">
