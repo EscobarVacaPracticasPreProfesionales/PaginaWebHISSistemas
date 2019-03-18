@@ -1,4 +1,8 @@
 es:
+  user: 'Usuario: '
+  pictures: 'Imágenes: '
+  title: 'Tìtulo: '
+  description: 'Descripción: '
   activerecord:
     attributes:
       contact:
@@ -32,14 +36,18 @@ es:
       edit_profile: "Editar perfil"
       sign_out: "Cerrar Sesión"
   services:
+    update:
+      service_was_successfully_updated: "Se ha actualizado el servicio exitosamente"
     edit:
       edit_service: "Editar servicio"
-      service_was_successfully_created: "Se ha creado el servicio exitosamente"
     new:
       new_service: "Nuevo servicio"
-      service_was_successfully_updated: "Se ha actualizado el servicio exitosamente"
+    create:
+      service_was_successfully_created: "Se ha creado el servicio exitosamente"      
     form:
       pub: "Publicar"
+    destroy_picture:
+      picture_was_successfully_deleted: "La imagen se ha eliminado"
   date:
     abbr_day_names:
     - dom

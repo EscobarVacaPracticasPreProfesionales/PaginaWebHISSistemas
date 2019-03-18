@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  put 'services/destroy_picture'
   resources :contacts
   resources :articles
   resources :references
   resources :services do
-    resources :images, :only => [:create, :destroy]
+    resources :pictures, :only => [:create, :destroy]
   end
   devise_for :users, controllers: {registrations: 'users/registrations'}
   resources :home, only: [:index]

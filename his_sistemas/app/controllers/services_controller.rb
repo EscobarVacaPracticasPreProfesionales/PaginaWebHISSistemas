@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :set_service, only: [:show, :edit, :update, :destroy, :destroy_picture]
 
   # GET /services
   # GET /services.json
@@ -25,7 +25,6 @@ class ServicesController < ApplicationController
   # POST /services.json
   def create
     @service = Service.new(service_params)
-
     respond_to do |format|
       if @service.save
         format.html { redirect_to @service, notice: t('.service_was_successfully_created.') }
@@ -41,7 +40,8 @@ class ServicesController < ApplicationController
   # PATCH/PUT /services/1.json
   def update
     respond_to do |format|
-      if @service.update(service_params)
+      updated_params=add_pictures(@service,service_params)
+      if @service.update(updated_params)
         format.html { redirect_to @service, notice: t('.service_was_successfully_updated.') }
         format.json { render :index, status: :ok, location: @service }
       else
@@ -61,6 +61,10 @@ class ServicesController < ApplicationController
     end
   end
 
+  def destroy_picture
+    delete_picture(@service,params[:index].to_i)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_service
@@ -70,5 +74,11 @@ class ServicesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
       params.require(:service).permit(:title, :description, :user_id, {pictures: []})
+    end
+
+    def add_more_images(new_images)
+      images = @service.pictures # copy the old images 
+      images += new_images # concat old images with new ones
+      @service.images = images # assign back
     end
 end
