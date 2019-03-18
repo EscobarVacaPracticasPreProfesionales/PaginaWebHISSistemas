@@ -1,5 +1,5 @@
 class ReferencesController < ApplicationController
-  before_action :set_reference, only: [:show, :edit, :update, :destroy]
+  before_action :set_reference, only: [:show, :edit, :update, :destroy, :destroy_picture]
 
   # GET /references
   # GET /references.json
@@ -28,7 +28,7 @@ class ReferencesController < ApplicationController
 
     respond_to do |format|
       if @reference.save
-        format.html { redirect_to @reference, notice: 'Reference was successfully created.' }
+        format.html { redirect_to @reference, notice: t('.reference_was_successfully_created') }
         format.json { render :show, status: :created, location: @reference }
       else
         format.html { render :new }
@@ -41,8 +41,9 @@ class ReferencesController < ApplicationController
   # PATCH/PUT /references/1.json
   def update
     respond_to do |format|
-      if @reference.update(reference_params)
-        format.html { redirect_to @reference, notice: 'Reference was successfully updated.' }
+      updated_params=add_pictures(@reference,reference_params)
+      if @reference.update(updated_params)
+        format.html { redirect_to @reference, notice: t('.reference_was_successfully_updated') }
         format.json { render :show, status: :ok, location: @reference }
       else
         format.html { render :edit }
@@ -59,6 +60,10 @@ class ReferencesController < ApplicationController
       format.html { redirect_to references_url, notice: 'Reference was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def destroy_picture
+    delete_picture(@reference,params[:index].to_i)
   end
 
   private

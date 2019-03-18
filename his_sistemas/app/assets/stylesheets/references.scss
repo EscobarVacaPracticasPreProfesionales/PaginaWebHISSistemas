@@ -19,7 +19,7 @@ h2{font-size: 1rem;}
 @media (min-width: 544px) {  
   h1{font-size: 1.5rem;}
   h2{font-size: 1.2rem;}
-  p{font-size: 1rem;}
+  div[id^=noticia] p{font-size: 1rem;}
   .imagen{height:300px;}
   
 }
@@ -27,7 +27,7 @@ h2{font-size: 1rem;}
 @media (min-width: 768px) {
   h1{font-size:1.75rem;}
   h2{font-size: 1.5rem}
-  p{font-size: 1.1rem}
+  div[id^=noticia] p{font-size: 1.1rem}
   .imagen{height:325px;}
   
 }
