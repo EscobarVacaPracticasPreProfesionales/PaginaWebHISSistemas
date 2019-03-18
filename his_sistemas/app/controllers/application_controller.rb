@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
 		
 	    respond_to do |format|
 	      if model.update(:pictures=>remain_images)
-	        format.html { redirect_to '/'+model.class.to_s.underscore.pluralize+'/'+model.id.to_s+'/edit', notice: t('.picture_was_successfully_deleted.') }
+	        format.html { redirect_to '/'+model.class.to_s.underscore.pluralize+'/'+model.id.to_s+'/edit', notice: t('picture_was_successfully_deleted.') }
 	        format.json { render :index, status: :ok, location: model }
 	      else
 	        format.html { render :edit }
