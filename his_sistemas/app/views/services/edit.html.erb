@@ -7,9 +7,9 @@
       		<%= link_to octicon("arrow-left"), services_path, class: "btn btn1 mt-3"%>
 		</div>
 		<div class="col-12 col-md-6">
-
+			<div id='my-element' data-pics='<%= @pics.to_json%>'></div>
 			<% if @service.pictures.any? %>
-				<div class="row">
+				<div class="row" id="result">
 					<%@service.pictures.each_with_index do |pic,index|%>
 						<div class="col-12 col-lg-6 pt-2 pb-2">
 							<%= image_tag(pic.url, class: "img-fluid")%>
@@ -21,3 +21,6 @@
 		</div>
 	</div>
 </div>
+<% content_for :foot do %>
+  <%= javascript_include_tag 'preview_images', 'data-turbolinks-track': 'reload' %>
+<% end %>

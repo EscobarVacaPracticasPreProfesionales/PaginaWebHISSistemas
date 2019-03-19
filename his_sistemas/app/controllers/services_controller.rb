@@ -19,6 +19,10 @@ class ServicesController < ApplicationController
 
   # GET /services/1/edit
   def edit
+    @pics = @service.pictures.as_json
+    puts "**********"
+    puts @pics
+    puts "**********"
   end
 
   # POST /services
