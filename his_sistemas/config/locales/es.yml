@@ -1,8 +1,10 @@
 es:
   user: 'Usuario: '
   pictures: 'Imágenes: '
-  title: 'Tìtulo: '
+  title: 'Título: '
   description: 'Descripción: '
+  year: 'Año: '
+  pub: "Publicar"
   picture_was_successfully_deleted: "La imagen se ha eliminado"
   activerecord:
     attributes:
@@ -13,6 +15,18 @@ es:
         title: "Título"
         description: "Descripción"
         pictures: "Imágenes"
+      reference:
+        pictures: "Imágenes"
+        title: "Título"
+        content: "Contenido"
+        year: "Año"
+      articles:
+        title: "Título"
+        description: "Descripción"
+        content: "Contenido"
+        pictures: "Imágenes"
+        figcaption: "Pie de imágenes"
+        fecha: "fecha"
     errors:
       messages:
         blank: ": Este campo es obligatorio"
@@ -44,10 +58,31 @@ es:
     new:
       new_service: "Nuevo servicio"
     create:
-      service_was_successfully_created: "Se ha creado el servicio exitosamente"      
-    form:
-      pub: "Publicar"
-    destroy_picture:
+      service_was_successfully_created: "Se ha creado el servicio exitosamente"
+    destroy:
+      service_was_successfully_destroyed: "Se ha eliminado el servicio exitosamente"
+  references:
+    update:
+      reference_was_successfully_updated: "Se ha actualizado la referencia exitosamente"
+    edit:
+      edit_reference: "Editar referencia"
+    new:
+      new_reference: "Nueva referencia"
+    create:
+      reference_was_successfully_created: "Se ha creado la referencia exitosamente"   
+    destroy:  
+      reference_was_successfully_destroyed: "Se ha eliminado la referencia exitosamente"
+  articles:
+    update:
+      article_was_successfully_updated: "Se ha actualizado la noticia exitosamente"
+    edit:
+      edit_article: "Editar noticia"
+    new:
+      new_article: "Nueva noticia"
+    create:
+      article_was_successfully_created: "Se ha creado la noticia exitosamente" 
+    destroy:  
+      article_was_successfully_destroyed: "Se ha eliminado la noticia exitosamente"
   date:
     abbr_day_names:
     - dom

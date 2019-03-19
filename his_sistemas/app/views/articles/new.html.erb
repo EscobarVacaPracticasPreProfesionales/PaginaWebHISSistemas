@@ -1,5 +1,9 @@
-<h1>New Article</h1>
-
-<%= render 'form', article: @article %>
-
-<%= link_to 'Back', articles_path %>
+<div class="container">
+	<div class="row">
+		<div class="col-12 col-md-7 col-lg-6">
+			<h1 class="py-3"><%=t(".new_article")%></h1>
+			<%= render 'form', article: @article %>
+      		<%= link_to octicon("arrow-left"), articles_path, class: "btn btn1 mt-3"%>
+		</div>
+	</div>
+</div>

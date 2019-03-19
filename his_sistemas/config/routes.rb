@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   put 'services/destroy_picture'
+  put 'references/destroy_picture'
+  put 'articles/destroy_picture'
   resources :contacts
   resources :articles
   resources :references

@@ -27,7 +27,7 @@ class ServicesController < ApplicationController
     @service = Service.new(service_params)
     respond_to do |format|
       if @service.save
-        format.html { redirect_to @service, notice: t('.service_was_successfully_created.') }
+        format.html { redirect_to @service, notice: t('.service_was_successfully_created') }
         format.json { render :index, status: :created, location: @service }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ServicesController < ApplicationController
     respond_to do |format|
       updated_params=add_pictures(@service,service_params)
       if @service.update(updated_params)
-        format.html { redirect_to @service, notice: t('.service_was_successfully_updated.') }
+        format.html { redirect_to @service, notice: t('.service_was_successfully_updated') }
         format.json { render :index, status: :ok, location: @service }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class ServicesController < ApplicationController
   def destroy
     @service.destroy
     respond_to do |format|
-      format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }
+      format.html { redirect_to services_url, notice: t('.service_was_successfully_destroyed') }
       format.json { head :no_content }
     end
   end

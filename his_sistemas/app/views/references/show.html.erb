@@ -1,29 +1,55 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Pictures:</strong>
-  <%= @reference.pictures %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @reference.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @reference.content %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @reference.year %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @reference.user %>
-</p>
-
-<%= link_to 'Edit', edit_reference_path(@reference) %> |
-<%= link_to 'Back', references_path %>
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-12">
+      <p>
+        <strong><%=t('pictures')%></strong>
+      </p>
+    </div>
+    <% @reference.pictures.each do |pic| %>
+      <div class="col-6 col-lg-4 col-xl-3">
+        <%= image_tag(pic.url,:alt=>"servicio", :class=>"img-fluid") %>
+      </div>
+    <%end%>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p>
+        <strong><%=t('title')%></strong>
+        <%= @reference.title %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div>
+          <strong><%=t('description')%></strong>          
+      </div>
+      <div>
+        <p>
+          <%= @reference.content %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p>
+        <strong><%=t('year') %></strong>
+        <%= @reference.year %>
+      </p>
+    </div>
+  </div>
+  <p>
+    <strong><%=t('user')%></strong>
+    <%= @reference.user.contact.name %>
+    <%= @reference.user.contact.lastname %>
+  </p>
+  <div class="mb-3 gg">
+    <span class="btn btn1">
+        <%= link_to octicon("pencil"), edit_reference_path(@reference) %>
+    </span>
+    <span class="btn btn1">
+      <%= link_to octicon("arrow-left"), references_path%>
+    </span>
+  </div>
+</div>

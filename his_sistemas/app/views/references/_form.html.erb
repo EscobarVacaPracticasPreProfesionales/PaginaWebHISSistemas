@@ -1,8 +1,12 @@
 <%= form_with(model: reference, local: true) do |form| %>
   <% if reference.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(reference.errors.count, "error") %> prohibited this reference from being saved:</h2>
-
+      <h2> 
+        <%= I18n.t("errors.messages.not_saved",
+                 count: service.errors.count,
+                 resource: service.class.model_name.human.downcase)
+        %>
+      </h2>
       <ul>
       <% reference.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,30 +15,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :pictures %>
-    <%= form.file_field :pictures, multiple: true %>
-  </div>
+  <div class="form row">
+    <div class="field col-12 form-group">
+      <%= form.label :pictures %>
+      <%= form.file_field :pictures, multiple: true , class: 'form-control'%>
+    </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, required: true %>
-  </div>
+    <div class="field col-12 form-group">
+      <%= form.label :title %>
+      <%= form.text_field :title, required: true, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_field :content, required: true %>
-  </div>
+    <div class="field col-12 form-group">
+      <%= form.label :content %>
+      <%= form.text_field :content, required: true, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :year %>
-    <%= form.number_field :year, required: true %>
-  </div>
+    <div class="field col-12 form-group">
+      <%= form.label :year %>
+      <%= form.number_field :year, required: true, class: 'form-control' %>
+    </div>
 
-  <%= form.hidden_field :user_id, value: current_user.id %>
-  
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="col-12 actions">
+      <%= form.submit t('pub'), class: "btn btn2 lato"%>
+    </div>
   </div>
 <% end %>

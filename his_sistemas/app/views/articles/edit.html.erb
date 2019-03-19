@@ -1,6 +1,22 @@
-<h1>Editing Article</h1>
+<div class="container">
+	<h1 class="py-3"><%= t('.edit_service')%></h1>
+	<div class="row">
+		<div class="col-12 col-md-6">
+			<%= render 'form', article: @article %>
+			<%= link_to octicon("arrow-left"), articles_path, class: "btn btn1 mt-3"%>
+		</div>
+		<div class="col-12 col-md-6">
 
-<%= render 'form', article: @article %>
-
-<%= link_to 'Show', @article %> |
-<%= link_to 'Back', articles_path %>
+			<% if @article.pictures.any? %>
+				<div class="row">
+					<%@article.pictures.each_with_index do |pic,index|%>
+						<div class="col-12 col-lg-6 pt-2 pb-2">
+							<%= image_tag(pic.url, class: "img-fluid")%>
+							<%= link_to "x", {controller: 'services', action: 'destroy_picture', index:index, id:@article}, method: 'put'%>
+						</div>
+					<%end%>
+				</div>
+			<%end%>
+		</div>
+	</div>
+</div>
