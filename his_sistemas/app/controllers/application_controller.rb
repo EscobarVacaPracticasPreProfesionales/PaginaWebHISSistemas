@@ -32,10 +32,6 @@ class ApplicationController < ActionController::Base
 			deleted_images=remain_images.delete_at(index)
 			deleted_images.try(:remove!)
 		end
-		puts '*******************'
-		puts '/'+model.class.to_s.underscore.pluralize+'/'+model.id.to_s+'/edit'
-		puts '*******************'
-		
 	    respond_to do |format|
 	      if model.update(:pictures=>remain_images)
 	        format.html { redirect_to '/'+model.class.to_s.underscore.pluralize+'/'+model.id.to_s+'/edit', notice: t('picture_was_successfully_deleted.') }

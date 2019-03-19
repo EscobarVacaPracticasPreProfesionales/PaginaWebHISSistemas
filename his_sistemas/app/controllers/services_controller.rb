@@ -20,15 +20,13 @@ class ServicesController < ApplicationController
   # GET /services/1/edit
   def edit
     @pics = @service.pictures.as_json
-    puts "**********"
-    puts @pics
-    puts "**********"
   end
 
   # POST /services
   # POST /services.json
   def create
     @service = Service.new(service_params)
+
     respond_to do |format|
       if @service.save
         format.html { redirect_to @service, notice: t('.service_was_successfully_created') }
@@ -43,6 +41,9 @@ class ServicesController < ApplicationController
   # PATCH/PUT /services/1
   # PATCH/PUT /services/1.json
   def update
+    puts "**********"
+    puts params[:pics].inspect
+    puts "**********"
     respond_to do |format|
       updated_params=add_pictures(@service,service_params)
       if @service.update(updated_params)
