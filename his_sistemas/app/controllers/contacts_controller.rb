@@ -25,6 +25,7 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
+    ContactMailer.with(asunto: params[:asunto], mensaje: params[:mensaje]).contact_msg.deliver_now
     @contact = Contact.new(contact_params)
 
     respond_to do |format|
