@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+	@import url('https://fonts.googleapis.com/css?family=Raleway');
+</style>
+</head>
+<body style="margin: 0; padding: 0;">
+ <table align="center" cellpadding="0" cellspacing="0" width="100%">
+ <tr>
+	<td align="center" style="padding: 40px 0 20px 0;">
+ 		<img src="C:/Users/ferva/Desktop/his/his_sistemas/app/assets/images/logo.png" alt="logoHIS" width="360" height="80" style="display: block;" />
+	<hr>
+
+	</td>
+ </tr>
+
+ <td bgcolor="#ffffff" style="padding: 0px 30px 40px 30px;">
+
+ <table cellpadding="0" cellspacing="0" width="100%" style="font-family: 'Raleway', sans-serif; color:black;">
+  <tr>
+   <td style="padding: 0 0 30px 0;">
+    <strong><%= @name %> <%= @lastname %></strong> desea contactarse con usted.
+   </td>
+  </tr>
+  <tr>
+   <td style="padding: 0 0 10px 0; font-weight: bold;">
+    Información de Contacto
+   </td>
+  </tr>
+  <tr>
+   <td style="padding: 0 0 5px 0;">
+    <strong>Empresa:</strong> <%= @company %>
+   </td>
+  </tr>
+  <tr>
+   <td style="padding: 0 0 5px 0;">
+    <strong>Teléfono 1:</strong> <%= @phone1 %>
+   </td>
+  </tr>
+  <tr>
+   <td style="padding: 0 0 5px 0;">
+    <strong>Teléfono 2:</strong> <%= @phone2 %>
+   </td>
+  </tr>
+  <tr>
+   <td style="padding: 0 0 5px 0;">
+    <strong>Email:</strong> <%= @email %>
+   </td>
+  </tr>
+  <tr>
+   <td style="padding: 0 0 5px 0;">
+    <strong>Mensaje:</strong> <%= @mensaje %>
+   </td>
+  </tr>
+ </table>
+</td>
+ <tr>
+  <td bgcolor="#5CB1F7" style="padding: 30px 30px 30px 30px;">
+ 	<table cellpadding="0" cellspacing="0" width="100%">
+	 <tr>
+	  <td>
+	   <small>©<p style="display:inline;" id="copyright"></p> HIS Sistemas Cia. Ltda. Todos los derechos reservados.</small>	
+	  </td>
+	 </tr>
+	</table>
+ </td>
+ </tr>
+</table>
+</body>
+<script type="text/JavaScript">
+	document.getElementById('copyright').innerHTML = new Date().getFullYear();
+</script>
+</html>
