@@ -1,3 +1,6 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "trix", media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
 <%= form_with(model: article, local: true) do |form| %>
   <% if article.errors.any? %>
     <div id="error_explanation">
@@ -23,12 +26,13 @@
 
     <div class="field col-12 form-group">
       <%= form.label :description %>
-      <%= form.text_area :description, required: true, class: 'form-control' %>
+      <%= form.text_area :description, required: true, class: 'form-control jumpline' %>
     </div>
 
     <div class="field col-12 form-group">
       <%= form.label :content %>
-      <%= form.text_area :content, required: true, class: 'form-control' %>
+      <%= form.hidden_field :content, required: true, class: 'form-control' %>
+      <trix-editor input="article_content"></trix-editor>
     </div>
 
     <div class="field col-12 form-group">
@@ -52,4 +56,7 @@
       <%= form.submit t('pub'), class: "btn btn2 lato"%>
     </div>
   </div>
+<% end %>
+<% content_for :foot do %>
+    <%= javascript_include_tag 'trix-core', 'data-turbolinks-track': 'reload' %>
 <% end %>

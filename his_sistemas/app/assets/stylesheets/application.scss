@@ -118,6 +118,10 @@ p{
   color:white;
 }
 
+.jumpline{
+	white-space: pre-line;
+}
+
 @media (min-width: 544px) {  
 	h1{font-size: 1.1rem;}
 	h2{font-size: 1rem;}

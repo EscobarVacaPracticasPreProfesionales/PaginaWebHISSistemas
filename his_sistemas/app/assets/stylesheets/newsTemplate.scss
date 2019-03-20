@@ -14,9 +14,11 @@ a:hover{
 .imagen{
 	width:100%;
 	border-radius:3px;
+	height:275px; 
 }
 
-@media (min-width: 544px) {  
+@media (min-width: 544px) { 
+	.imagen{height:300px;} 
 
 }
 
@@ -25,13 +27,6 @@ a:hover{
 
 }
 
-@media (min-width: 992px) {
-
-}
-
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-}
 
 .view{
 	width:100px;
@@ -50,3 +45,6 @@ a:hover{
 	background-color:#5CB1F7;
 }
 
+.info{
+	text-align:justify;
+}

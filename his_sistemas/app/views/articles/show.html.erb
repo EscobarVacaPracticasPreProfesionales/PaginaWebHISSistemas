@@ -49,7 +49,7 @@
 
     
     <div class="info rale">
-      <p><%= @article.content %></p>
+      <%= sanitize @article.content %>
     </div>
   </div>
     <aside class="col-lg-5 col-xl-4">
