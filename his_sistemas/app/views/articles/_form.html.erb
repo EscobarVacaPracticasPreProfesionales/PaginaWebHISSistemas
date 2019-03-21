@@ -31,8 +31,7 @@
 
     <div class="field col-12 form-group">
       <%= form.label :content %>
-      <%= form.hidden_field :content, required: true, class: 'form-control' %>
-      <trix-editor input="article_content"></trix-editor>
+      <%= form.text_area :content, required: true, class: 'form-control' %>
     </div>
 
     <div class="field col-12 form-group">
