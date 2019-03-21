@@ -4,17 +4,15 @@
 	<div class="row">
 		<div class="col-12 col-md-6">
 			<%= render 'form', service: @service %>
-      		<%= link_to octicon("arrow-left"), services_path, class: "btn btn1 mt-3"%>
+      		<%= link_to octicon("arrow-left"), services_path,class: "btn btn1 mt-3"%>
 		</div>
 		<div class="col-12 col-md-6">
-			<div id='my-element' data-pics='<%= @pics.to_json%>'></div>
 			<% if @service.pictures.any? %>
 				<div class="row" id="result">
+					<%=render 'images'%>
 				</div>
 			<%end%>
 		</div>
 	</div>
 </div>
-<% content_for :foot do %>
-  <%= javascript_include_tag 'preview_images', 'data-turbolinks-track': 'reload' %>
-<% end %>
+

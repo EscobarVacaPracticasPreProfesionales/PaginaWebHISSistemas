@@ -30,12 +30,12 @@ class ApplicationController < ActionController::Base
 			model.remove_pictures!
 		else
 			deleted_images=remain_images.delete_at(index)
-			deleted_images.try(:remove!)
+			#deleted_images.try(:remove!)
 		end
 	    respond_to do |format|
 	      if model.update(:pictures=>remain_images)
-	        format.html { redirect_to '/'+model.class.to_s.underscore.pluralize+'/'+model.id.to_s+'/edit', notice: t('picture_was_successfully_deleted.') }
-	        format.json { render :index, status: :ok, location: model }
+	      	format.js
+	        format.json { render :edit, status: :ok, location: model }
 	      else
 	        format.html { render :edit }
 	        format.json { render json: model.errors, status: :unprocessable_entity }

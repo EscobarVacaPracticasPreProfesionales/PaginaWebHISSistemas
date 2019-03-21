@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
   put 'services/destroy_picture'
+  put 'services/update_picture'
   put 'references/destroy_picture'
   put 'articles/destroy_picture'
   resources :contacts
   resources :articles
   resources :references
-  resources :services do
-    resources :pictures, :only => [:create, :destroy]
-  end
+  resources :services
   devise_for :users, controllers: {registrations: 'users/registrations'}
   resources :home, only: [:index]
   resources :us, only: [:index]

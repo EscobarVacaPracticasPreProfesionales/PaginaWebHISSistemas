@@ -19,18 +19,23 @@ class ServicesController < ApplicationController
 
   # GET /services/1/edit
   def edit
-    @pics = @service.pictures.as_json
   end
 
   # POST /services
   # POST /services.json
   def create
+    @upictures=params[:update_pictures].to_s
     @service = Service.new(service_params)
 
     respond_to do |format|
       if @service.save
-        format.html { redirect_to @service, notice: t('.service_was_successfully_created') }
-        format.json { render :index, status: :created, location: @service }
+        if @upictures=='false'
+          format.html { redirect_to @service, notice: t('.service_was_successfully_created') }
+          format.json { render :show, status: :created, location: @service }
+        else
+          format.html { redirect_to edit_service_path}
+          format.json { render :edit, status: :ok, location: @service }
+        end
       else
         format.html { render :new }
         format.json { render json: @service.errors, status: :unprocessable_entity }
@@ -41,14 +46,18 @@ class ServicesController < ApplicationController
   # PATCH/PUT /services/1
   # PATCH/PUT /services/1.json
   def update
-    puts "**********"
-    puts params[:pics].inspect
-    puts "**********"
+    @upictures=params[:update_pictures].to_s
+    updated_params=add_pictures(@service,service_params)
+    
     respond_to do |format|
-      updated_params=add_pictures(@service,service_params)
       if @service.update(updated_params)
-        format.html { redirect_to @service, notice: t('.service_was_successfully_updated') }
-        format.json { render :index, status: :ok, location: @service }
+        if @upictures=='false'
+          format.html { redirect_to @service, notice: t('.service_was_successfully_updated') }
+          format.json { render :show, status: :ok, location: @service }
+        else
+          format.js
+          format.json { render :edit, status: :ok, location: @service }
+        end
       else
         format.html { render :edit }
         format.json { render json: @service.errors, status: :unprocessable_entity }
@@ -69,7 +78,7 @@ class ServicesController < ApplicationController
   def destroy_picture
     delete_picture(@service,params[:index].to_i)
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_service

@@ -1,3 +1,4 @@
+/*
 $.ajaxSetup({
   headers: {
     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
@@ -11,26 +12,25 @@ let filesindex=[];
 var myElement = document.getElementById('my-element');
 var pics = JSON.parse(myElement.dataset.pics);
 var output = document.getElementById("result");
+var filesInput = document.querySelector('input[type=file]')
 
 for (var k = 0; k < pics.length; k++) {
     var picFile= pics[k];
-	filesurl.push(picFile.url);
     filesindex.push(index);
 
     var div = document.createElement("div");
     div.id=index;
 
-    div.className+="pip col-12 col-lg-6 p-2"
+    div.className+="pip col-6 col-md-4 col-xl-3 p-2"
 
     div.innerHTML = ['<img class="img-fluid" src="', picFile.url,'"/><span id="', index,'">x</span>'].join('');
 
-    output.insertBefore(div,null);
+    output.insertBefore(div,output.childNodes[0]);
     $("span[id="+index+"]").click(function(){
     	$(this).parent(".pip").remove();
         for (var h =0;h<filesindex.length; h++) {
         	if (filesindex[h]==$(this).attr('id')){
         		filesindex.splice(h,1);
-        		filesurl.splice(h,1);
         	}
         }
     });
@@ -39,9 +39,6 @@ for (var k = 0; k < pics.length; k++) {
 
 if(window.File && window.FileList && window.FileReader)
 {
-
-    var filesInput = document.querySelector('input[type=file]')
-
     filesInput.addEventListener("change", function(event){
 
         var files = event.target.files; //FileList object
@@ -49,7 +46,7 @@ if(window.File && window.FileList && window.FileReader)
         for(var i = 0; i< files.length; i++)
         {
             var file = files[i];
-            filesurl.push(file.name);
+            filesurl.push(file);
             filesindex.push(index);
             //Only pics
             if(!file.type.match('image'))
@@ -64,11 +61,11 @@ if(window.File && window.FileList && window.FileReader)
                 var div = document.createElement("div");
                 div.id=index;
 
-                div.className+="pip col-12 col-lg-6 p-2"
+                div.className+="pip col-6 col-md-4 col-xl-3 p-2"
 
-                div.innerHTML = ['<img class="img-fluid" src="', picFile.result, '" title="', picFile.name, '"/><span id="', index,'">x</span>'].join('');
+                div.innerHTML = ['<img class="img-fluid" src="', picFile.result, '"/><span id="', index,'">x</span>'].join('');
 
-                output.insertBefore(div,null);
+                output.insertBefore(div,output.childNodes[0]);
                 $("span[id="+index+"]").click(function(){
 			    	$(this).parent(".pip").remove();
 			        for (var j =0;j<filesindex.length; j++) {
@@ -77,6 +74,8 @@ if(window.File && window.FileList && window.FileReader)
 			        		filesurl.splice(j,1);
 			        	}
 			        }
+        console.log(filesurl);
+
 
 			    });
             });
@@ -93,14 +92,17 @@ else
     console.log("Your browser does not support File API");
 }
 
-$("#submit").click(function(){
-	console.log(filesurl[0]);
-	alert(JSON.stringify(filesurl))
+$("input[type=file]").change(function(){
+    console.log(formData);
+	alert("UJU")
+    var formData = new FormData(); 
+    formData.append('email', 'foo@bar.com');
 	$.ajax({
-		url: '',
-		dataType: 'json',
-		type: 'PATCH',
-		data: {pics: JSON.stringify(filesurl)},
+		url: '/servicesz',
+		type: 'PUT',
+        data: formData,
+        contentType: false,
+        processData: false,
 		success: function(data) {
 			alert("Successful");
 		},
@@ -109,3 +111,8 @@ $("#submit").click(function(){
 		}
     });
 })
+*/
+$( "input[type=file]" ).change(function() {
+    $('#update_pictures').val(true);
+    $( 'form' ).submit();
+});
