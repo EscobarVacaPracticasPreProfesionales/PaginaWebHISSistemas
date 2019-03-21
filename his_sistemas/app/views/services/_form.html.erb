@@ -1,6 +1,4 @@
-      <div id='my-element' data-pics='<%= @pics.to_json%>'></div>
-
-<%= form_with(model: service, method: 'put') do |form| %>
+<%= form_with(model: service) do |form| %>
   <% if service.errors.any? %>
     <div id="error_explanation">
       <h2>

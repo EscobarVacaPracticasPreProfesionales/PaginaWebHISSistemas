@@ -1,4 +1,4 @@
-<%= form_with(model: reference, local: true) do |form| %>
+<%= form_with(model: reference) do |form| %>
   <% if reference.errors.any? %>
     <div id="error_explanation">
       <h2> 
@@ -28,7 +28,7 @@
 
     <div class="field col-12 form-group">
       <%= form.label :content %>
-      <%= form.text_field :content, required: true, class: 'form-control' %>
+      <%= form.text_area :content, required: true, class: 'form-control' %>
     </div>
 
     <div class="field col-12 form-group">
@@ -38,9 +38,14 @@
 
     <%= form.hidden_field :user_id, value: current_user.id %>
     
+    <%= hidden_field_tag :update_pictures, false%>
 
     <div class="col-12 actions">
       <%= form.submit t('pub'), class: "btn btn2 lato"%>
     </div>
   </div>
+<% end %>
+
+<% content_for :foot do %>
+  <%= javascript_include_tag 'preview_images', 'data-turbolinks-track': 'reload' %>
 <% end %>

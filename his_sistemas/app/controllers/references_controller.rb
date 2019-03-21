@@ -24,12 +24,18 @@ class ReferencesController < ApplicationController
   # POST /references
   # POST /references.json
   def create
+    @upictures=params[:update_pictures].to_s
     @reference = Reference.new(reference_params)
 
     respond_to do |format|
       if @reference.save
-        format.html { redirect_to @reference, notice: t('.reference_was_successfully_created') }
-        format.json { render :show, status: :created, location: @reference }
+        if @upictures=='false'
+          format.html { redirect_to @reference, notice: t('.reference_was_successfully_created') }
+          format.json { render :show, status: :created, location: @reference }
+        else
+          format.html { redirect_to edit_reference_path(@reference)}
+          format.json { render :edit, status: :ok, location: @reference }
+        end
       else
         format.html { render :new }
         format.json { render json: @reference.errors, status: :unprocessable_entity }
@@ -40,11 +46,18 @@ class ReferencesController < ApplicationController
   # PATCH/PUT /references/1
   # PATCH/PUT /references/1.json
   def update
+    @upictures=params[:update_pictures].to_s
+    updated_params=add_pictures(@reference,reference_params)
+
     respond_to do |format|
-      updated_params=add_pictures(@reference,reference_params)
       if @reference.update(updated_params)
-        format.html { redirect_to @reference, notice: t('.reference_was_successfully_updated') }
-        format.json { render :show, status: :ok, location: @reference }
+        if @upictures=='false'
+          format.html { redirect_to @reference, notice: t('.reference_was_successfully_updated') }
+          format.json { render :show, status: :ok, location: @reference }
+        else
+          format.js
+          format.json { render :edit, status: :ok, location: @reference }
+        end
       else
         format.html { render :edit }
         format.json { render json: @reference.errors, status: :unprocessable_entity }

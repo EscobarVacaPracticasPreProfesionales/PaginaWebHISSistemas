@@ -8,13 +8,8 @@
 		<div class="col-12 col-md-6">
 
 			<% if @article.pictures.any? %>
-				<div class="row">
-					<%@article.pictures.each_with_index do |pic,index|%>
-						<div class="col-12 col-md-6 pt-2 pb-2">
-							<%= image_tag(pic.url, class: "img-fluid")%>
-							<%= link_to "x", {controller: 'services', action: 'destroy_picture', index:index, id:@article}, method: 'put'%>
-						</div>
-					<%end%>
+				<div class="row" id="result">
+					<%=render 'images'%>
 				</div>
 			<%end%>
 		</div>

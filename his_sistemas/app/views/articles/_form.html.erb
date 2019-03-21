@@ -1,7 +1,7 @@
 <% content_for :head do %>
     <%= stylesheet_link_tag "trix", media: 'all', 'data-turbolinks-track': 'reload' %>
 <% end %>
-<%= form_with(model: article, local: true) do |form| %>
+<%= form_with(model: article) do |form| %>
   <% if article.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -50,6 +50,8 @@
     </div>
 
     <%= form.hidden_field :user_id, value: current_user.id %>
+    
+    <%= hidden_field_tag :update_pictures, false%>
 
     <div class="col-12 actions">
       <%= form.submit t('pub'), class: "btn btn2 lato"%>
@@ -58,4 +60,5 @@
 <% end %>
 <% content_for :foot do %>
     <%= javascript_include_tag 'trix-core', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'preview_images', 'data-turbolinks-track': 'reload' %>
 <% end %>
