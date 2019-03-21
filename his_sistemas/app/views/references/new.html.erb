@@ -1,13 +1,16 @@
 <div class="container">
+	<h1 class="py-3"><%=t('.new_reference')%></h1>
 	<div class="row">
 		<div class="col-12 col-md-6">
-			<h1 class="py-3"><%=t('.new_reference')%></h1>
 			<%= render 'form', reference: @reference %>
       		<%= link_to octicon("arrow-left"), references_path, class: "btn btn1 mt-3"%>
 		</div>
 		<div class="col-12 col-md-6">
-			<div class="row" id="result">
-			</div>
+			<% if @reference.pictures.any? %>
+				<div class="row" id="result">
+					<%=render 'images'%>
+				</div>
+			<%end%>
 		</div>
 	</div>
 </div>

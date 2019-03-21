@@ -26,12 +26,18 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
+    @upictures=params[:update_pictures].to_s
     @article = Article.new(article_params)
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: t('.article_was_successfully_created') }
-        format.json { render :show, status: :created, location: @article }
+        if @upictures=='false'
+          format.html { redirect_to @article, notice: t('.article_was_successfully_created') }
+          format.json { render :show, status: :created, location: @article }
+        else
+          format.html { redirect_to edit_article_path(@article)}
+          format.json { render :edit, status: :ok, location: @article }
+        end
       else
         format.html { render :new }
         format.json { render json: @article.errors, status: :unprocessable_entity }
@@ -42,11 +48,19 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    @upictures=params[:update_pictures].to_s
+    updated_params=add_pictures(@article,article_params)
+
     respond_to do |format|
-      updated_params=add_pictures(@article,article_params)
       if @article.update(updated_params)
-        format.html { redirect_to @article, notice: t('.article_was_successfully_updated') }
-        format.json { render :show, status: :ok, location: @article }
+        if @upictures=='false'
+          format.html { redirect_to @article, notice: t('.article_was_successfully_updated') }
+          format.json { render :show, status: :ok, location: @article }
+        else
+          format.js
+          format.json { render :edit, status: :ok, location: @article }
+        end
+        
       else
         format.html { render :edit }
         format.json { render json: @article.errors, status: :unprocessable_entity }

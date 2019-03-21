@@ -4,18 +4,12 @@
 	<div class="row">
 		<div class="col-12 col-md-6">
 			<%= render 'form', reference: @reference %>
-      		<%= link_to octicon("arrow-left"), reference_path, class: "btn btn1 mt-3"%>
+      		<%= link_to octicon("arrow-left"), references_path, class: "btn btn1 mt-3"%>
 		</div>
 		<div class="col-12 col-md-6">
-
 			<% if @reference.pictures.any? %>
-				<div class="row">
-					<%@reference.pictures.each_with_index do |pic,index|%>
-						<div class="col-12 col-lg-6 pt-2 pb-2">
-							<%= image_tag(pic.url, class: "img-fluid")%>
-							<%= link_to "x", {controller: 'references', action: 'destroy_picture', index:index, id:@reference}, method: 'put'%>
-						</div>
-					<%end%>
+				<div class="row" id="result">
+					<%=render 'images'%>
 				</div>
 			<%end%>
 		</div>

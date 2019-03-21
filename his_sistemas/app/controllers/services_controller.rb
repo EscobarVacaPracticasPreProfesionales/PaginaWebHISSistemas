@@ -33,7 +33,7 @@ class ServicesController < ApplicationController
           format.html { redirect_to @service, notice: t('.service_was_successfully_created') }
           format.json { render :show, status: :created, location: @service }
         else
-          format.html { redirect_to edit_service_path}
+          format.html { redirect_to edit_service_path(@service)}
           format.json { render :edit, status: :ok, location: @service }
         end
       else
@@ -88,11 +88,5 @@ class ServicesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
       params.require(:service).permit(:title, :description, :user_id, {pictures: []})
-    end
-
-    def add_more_images(new_images)
-      images = @service.pictures # copy the old images 
-      images += new_images # concat old images with new ones
-      @service.images = images # assign back
     end
 end
