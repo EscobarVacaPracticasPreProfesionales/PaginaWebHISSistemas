@@ -20,13 +20,13 @@ es:
         title: "Título"
         content: "Contenido"
         year: "Año"
-      articles:
+      article:
         title: "Título"
         description: "Descripción"
         content: "Contenido"
         pictures: "Imágenes"
         figcaption: "Pie de imágenes"
-        fecha: "fecha"
+        fecha: "Fecha"
     errors:
       messages:
         blank: ": Este campo es obligatorio"
