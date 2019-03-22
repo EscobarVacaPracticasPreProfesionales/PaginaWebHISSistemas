@@ -60,7 +60,9 @@
           <small><h1 class="rale"><%= link_to article.title, article %></h1></small>
         </div>
         <div class="col-4">
-          <%= link_to image_tag(article.pictures[0].url,:class=>"img-thumbnail view", :alt=>"imgNoticia"), article %>
+          <% if article.pictures.any? %>
+            <%= link_to image_tag(article.pictures[0].url,:class=>"img-thumbnail view", :alt=>"imgNoticia"), article %>
+          <%end%>
         </div>
         
       </div>
