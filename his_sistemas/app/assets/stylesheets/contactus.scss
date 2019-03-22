@@ -29,7 +29,22 @@
 	padding: 50px 0px;
 }
 
+thead{
+  background-color: #5CB1F7;
+}
 
+table{
+  border-radius:4px;
+  overflow:hidden;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: rgba(92, 177, 247, 0.3);
+}
+
+.table > thead > tr > th {
+   border-bottom: 0;
+}
 
 #consultasHolder input,#consultasHolder label,#consultasHolder textarea{font-size: .8rem;}
 
