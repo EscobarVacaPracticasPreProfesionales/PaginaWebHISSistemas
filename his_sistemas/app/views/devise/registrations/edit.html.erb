@@ -1,4 +1,7 @@
 <%= render "layouts/header_main" %>
+<% content_for :head do %>
+    <%= stylesheet_link_tag "registration", media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
 
 <% content_for :foot do %>
   <%= javascript_include_tag 'autoc', 'data-turbolinks-track': 'reload' %>
@@ -6,9 +9,9 @@
 
 <div class="container mt-4">
   <div class="row justify-content-between">
-    <div class="col-md-5 rale">
-      <h2 class="mont"><%=t('.title', resource: resource.model_name.human)%></h2>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <div class="col-md-5 rale mb-5">
+      <h1 class="mont"><%=t('.title', resource: resource.model_name.human)%></h1>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put ,class: 'reg'}) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
         <%= f.fields_for :contact do |c| %>
             <div class="form-row">
@@ -43,14 +46,14 @@
         </div>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <div><%= t('.currently_waiting_confirmation_for')%> <%= resource.unconfirmed_email %></div>
         <% end %>
 
         <div class="field form-group">
-          <%= f.label :password, t(".new_password") %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
+          <%= f.label :password%> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
           <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
           <% if @minimum_password_length %>
-            <em><%= @minimum_password_length %> characters minimum</em>
+            <em><%= @minimum_password_length %> <%= t('.characters_minimum') %></em>
           <% end %>
         </div>
 
@@ -60,7 +63,7 @@
         </div>
 
         <div class="field form-group">
-          <%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
+          <strong><%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br /></strong>
           <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
         </div>
 

@@ -3,3 +3,7 @@ $( "input[type=file]" ).change(function() {
     form = document.querySelector('form');
     Rails.fire(form, 'submit');
 });
+
+$( 'input[name=commit]' ).click(function(){
+	$('#update_pictures').val(false);
+});

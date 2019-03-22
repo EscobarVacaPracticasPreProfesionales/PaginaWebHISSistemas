@@ -4,7 +4,7 @@ class User < ApplicationRecord
 	has_many :services
 	has_many :references
 	has_many :articles
-	accepts_nested_attributes_for :contact
+	accepts_nested_attributes_for :contact, update_only: true
 	accepts_nested_attributes_for :user_type
 	
 	attribute :user_type_id, :integer, default: 2

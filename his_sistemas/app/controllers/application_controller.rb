@@ -42,4 +42,18 @@ class ApplicationController < ActionController::Base
 	      end
 	    end
 	end
+	
+	def require_login
+    	unless current_user
+      		redirect_to login_url
+    	end
+  	end
+
+  	def is_admin
+  		puts "******"
+  		puts current_user.user_type.tipo
+  		puts "******"
+  	end
+
+
 end

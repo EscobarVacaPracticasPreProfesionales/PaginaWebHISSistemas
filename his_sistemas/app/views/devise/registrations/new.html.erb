@@ -1,5 +1,5 @@
 <% content_for :head do %>
-    <%= stylesheet_link_tag "registration_new", media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "registration", media: 'all', 'data-turbolinks-track': 'reload' %>
 <% end %>
 
 <% content_for :foot do %>
@@ -8,14 +8,16 @@
 
 <div class="container mt-3">
   <div class="row justify-content-center mb-3">
-    <%= image_tag(image_path("logo.png"),:class=>"img-fluid",:alt=>"logoRegistro") %>
+    <a href="/home">
+      <%= image_tag(image_path("logo.png"),:class=>"img-fluid",:alt=>"logoRegistro") %>
+    </a>
   </div>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center reg">
     <div class="col-md-6">
       <div class="card">
       <header class="card-header">
         <%= link_to t(".sign_in"), new_session_path(resource_name) , :class=>"float-right btn btn3 mt-1" %>
-        <h4 class="card-title mt-2 wl mont"><%=t(".sign_up")%></h4>
+        <h1 class="card-title mt-2 wl mont"><%=t(".sign_up")%></h1>
       </header>
       <article class="card-body rale">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -74,7 +76,7 @@
           </div>
         <% end %>
       </article> <!-- card-body end .// -->
-      <div class="border-top card-body text-center lato"><%= t('.have_an_account?') %> <a href=""><%=t(".sign_in")%></a></div>
+      <div class="border-top card-body text-center lato"><%= t('.have_an_account?') %> <a href="/users/sign_in"><%=t(".sign_in")%></a></div>
       </div> <!-- card.// -->
     </div> <!-- col.//-->
 
