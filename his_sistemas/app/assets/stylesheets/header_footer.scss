@@ -16,6 +16,7 @@ Rojito, celestito,gris oscuro, blanquito hueso, gris medio, celestito medio
 
 .sticky-top{
 	background-color: #FBFBFB;
+	z-index: 9;
 }
 
 .sticky-top input,div[class^=container] a,.footer p{
@@ -36,6 +37,9 @@ img[id^=logo]{
 	margin-top: 4px;
 }
 
+.dropdown-menu{
+	z-index: 10;
+}
 
 /*Small devices (smartphones, 576 and up)*/
 @media (min-width: 576px) {  

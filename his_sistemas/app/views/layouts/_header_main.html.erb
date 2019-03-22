@@ -7,16 +7,25 @@
 				</header>
 				<div class="px-3 d-none d-md-block my-auto">
       				<% if user_signed_in? %>
-			        	<strong><%= current_user.email %></strong>.
-			        	<%= link_to(edit_user_registration_path, :class => 'lato btn btn2') do %>
-			        		<%= octicon('person')%> <%= t('.edit_profile')%>
-			        	<%end%>
-			        	<%= link_to t(".sign_out"), destroy_user_session_path, method: :delete, :class => 'lato btn btn2'  %>
+      				<div class="dropdown">
+					  <button class="btn btn2 dropdown-toggle" type="button" data-toggle="dropdown"><i class="fas fa-user"></i> <%= current_user.contact.name%> <%= current_user.contact.lastname%>
+					  <span class="caret"></span></button>
+					  <div class="dropdown-menu dropdown-menu-right px-3">
+					    	<%= link_to(edit_user_registration_path, :class => 'lato dropdown-item mb-2') do %>
+			        			<i class="fas fa-search"></i> <%= t('.edit_profile')%>
+				        	<%end%>
+					    	<%= link_to(destroy_user_session_path, method: :delete, :class => 'lato dropdown-item') do  %>
+				        		<i class="fas fa-sign-out-alt"></i> <%=t(".sign_out")%>
+				        	<%end%>
+					  </div>
+					</div>
+			        	
+
 			      	<% else %>
 			        	<%= link_to  new_user_session_path, :class => 'lato btn btn1' do %>
-			        		<%=octicon("sign-in")%> <%= t(".sign_in")%>
+			        		<i class="fas fa-sign-in-alt"></i> <%= t(".sign_in")%>
 			        	<%end%>
-			        	<%= link_to t(".sign_up"), new_user_registration_path, :class => 'lato btn btn2'  %>
+			        	<%= link_to '<i class="fas fa-user-plus"></i>'.html_safe t(".sign_up"), new_user_registration_path, :class => 'lato btn btn2'  %>
 			      	<% end %>
 				</div>
 			</div>
@@ -46,16 +55,22 @@
 				<div class="input-group col-12 col-md-3">
 			    	<input type="text" class="form-control" placeholder="Buscar...">
 			    	<div class="input-group-append">
-				      	<%= link_to octicon('search'), '/search' ,:class=>"btn btn2" %>
+				      	<%= link_to '<i class="fas fa-search"></i>'.html_safe, '/search' ,:class=>"btn btn2" %>
 			    	</div>
 				</div>
 				<div class="mt-2 d-md-none d-sm-block">
 					<% if user_signed_in? %>
 			        	<%= link_to "#{current_user.contact.name+' '+current_user.contact.lastname}", edit_user_registration_path, :class => 'lato btn btn2' %>
-			        	<%= link_to t(".sign_out"), destroy_user_session_path, method: :delete, :class => 'lato btn btn2'  %>
+			        	<%= link_to destroy_user_session_path, method: :delete, :class => 'lato btn btn2' do%>
+			        		<i class="fas fa-sign-out-alt"></i> <%=t(".sign_out")%>
+			        	<%end%>
 			      	<% else %>
-			        	<%= link_to t(".sign_in"), new_user_session_path, :class => 'lato btn btn1'  %>
-			        	<%= link_to t(".sign_up"), new_user_registration_path, :class => 'lato btn btn2'  %>
+			        	<%= link_to new_user_session_path, :class => 'lato btn btn1'  do%>
+			        	 	<i class="fas fa-sign-in-alt"></i> <%=t(".sign_in")%>
+			        	<%end%>
+			        	<%= link_to new_user_registration_path, :class => 'lato btn btn2' do %>
+			        		<i class="fas fa-user-plus"></i> <%=tt(".sign_up")%>
+			        	<%end%>
 			      	<% end %>
 			      </div>
 			</div>

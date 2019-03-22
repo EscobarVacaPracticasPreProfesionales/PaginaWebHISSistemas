@@ -3,7 +3,7 @@
 		<div class="cont">
 			<%= image_tag(pic.url, class: "img-fluid")%>
 			<div class="middle">
-				<%= link_to "<span>x</span>".html_safe, {controller: 'references', action: 'destroy_picture', index:index, id:@reference}, method: 'put', remote: true%>
+				<%= link_to '<i class="fas fa-times"></i>'.html_safe, {controller: 'references', action: 'destroy_picture', index:index, id:@reference}, method: 'put', remote: true%>
 			</div>
 		</div>
 	</div>

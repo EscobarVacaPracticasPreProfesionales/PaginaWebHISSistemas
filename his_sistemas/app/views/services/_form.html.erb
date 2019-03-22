@@ -18,17 +18,17 @@
   <div class="form row">
     <div class="field col-12 form-group">
       <%= form.label :pictures %>
-      <%= form.file_field :pictures, multiple: true%>
+      <%= form.file_field :pictures, multiple: true, class: 'form-control lato'%>
     </div>
 
     <div class="field col-12 form-group">
       <%= form.label :title %>
-      <%= form.text_field :title, required: true, class: 'form-control' %>
+      <%= form.text_field :title, required: true, class: 'form-control lato'%>
     </div>
 
     <div class="field col-12 form-group">
       <%= form.label :description %>
-      <%= form.text_area :description, required: true, class: 'form-control'%>
+      <%= form.text_area :description, required: true, class: 'form-control lato', rows: 5%>
     </div>
 
     <%= form.hidden_field :user_id, value: current_user.id %>

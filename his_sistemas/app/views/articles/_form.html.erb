@@ -18,32 +18,32 @@
   <div class="form-row">
     <div class="field col-12 form-group">
       <%= form.label :title %>
-      <%= form.text_field :title, required: true, class: 'form-control' %>
+      <%= form.text_field :title, required: true, class: 'form-control lato' %>
     </div>
 
     <div class="field col-12 form-group">
       <%= form.label :description %>
-      <%= form.text_area :description, required: true, class: 'form-control jumpline' %>
+      <%= form.text_area :description, required: true, class: 'form-control lato' %>
     </div>
 
     <div class="field col-12 form-group">
       <%= form.label :content %>
-      <%= form.text_area :content, required: true, class: 'form-control', 'id': :summernote %>
+      <%= form.text_area :content, required: true, class: 'form-control lato', 'id': :summernote %>
     </div>
 
     <div class="field col-12 form-group">
       <%= form.label :pictures %>
-      <%= form.file_field :pictures, multiple: true, class: 'form-control' %>
+      <%= form.file_field :pictures, multiple: true, class: 'form-control lato' %>
     </div>
 
     <div class="field col-12 form-group">
       <%= form.label :figcaption %>
-      <%= form.text_field :figcaption, required: true, class: 'form-control' %>
+      <%= form.text_field :figcaption, required: true, class: 'form-control lato' %>
     </div>
 
     <div class="field col-12 form-group">
       <%= form.label :fecha %>
-      <%= form.date_select :fecha, required: true, class: 'form-control' %>
+      <%= form.date_select :fecha, required: true, class: 'form-control lato' %>
     </div>
 
     <%= form.hidden_field :user_id, value: current_user.id %>
