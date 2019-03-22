@@ -1,5 +1,8 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:edit, :update, :destroy]
+  before_action :is_admin, only: [:index]
+  
 
   # GET /contacts
   # GET /contacts.json
@@ -72,5 +75,9 @@ class ContactsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
       params.require(:contact).permit(:name,:lastname, :company, :phone1, :phone2, :emailcontact)
+    end
+
+    def require_admin
+      admin_require(services_url)
     end
 end

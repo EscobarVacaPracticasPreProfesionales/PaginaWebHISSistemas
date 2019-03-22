@@ -1,12 +1,11 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy, :destroy_picture]
-
+  before_action :require_admin, only: [:show, :edit, :update, :destroy, :destroy_picture]
+  before_action :is_admin, only: [:index]
   # GET /services
   # GET /services.json
   def index
     @services = Service.all
-    is_admin
-    
   end
 
   # GET /services/1
@@ -90,5 +89,9 @@ class ServicesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
       params.require(:service).permit(:title, :description, :user_id, {pictures: []})
+    end
+
+    def require_admin
+      admin_require(services_url)
     end
 end

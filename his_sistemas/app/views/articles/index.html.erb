@@ -1,7 +1,6 @@
 <% content_for :head do %>
     <%= stylesheet_link_tag "news", media: 'all', 'data-turbolinks-track': 'reload' %>
 <% end %>
-<%= render "layouts/header_main" %>
 <div class="container">
   <% @articles.each do |article| %>
     <div class="row new mr-lg-5 ml-lg-5 pr-lg-5 pl-lg-5">
@@ -18,14 +17,14 @@
                 <%= link_to image_tag(article.pictures[0].url,:class=>"img-thumbnail view", :alt=>"imgNoticia"), article %>
               <%end%>
             </div>
-            <% if user_signed_in? %>
+            <% if @user_admin %>
               <div class="col-12">
                 <div class="center mt-3">
                   <span class="btn btn2 mr-md-3">
-                    <%= link_to octicon("pencil"), edit_article_path(article) %>  
+                    <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_article_path(article) %>  
                   </span>
                   <span class="btn btn2">
-                    <%= link_to octicon("trashcan"), article, method: :delete, data: { confirm: 'Are you sure?' }%>
+                    <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, article, method: :delete, data: { confirm: 'Are you sure?' }%>
                   </span>
                 </div>
               </div>
@@ -34,8 +33,8 @@
         </div>
       </div>
     <%end%>
-    <% if user_signed_in? %>
-      <%= link_to '+', new_article_path, :class=>"btn btn-circle shadow-lg" %>
+    <% if @user_admin %>
+      <%= link_to '<i class="fas fa-plus"></i>'.html_safe, new_article_path, :class=>"btn btn-circle shadow-lg" %>
     <%end%>
       
 </div>

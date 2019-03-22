@@ -72,14 +72,14 @@
     
     </aside>
   </div>
-  <% if user_signed_in? %>
+  <% if @user_admin %>
     <div>
       <div class="mt-3">
         <span class="btn btn2 mr-md-3">
-          <%= link_to octicon("pencil"), edit_article_path(@article) %>  
+          <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_article_path(@article) %>  
         </span>
         <span class="btn btn2">
-          <%= link_to octicon("trashcan"), @article, method: :delete, data: { confirm: 'Are you sure?' }%>
+          <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, @article, method: :delete, data: { confirm: 'Are you sure?' }%>
         </span>
       </div>
     </div>

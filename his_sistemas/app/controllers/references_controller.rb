@@ -1,6 +1,7 @@
 class ReferencesController < ApplicationController
   before_action :set_reference, only: [:show, :edit, :update, :destroy, :destroy_picture]
-
+  before_action :require_admin, only: [:edit, :update, :destroy, :destroy_picture]
+  before_action :is_admin, only: [:index]
   # GET /references
   # GET /references.json
   def index
@@ -88,5 +89,9 @@ class ReferencesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def reference_params
       params.require(:reference).permit(:title, :content, :year, :user_id, {pictures: []})
+    end
+
+    def require_admin
+      admin_require(services_url)
     end
 end

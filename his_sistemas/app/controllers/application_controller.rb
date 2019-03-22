@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 	def delete_picture(model, index)
 		remain_images=model.pictures
 		if index==0 && model.pictures.size==1
-			model.remove_pictures!
+			return
 		else
 			deleted_images=remain_images.delete_at(index)
 			#deleted_images.try(:remove!)
@@ -43,17 +43,20 @@ class ApplicationController < ActionController::Base
 	    end
 	end
 	
-	def require_login
-    	unless current_user
-      		redirect_to login_url
-    	end
+	def is_logged(tipo)
+    	if current_user
+  			return current_user.user_type.tipo == tipo
+      	end
+      	return false
   	end
 
   	def is_admin
-  		puts "******"
-  		puts current_user.user_type.tipo
-  		puts "******"
+  		@user_admin=is_logged("Administrador")
   	end
 
-
+  	def admin_require(resource_path)
+  		if !is_admin
+  			redirect_to resource_path
+  		end
+  	end
 end

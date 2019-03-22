@@ -1,7 +1,6 @@
 <% content_for :head do %>
     <%= stylesheet_link_tag "references", media: 'all', 'data-turbolinks-track': 'reload' %>
 <% end %>
-<%= render "layouts/header_main" %>
 <body>
   <div class="container" id="news">
     <% @references.each_with_index do |reference,indice| %>
@@ -14,13 +13,13 @@
               <div class="boton pb-2">
                   <button type="button" class="btn btn3" data-toggle="modal" data-target="#modalReferencia<%= reference.id %>">Conoce más</button>
               </div> 
-              <% if user_signed_in? %>
+              <% if @user_admin %>
               <div class="center">
                 <span class="btn btn3 mr-3">
-                  <%= link_to octicon("pencil"), edit_reference_path(reference) %>
+                  <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_reference_path(reference) %>
                 </span>
                 <span class="btn btn3">
-                  <%= link_to octicon("trashcan"), reference, method: :delete, data: { confirm: 'Are you sure?' }%>
+                  <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, reference, method: :delete, data: { confirm: 'Are you sure?' }%>
                 </span>
               </div>
               <%end%>
@@ -62,13 +61,13 @@
               <div class="boton pb-2">
                   <button type="button" class="btn btn3" data-toggle="modal" data-target="#modalReferencia<%= reference.id %>">Conoce más</button>
               </div> 
-              <% if user_signed_in? %>
+              <% if @user_admin %>
               <div class="center">
                 <span class="btn btn3 mr-3">
-                  <%= link_to octicon("pencil"), edit_reference_path(reference) %>
+                  <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_reference_path(reference) %>
                 </span>
                 <span class="btn btn3">
-                  <%= link_to octicon("trashcan"), reference, method: :delete, data: { confirm: 'Are you sure?' }%>
+                  <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, reference, method: :delete, data: { confirm: 'Are you sure?' }%>
                 </span>
               </div>
               <%end%>
@@ -94,8 +93,8 @@
         </div>
       </div>
     <%end%>
-    <% if user_signed_in? %>
-      <%= link_to '+', new_reference_path, :class=>"btn btn-circle shadow-lg" %>
+    <% if @user_admin %>
+      <%= link_to '<i class="fas fa-plus"></i>'.html_safe, new_reference_path, :class=>"btn btn-circle shadow-lg" %>
     <%end%>
   </div>
 </body>
