@@ -8,10 +8,14 @@
 				<div class="px-3 d-none d-md-block my-auto">
       				<% if user_signed_in? %>
 			        	<strong><%= current_user.email %></strong>.
-			        	<%= link_to t('.edit_profile'), edit_user_registration_path, :class => 'lato btn btn2' %>
+			        	<%= link_to(edit_user_registration_path, :class => 'lato btn btn2') do %>
+			        		<%= octicon('person')%> <%= t('.edit_profile')%>
+			        	<%end%>
 			        	<%= link_to t(".sign_out"), destroy_user_session_path, method: :delete, :class => 'lato btn btn2'  %>
 			      	<% else %>
-			        	<%= link_to t(".sign_in"), new_user_session_path, :class => 'lato btn btn1'  %>
+			        	<%= link_to  new_user_session_path, :class => 'lato btn btn1' do %>
+			        		<%=octicon("sign-in")%> <%= t(".sign_in")%>
+			        	<%end%>
 			        	<%= link_to t(".sign_up"), new_user_registration_path, :class => 'lato btn btn2'  %>
 			      	<% end %>
 				</div>

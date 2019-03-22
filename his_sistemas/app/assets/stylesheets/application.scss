@@ -6,7 +6,7 @@
 html, body{ height:100%;}
 
 #contenido {
-  min-height: calc(100vh - 88px);
+  min-height: calc(100vh - 72px);
 }
 
 .center{
@@ -124,10 +124,87 @@ p{
 	white-space: pre-line;
 }
 
-@media (min-width: 544px) {  
+#error_explanation {
+	border:2px solid rgba(249, 31, 31, 1);
+	background-color: rgba(249, 31, 31, 0.7);
+	border-radius: 4px;
+}
+
+.cont {
+	border-radius: 4px;
+	position: relative;
+	width: 100%;
+	max-width: 900px;
+	a {
+	  	top: 50%;
+		left: 50%;
+		position: absolute;
+		opacity: 0.5;
+		background-color: rgb(249, 31, 31);
+		color: white;
+		padding: 4px 12px;
+		border-radius: 10%;
+		transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		text-decoration: none;
+		transition: .5s ease;
+		span{
+			font-size: 1rem;
+		}
+	}
+	.img-fluid {
+		opacity: 1;
+		display: block;
+		width: 100%;
+		height: auto;
+		transition: .5s ease;
+		backface-visibility: hidden;
+		max-height: 110px;
+		border-radius: 4px;
+	}
+}
+
+.cont:hover {
+	.middle{
+  		opacity: 1;
+  		background-color: rgba(0,0,0,0.4);
+	};
+
+	a:hover{
+  		opacity: 1;
+		background-color: rgba(249, 31, 31,1);
+	}
+}
+
+.middle{
+	transition:0.3s ease;
+	opacity:0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	text-align: center;
+	height: 100%;
+  	width: 100%;
+	border-radius: 4px;
+}
+
+@media (min-width: 576px) {  
 	h1{font-size: 1.1rem;}
 	h2{font-size: 1rem;}
 	p{font-size: .9rem;}
+	.cont{
+		a{
+			padding: 8px 20px;
+			span{
+				font-size: 1.2rem;
+			}
+		}
+		.img-fluid{
+			max-height: 94px;
+		}
+	}
 }
 
 @media (min-width: 768px) {
@@ -135,18 +212,40 @@ p{
 	h2{font-size: 1.1rem}
 	p{font-size: 1rem}
 	#contenido {
-	  min-height: calc(100vh - 64px);
+	  min-height: calc(100vh - 48px);
+	}
+	.cont{
+		a{
+			padding: 2px 12px;
+			span{
+				font-size: 1rem;
+			}
+		}
+		.img-fluid{
+			max-height: 94px;
+		}
 	}
 }
 
 @media (min-width: 992px) { 
 	h1{font-size:1.3rem;}
 	h2{font-size: 1.2rem}
+	.cont{
+		.img-fluid{
+			max-height: 82px;
+		}
+	}
 }
  
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {     
 	h1{font-size:1.4rem;} 
 	h2{font-size: 1.3rem;}
+	.cont{
+		.img-fluid{
+			max-height: 100px;
+		}
+	}
+	
 }
 

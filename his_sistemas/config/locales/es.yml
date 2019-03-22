@@ -31,19 +31,11 @@ es:
       messages:
         blank: ": Este campo es obligatorio"
         required: "Este campo es obligatorio"
-  devise:
-    registrations:
-      new:
-        sign_in: "Iniciar Sesión"
-        have_an_account?: "¿Tienes una cuenta?"
-        phone1: "Teléfono 1"
-        phone2: "Teléfono 2"
-      edit:
-        cancel: "Anular"
-    sessions:
-      new:
-        sign_up: "Registrarse"
-        you_dont_have_an_account?: "¿No tienes una cuenta?"
+      models:
+        user:
+          attributes:
+            current_password:
+              invalid: ": La contraseña no es correcta"
   layouts:
     header_main:
       sign_up: "Registrarse"

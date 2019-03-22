@@ -1,20 +1,18 @@
 <% content_for :head do %>
-    <%= stylesheet_link_tag "registration_new", media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "registration", media: 'all', 'data-turbolinks-track': 'reload' %>
 <% end %>
 
-<% content_for :foot do %>
-  <%= javascript_include_tag 'autoc', 'data-turbolinks-track': 'reload' %>
-<% end %>
-
-<div class="container mt-3">
-  <div class="row justify-content-center mb-3">
-    <%= image_tag(image_path("logo.png"),:class=>"img-fluid",:alt=>"logoRegistro") %>
+<div class="container">
+  <div class="row justify-content-center pt-3 pb-2">
+    <a href="/home">
+      <%= image_tag(image_path("logo.png"),:class=>"img-fluid",:alt=>"logoRegistro") %>
+    </a>
   </div>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center reg">
     <div class="col-md-5">
       <div class="card">
       <header class="card-header">
-        <h4 class="card-title mt-2 wl mont"><%=t(".sign_in")%></h4>
+        <h2 class="card-title mt-2 wl mont"><%=t(".sign_in")%></h2>
       </header>
       <article class="card-body rale">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -40,7 +38,7 @@
           </div>
         <% end %>
       </article> <!-- card-body end .// -->
-      <div class="border-top card-body text-center lato"><%= t(".you_dont_have_an_account?") %> <a href=""><%= t(".sign_up") %></a></div>
+      <div class="border-top card-body text-center lato"><%= t(".you_dont_have_an_account?") %> <a href="/users/sign_up"><%= t(".sign_up") %></a></div>
       </div> <!-- card.// -->
     </div> <!-- col.//-->
 

@@ -44,10 +44,23 @@ es:
       signed_up_but_unconfirmed: "Te hemos enviado un email con instrucciones para que confirmes tu cuenta."
       update_needs_confirmation: "Actualizaste tu cuenta correctamente, pero tenemos que revalidar tu email. Revisa tu correo para confirmar la dirección."
       updated: "Actualizaste tu cuenta correctamente."
+      new: 
+        sign_in: "Iniciar Sesión"
+        have_an_account?: "¿Tienes una cuenta?"
+        phone1: "Teléfono 1"
+        phone2: "Teléfono 2"
+      edit: 
+        cancel: "Anular"
+        currently_waiting_confirmation_for: 'Esperando la confirmación de: '
+        password: "Nueva contraseña"
+        characters_minimum: 'carácteres mínimo'
     sessions:
       signed_in: "Iniciaste sesión correctamente."
       signed_out: "Cerraste sesión correctamente."
       already_signed_out: "Se cerró sesión correctamente."
+      new:
+        sign_up: "Registrarse"
+        you_dont_have_an_account?: "¿No tienes una cuenta?"
     unlocks:
       send_instructions: "Recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos"
       send_paranoid_instructions: "Si tu cuenta existe, recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos"

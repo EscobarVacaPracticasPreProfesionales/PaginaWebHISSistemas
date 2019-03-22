@@ -1,6 +1,10 @@
 <%@article.pictures.each_with_index do |pic,index|%>
-	<div class="col-6 col-md-4 col-xl-3 p-2">
-		<%= image_tag(pic.url, class: "img-fluid")%>
-		<%= link_to "x", {controller: 'articles', action: 'destroy_picture', index:index, id:@article}, method: 'put', remote: true%>
+	<div class="col-6 col-sm-4 col-md-6 col-lg-4 p-2">
+		<div class="cont">
+			<%= image_tag(pic.url, class: "img-fluid")%>
+			<div class="middle">
+				<%= link_to "<span>x</span>".html_safe, {controller: 'articles', action: 'destroy_picture', index:index, id:@article}, method: 'put', remote: true%>
+			</div>
+		</div>
 	</div>
 <%end%>
