@@ -1,6 +1,7 @@
+<%= render "layouts/header_main" %>
 <div class="container pt-3">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 mont">
       <p>
         <strong><%=t('pictures')%></strong>
       </p>
@@ -13,19 +14,17 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <p>
-        <strong><%=t('title')%></strong>
+      <strong class="mont"><%=t('title')%></strong>
+      <p class="rale">
         <%= @reference.title %>
       </p>
     </div>
   </div>
   <div class="row">
     <div class="col-12">
+      <strong class="mont"><%=t('description')%></strong>          
       <div>
-          <strong><%=t('description')%></strong>          
-      </div>
-      <div>
-        <p class="jumpline">
+        <p class="rale jumpline">
           <%= @reference.content %>
         </p>
       </div>
@@ -33,14 +32,14 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <p>
-        <strong><%=t('year') %></strong>
+      <strong class="mont"><%=t('year') %></strong>
+      <p class="rale">
         <%= @reference.year %>
       </p>
     </div>
   </div>
-  <p>
-    <strong><%=t('user')%></strong>
+  <strong class="mont"><%=t('user')%></strong>
+  <p class="rale">
     <%= @reference.user.contact.name %>
     <%= @reference.user.contact.lastname %>
   </p>

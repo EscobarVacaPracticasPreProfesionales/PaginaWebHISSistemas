@@ -25,7 +25,9 @@
 			        	<%= link_to  new_user_session_path, :class => 'lato btn btn1' do %>
 			        		<i class="fas fa-sign-in-alt"></i> <%= t(".sign_in")%>
 			        	<%end%>
-			        	<%= link_to '<i class="fas fa-user-plus"></i>'.html_safe t(".sign_up"), new_user_registration_path, :class => 'lato btn btn2'  %>
+			        	<%= link_to new_user_registration_path, :class => 'lato btn btn2' do %>
+			        		<i class="fas fa-user-plus"></i> <%=t(".sign_up")%>
+			        	<%end%>
 			      	<% end %>
 				</div>
 			</div>
@@ -60,7 +62,9 @@
 				</div>
 				<div class="mt-2 d-md-none d-sm-block">
 					<% if user_signed_in? %>
-			        	<%= link_to "#{current_user.contact.name+' '+current_user.contact.lastname}", edit_user_registration_path, :class => 'lato btn btn2' %>
+			        	<%= link_to  edit_user_registration_path, :class => 'lato btn btn2' do %>
+			        	<i class="fas fa-user"></i> <%=current_user.contact.name%> <%=current_user.contact.lastname%>
+			        	<%end%>
 			        	<%= link_to destroy_user_session_path, method: :delete, :class => 'lato btn btn2' do%>
 			        		<i class="fas fa-sign-out-alt"></i> <%=t(".sign_out")%>
 			        	<%end%>
@@ -69,7 +73,7 @@
 			        	 	<i class="fas fa-sign-in-alt"></i> <%=t(".sign_in")%>
 			        	<%end%>
 			        	<%= link_to new_user_registration_path, :class => 'lato btn btn2' do %>
-			        		<i class="fas fa-user-plus"></i> <%=tt(".sign_up")%>
+			        		<i class="fas fa-user-plus"></i> <%=t(".sign_up")%>
 			        	<%end%>
 			      	<% end %>
 			      </div>

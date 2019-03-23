@@ -10,6 +10,8 @@ Rojito, celestito,gris oscuro, blanquito hueso, gris medio, celestito medio
 #F92222. #5CB1F7, #272C30, #FBFBFB, #9AABB8, #39BDDC
 */
 
+
+
 #line {
 	border: .5px solid light-gray;
 }
@@ -29,6 +31,7 @@ Rojito, celestito,gris oscuro, blanquito hueso, gris medio, celestito medio
 
 .footer{
 	background-color: #9AABB8;
+	position: relative;
 }
 
 img[id^=logo]{
@@ -42,18 +45,35 @@ img[id^=logo]{
 }
 
 /*Small devices (smartphones, 576 and up)*/
-@media (min-width: 576px) {  
-
+@media (min-width: 576px) {
+	.idk{
+		height: 85px;
+		width: 100%;
+	}  
 }
 
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @media (min-width: 768px) {
-
 }
 
 @media (max-width: 992px) { 
-	.sticky-top .container{
+	.sticky-top .container, #top{
 		margin: auto;
 		max-width: 100%;
 	}
+
+}
+
+@media (min-width: 992px) { 
+	.idk{
+		height: 120px;
+		width: 100%;
+	}  
+}
+
+@media (min-width: 1200px) { 
+	.idk{
+		height: 145px;
+		width: 100%;
+	}  
 }

@@ -1,7 +1,9 @@
-<div class="container">
+<%= render "layouts/header_main" %>
+
+<div class="container pb-3">
 	<h1 class="py-3 mont"><%= t('.edit_service')%></h1>
 
-	<div class="row rale">
+	<div class="row rale mb-3">
 		<div class="col-12 col-md-6">
 			<%= render 'form', service: @service %>
       		<%= link_to '<i class="fas fa-angle-left"></i>'.html_safe, services_path,class: "btn btn1 mt-3"%>

@@ -1,20 +1,22 @@
+<%= render "layouts/header_main" %>
+
 <div class="container pt-3">
-  <div class="row">
+  <div class="row mont">
     <div class="col-12">
        <p>
         <strong><%=t('pictures')%></strong>
       </p>
     </div>
     <% @service.pictures.each do |pic| %>
-      <div class="col-6 col-lg-4 col-xl-3">
-        <%= image_tag(pic.url,:alt=>"servicio", :class=>"img-fluid") %>
+      <div class="col-6 col-sm-4 col-md-3 col-xl-3 ik">
+        <%= image_tag(pic.url,:alt=>"servicio", :class=>"img-fluid idk") %>
       </div>
     <%end%>
   </div>
   <div class="row">
     <div class="col-12">
-      <p>
-        <strong><%=t('title')%></strong>
+      <strong class="mont"><%=t('title')%></strong>
+      <p class="rale">
         <%= @service.title %>
       </p>
     </div>
@@ -22,30 +24,22 @@
   
   <div class="row">
     <div class="col-12">
-        <div>
-          <strong><%=t('description')%></strong>          
-        </div>
-        <div>
-          <p>
-            <%= @service.description %>
-          </p>
-        </div>
+        <strong class="mont"><%=t('description')%></strong>          
+        <p class="rale jumpline">
+          <%= @service.description %>
+        </p>
     </div>
   </div>
 
   
 
-  <p>
-    <strong><%=t('user')%></strong>
+  <strong class="mont"><%=t('user')%></strong>
+  <p class="rale">
     <%= @service.user.contact.name %>
     <%= @service.user.contact.lastname %>
   </p>
   <div class="mb-3 gg">
-    <span class="btn btn1">
-        <%= link_to octicon("pencil"), edit_service_path(@service) %>
-    </span>
-    <span class="btn btn1">
-      <%= link_to octicon("arrow-left"), services_path%>
-    </span>
+    <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_service_path(@service), class: 'btn btn1'%>
+    <%= link_to '<i class="fas fa-angle-left"></i>'.html_safe, services_path, class: 'btn btn1'%>
   </div>
 </div>

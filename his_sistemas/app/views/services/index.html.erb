@@ -1,61 +1,81 @@
 <% content_for :head do %>
     <%= stylesheet_link_tag "services", media: 'all', 'data-turbolinks-track': 'reload' %>
 <% end %>
+<%= render "layouts/header_main" %>
 <section>
   <div class="container" id="contenedorServicios">
-    <% @services.each_with_index do |service, i| %>
-      <%if i%3==0%>
-        <div class="row justify-content-around">
-      <%end%>
-          <div class="servicios col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-            <% if @user_admin %>
-            <div class="pb-5">
-            <%else%>
-            <div>
-            <%end%>
-              <div class="center imgServicios">
-                <div class="carousel slide" data-ride="carousel">
-                  <div class="carousel-inner">
-                    <% if service.pictures.any?%>
-                      <% service.pictures.each do |pic| %>
-                        <div class="carousel-item">
-                          <%= image_tag(pic.url,:alt=>"servicio") %>
-                        </div>
-                      <%end%>
+  <% @services.each_with_index do |service, i| %>
+    <%if i%3==0%>
+      <div class="row justify-content-around">
+    <%end%>
+        <div class="servicios col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+          <% if @user_admin %>
+          <div class="pb-5">
+          <%else%>
+          <div>
+          <%end%>
+            <div class="center imgServicios">
+              <div class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <% if service.pictures.any?%>
+                    <% service.pictures.each do |pic| %>
+                      <div class="carousel-item">
+                        <%= image_tag(pic.url,:alt=>"servicio") %>
+                      </div>
                     <%end%>
-                  </div>
-                </div>            
+                  <%end%>
+                </div>
+              </div>            
+            </div>
+            <div class="center infoServicios">
+              <div class="titulo">
+                <h2 class="mont"><%= service.title %></h2>
+              </div>  
+              <div>
+                <p class="rale parrafo jumpline"><%= service.description %></p>
               </div>
-              <div class="center infoServicios">
-                <div class="titulo">
-                  <h2 class="mont"><%= service.title %></h2>
-                </div>  
-                <div>
-                  <p class="rale parrafo"><%= service.description %></p>
+            </div>
+          </div>
+
+          <% if @user_admin %>
+            <div class="mb-3 gg center">
+                <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_service_path(service), class: "btn btn1" %>
+                <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, service,class: "btn btn1",data: {toggle: "modal", target: "#confirmar"}%>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="confirmar" tabindex="-1" role="dialog" aria-labelledby="confirmar" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="confirmar">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    ¿Está seguro? No se puede recuperar una vez se eliminen los datos.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <%= link_to 'Eliminar', service, method: :delete, class: "btn btn-danger" %>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <% if @user_admin %>
-              <div class="mb-3 gg center">
-                <span class="btn btn1">
-                    <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_service_path(service) %>
-                </span>
-                <span class="btn btn1">
-                  <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, service, method: :delete, data: { confirm: 'Are you sure?' }%>
-                </span>
-              </div>
-            <%end%>
-          </div>
-      <%if i>0 && i%2==0%>
+
+          <%end%>
         </div>
-      <%end%>
-    <%end%>  
-    <% if @user_admin %>
-      <%= link_to '<i class="fas fa-plus"></i>'.html_safe, new_service_path, :class=>"btn btn-circle shadow-lg" %>
+    <%if i>0 && i%2==0%>
+      </div>
     <%end%>
+  <%end%>  
+  <% if @user_admin %>
+    <%= link_to '<i class="fas fa-plus"></i>'.html_safe, new_service_path, :class=>"btn btn-circle shadow-lg" %>
+  <%end%>
   </div>
 </section>
+
 
 <% content_for :foot do %>
   <%= javascript_include_tag 'class_adder', 'data-turbolinks-track': 'reload' %>

@@ -1,6 +1,7 @@
 <% content_for :head do %>
     <%= stylesheet_link_tag "news", media: 'all', 'data-turbolinks-track': 'reload' %>
 <% end %>
+<%= render "layouts/header_main" %>
 <div class="container">
   <% @articles.each do |article| %>
     <div class="row new mr-lg-5 ml-lg-5 pr-lg-5 pl-lg-5">

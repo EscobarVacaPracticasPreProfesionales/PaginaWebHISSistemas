@@ -1,6 +1,7 @@
+<%= render "layouts/header_main" %>
 <div class="container">
 	<h1 class="py-3 mont"><%= t('.edit_article')%></h1>
-	<div class="row rale">
+	<div class="row rale mb-3">
 		<div class="col-12 col-md-6">
 			<%= render 'form', article: @article %>
 			<%= link_to '<i class="fas fa-angle-left"></i>'.html_safe, articles_path, class: "btn btn1 mt-3"%>
