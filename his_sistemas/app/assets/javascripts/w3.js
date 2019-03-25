@@ -1,6 +1,15 @@
 /* W3.JS 1.03 December 2017 by w3schools.com */
 "use strict";
 var w3 = {};
+
+$("#checkAll").click(function () {
+    $(".checkContact").prop('checked', $(this).prop('checked'));
+});
+
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip(); 
+});
+
 w3.getElements = function (id) {
   if (typeof id == "object") {
     return [id];

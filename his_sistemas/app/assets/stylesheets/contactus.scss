@@ -25,6 +25,38 @@
     height: 350px;
 }
 
+.dropdown-toggle{
+  background-color: #5CB1F7;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-toggle:focus {
+  outline: none;
+}
+
+li{
+  font-weight: normal;
+  text-align: justify;
+}
+
+i{
+  width:20px;
+}
+
+.toggle{
+  min-width:65px;
+}
+
+.buttons{
+  min-width:100px;
+}
+
+.tableHeader{
+  min-width:130px;
+}
+
 #info{
 	padding: 50px 0px;
 }
