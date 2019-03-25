@@ -86,35 +86,63 @@
 			<iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.807305629318!2d-79.89472308524472!3d-2.226100798377445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902d6f72355727e7%3A0xa2d46c47543dd4f0!2sHIS+Sistemas!5e0!3m2!1ses!2sec!4v1552582603798" frameborder="0" allowfullscreen></iframe>
 		</div>
 	</section>
+	</div>
+	<div class="container">		
+		<div class="row">
+			<div class="table-responsive">
+			<table id='tabla' class="table table-hover">
+			    <thead class="wl">
+			      <tr>
+			      	<th class="toggle">
+			      		<%= check_box_tag "checkAll" %>
+			      		
+					    <button class="dropdown-toggle" data-toggle="dropdown">
+					    	<span class="caret"></span>
+						</button>
+					    <ul class="dropdown-menu">
+					      <li><i class="fas fa-eye ml-1"></i> Contactado</li>
+					      <li><i class="fas fa-eye-slash ml-1"></i> No Contactado</li>
+					      <li><i class="fas fa-trash-alt ml-1"></i> Borrar</li>
+					    </ul>
+					
+					</th>
+			        <th class="tableHeader"><%=t(".firstname")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(1)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".lastname")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(2)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".company")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(3)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".phone")%> 1<i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(4)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".phone")%> 2<i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(5)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".email")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(6)')" style="cursor:pointer"></i></th>
+			        <th class="buttons"></th>
+
+			      </tr>
+			    </thead>
+			    <tbody>
+			    <% @contacts.each do |contact|%>
+			      <tr class="item">
+			      	<td><%= check_box_tag "contacto_id", contact.id, false, class: 'checkContact' %> </td>
+			        <td><%= contact.name %></td>
+			        <td><%= contact.lastname %></td>
+			        <td><%= contact.company %></td>
+			        <td><%= contact.phone1 %></td>
+			        <td><%= contact.phone2 %></td>
+			        <td><%= contact.emailcontact %></td>
+			        <td>
+			        	<i class="fas fa-eye" data-toggle="tooltip" data-placement="top" title="Contactado"></i>
+						<i class="fas fa-eye-slash" data-toggle="tooltip" data-placement="top" title="No contactado"></i>
+						<i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Borrar"></i>
+			        </td>
+			      </tr>
+			     
+			      <%end%>
+			    </tbody>
+			  </table>
+			</div>
+		</div>
+		
+	</div>
 	
-	<table id='tabla' class="table table-hover">
-    <thead class="wl">
-      <tr>
-        <th onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(1)')" style="cursor:pointer"><%=t(".firstname")%> <i class="fa fa-fw fa-sort"></i></th>
-        <th onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(2)')" style="cursor:pointer"><%=t(".lastname")%><i class="fa fa-fw fa-sort"></i></th>
-        <th onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(3)')" style="cursor:pointer"><%=t(".company")%><i class="fa fa-fw fa-sort"></i></th>
-        <th onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(4)')" style="cursor:pointer"><%=t(".phone")%> 1<i class="fa fa-fw fa-sort"></i></th>
-        <th onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(5)')" style="cursor:pointer"><%=t(".phone")%> 2<i class="fa fa-fw fa-sort"></i></th>
-        <th onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(6)')" style="cursor:pointer"><%=t(".email")%><i class="fa fa-fw fa-sort"></i></th>
 
-      </tr>
-    </thead>
-    <tbody>
-    <% @contacts.each do |contact|%>
-      <tr class="item">
-        <td><%= contact.name %></td>
-        <td><%= contact.lastname %></td>
-        <td><%= contact.company %></td>
-        <td><%= contact.phone1 %></td>
-        <td><%= contact.phone2 %></td>
-        <td><%= contact.emailcontact %></td>
-      </tr>
-     
-      <%end%>
-    </tbody>
-  </table>
 
-</div>
 
 <% content_for :foot do %>
     <%= javascript_include_tag 'w3', 'data-turbolinks-track': 'reload' %>
