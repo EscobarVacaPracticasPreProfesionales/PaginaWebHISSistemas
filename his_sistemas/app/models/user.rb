@@ -4,11 +4,12 @@ class User < ApplicationRecord
 	has_many :services
 	has_many :references
 	has_many :articles
+
 	accepts_nested_attributes_for :contact, update_only: true
 	accepts_nested_attributes_for :user_type
+	validates_associated :contact
 	
 	attribute :user_type_id, :integer, default: 2
-
 	after_initialize do
 		build_contact if new_record? && contact.blank?
 	end

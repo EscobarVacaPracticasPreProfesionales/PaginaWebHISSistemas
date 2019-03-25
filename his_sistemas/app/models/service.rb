@@ -7,4 +7,6 @@ class Service < ApplicationRecord
   	serialize :pictures, JSON
   	
 	validates_presence_of :pictures
+	validates_presence_of :title
+	validates_presence_of :description
 end

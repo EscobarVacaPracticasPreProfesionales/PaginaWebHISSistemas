@@ -7,10 +7,15 @@ es:
   pub: "Publicar"
   picture_was_successfully_deleted: "La imagen se ha eliminado"
   activerecord:
+    models:
+      contact: "Información de contacto"
     attributes:
       contact:
         name: "Nombres"
         lastname: "Apellidos"
+        company: "Empresa"
+        phone1: "Teléfono 1"
+        phone2: "Teléfono 2"
       service:
         title: "Título"
         description: "Descripción"
@@ -29,13 +34,18 @@ es:
         fecha: "Fecha"
     errors:
       messages:
-        blank: ": Este campo es obligatorio"
-        required: "Este campo es obligatorio"
+        blank: "Este campo es obligatorio."
+        required: "Este campo es obligatorio."
       models:
         user:
           attributes:
             current_password:
-              invalid: ": La contraseña no es correcta"
+              invalid: "La contraseña no es correcta."
+            password_confirmation:
+              confirmation: "La contraseña no coincide."
+            contact:
+              invalid: "Los datos no son válidos."
+
   layouts:
     header_main:
       sign_up: "Registrarse"
@@ -44,37 +54,37 @@ es:
       sign_out: "Cerrar Sesión"
   services:
     update:
-      service_was_successfully_updated: "Se ha actualizado el servicio exitosamente"
+      service_was_successfully_updated: "Se ha actualizado el servicio exitosamente."
     edit:
       edit_service: "Editar servicio"
     new:
       new_service: "Nuevo servicio"
     create:
-      service_was_successfully_created: "Se ha creado el servicio exitosamente"
+      service_was_successfully_created: "Se ha creado el servicio exitosamente."
     destroy:
-      service_was_successfully_destroyed: "Se ha eliminado el servicio exitosamente"
+      service_was_successfully_destroyed: "Se ha eliminado el servicio exitosamente."
   references:
     update:
-      reference_was_successfully_updated: "Se ha actualizado la referencia exitosamente"
+      reference_was_successfully_updated: "Se ha actualizado la referencia exitosamente."
     edit:
       edit_reference: "Editar referencia"
     new:
       new_reference: "Nueva referencia"
     create:
-      reference_was_successfully_created: "Se ha creado la referencia exitosamente"   
+      reference_was_successfully_created: "Se ha creado la referencia exitosamente."   
     destroy:  
-      reference_was_successfully_destroyed: "Se ha eliminado la referencia exitosamente"
+      reference_was_successfully_destroyed: "Se ha eliminado la referencia exitosamente."
   articles:
     update:
-      article_was_successfully_updated: "Se ha actualizado la noticia exitosamente"
+      article_was_successfully_updated: "Se ha actualizado la noticia exitosamente."
     edit:
       edit_article: "Editar noticia"
     new:
       new_article: "Nueva noticia"
     create:
-      article_was_successfully_created: "Se ha creado la noticia exitosamente" 
+      article_was_successfully_created: "Se ha creado la noticia exitosamente." 
     destroy:  
-      article_was_successfully_destroyed: "Se ha eliminado la noticia exitosamente"
+      article_was_successfully_destroyed: "Se ha eliminado la noticia exitosamente."
   date:
     abbr_day_names:
     - dom

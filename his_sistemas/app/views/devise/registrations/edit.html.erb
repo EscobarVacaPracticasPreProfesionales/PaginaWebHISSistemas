@@ -12,27 +12,46 @@
     <div class="col-md-5 rale mb-5">
       <h1 class="mont"><%=t('.title', resource: resource.model_name.human)%></h1>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put ,class: 'reg'}) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
         <%= f.fields_for :contact do |c| %>
             <div class="form-row">
               <div class="field col form-group">
                 <%= c.label :name %>
                 <%= c.text_field :name , autofocus: true, class: 'form-control'%>
+                <% if flash[:errors].present?  && flash[:errors].key?('contact.name') %>
+                  <% flash[:errors]['contact.name'].each do |msg|%>
+                    <small class="rl lato"><%=msg%></small>                  
+                  <%end%>
+                <%end%>
               </div>
               <div class="field col form-group">
                 <%= c.label :lastname %>
                 <%= c.text_field :lastname, class: 'form-control' %>
+                <% if flash[:errors].present?  && flash[:errors].key?('contact.lastname') %>
+                  <% flash[:errors]['contact.lastname'].each do |msg|%>
+                    <small class="rl lato"><%=msg%></small>                  
+                  <%end%>
+                <%end%>
               </div>
             </div>
             <%= c.hidden_field  :emailcontact %>
             <div class="field form-group">
               <%= c.label :company, 'Compañía'  %>
               <%= c.text_field :company, class: 'form-control'  %>
+              <% if flash[:errors].present?  && flash[:errors].key?('contact.company') %>
+                  <% flash[:errors]['contact.company'].each do |msg|%>
+                    <small class="rl lato"><%=msg%></small>                  
+                  <%end%>
+                <%end%>
             </div>
             <div class="form-row">
               <div class="field col form-group">
                 <%= c.label :phone1, 'Teléfono 1' %>
                 <%= c.text_field :phone1, class: 'form-control'   %>
+                <% if flash[:errors].present?  && flash[:errors].key?('contact.phone1') %>
+                  <% flash[:errors]['contact.phone1'].each do |msg|%>
+                    <small class="rl lato"><%=msg%></small>                  
+                  <%end%>
+                <%end%>
               </div>
               <div class="field col form-group">
                 <%= c.label :phone2, 'Teléfono 2' %>
@@ -43,6 +62,11 @@
         <div class="field form-group">
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+          <% if flash[:errors].present?  && flash[:errors].key?('email') %>
+                  <% flash[:errors]['email'].each do |msg|%>
+                    <small class="rl lato"><%=msg%></small>                  
+                  <%end%>
+                <%end%>
         </div>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -55,16 +79,31 @@
           <% if @minimum_password_length %>
             <em><%= @minimum_password_length %> <%= t('.characters_minimum') %></em>
           <% end %>
+          <% if flash[:errors].present?  && flash[:errors].key?('password') %>
+            <% flash[:errors]['password'].each do |msg|%>
+              <small class="rl lato"><%=msg%></small>                  
+            <%end%>
+          <%end%>
         </div>
 
         <div class="field form-group">
           <%= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+          <% if flash[:errors].present?  && flash[:errors].key?('password_confirmation') %>
+            <% flash[:errors]['password_confirmation'].each do |msg|%>
+              <small class="rl lato"><%=msg%></small>                  
+            <%end%>
+          <%end%>
         </div>
 
         <div class="field form-group">
           <strong><%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br /></strong>
           <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
+          <% if flash[:errors].present?  && flash[:errors].key?('current_password') %>
+            <% flash[:errors]['current_password'].each do |msg|%>
+              <small class="rl lato"><%=msg%></small>                  
+            <%end%>
+          <%end%>
         </div>
 
         <div class="actions">

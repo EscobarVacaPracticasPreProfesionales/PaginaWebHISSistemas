@@ -13,12 +13,12 @@
 ActiveRecord::Schema.define(version: 2019_03_14_164425) do
 
   create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.text "content"
-    t.string "pictures"
-    t.string "figcaption"
-    t.date "fecha"
+    t.string "title", null: false
+    t.text "description", null: false
+    t.text "content", null: false
+    t.string "pictures", null: false
+    t.string "figcaption", null: false
+    t.date "fecha", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -26,21 +26,22 @@ ActiveRecord::Schema.define(version: 2019_03_14_164425) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.string "name"
-    t.string "lastname"
-    t.string "emailcontact"
-    t.string "company"
-    t.string "phone1"
-    t.string "phone2"
+    t.string "name", null: false
+    t.string "lastname", null: false
+    t.string "emailcontact", null: false
+    t.string "company", null: false
+    t.string "phone1", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "phone2"
+    t.string "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x00007ffff98c5158>"
   end
 
   create_table "references", force: :cascade do |t|
-    t.string "pictures"
-    t.string "title"
-    t.string "content"
-    t.integer "year"
+    t.string "pictures", null: false
+    t.string "title", null: false
+    t.string "content", null: false
+    t.integer "year", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,9 +49,9 @@ ActiveRecord::Schema.define(version: 2019_03_14_164425) do
   end
 
   create_table "services", force: :cascade do |t|
-    t.string "pictures"
-    t.string "title"
-    t.text "description"
+    t.string "pictures", null: false
+    t.string "title", null: false
+    t.text "description", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -69,6 +70,15 @@ ActiveRecord::Schema.define(version: 2019_03_14_164425) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.integer "user_type_id"
     t.integer "contact_id"
     t.datetime "created_at", null: false

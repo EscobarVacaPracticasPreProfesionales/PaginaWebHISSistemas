@@ -40,6 +40,11 @@ class ServicesController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @service.errors, status: :unprocessable_entity }
+        flash[:errors] = @service.errors.messages.as_json
+        puts "***********+"
+        puts flash[:errors]
+        puts "***********+"
+
       end
     end
   end

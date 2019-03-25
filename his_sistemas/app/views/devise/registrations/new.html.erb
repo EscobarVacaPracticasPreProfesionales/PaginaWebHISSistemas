@@ -6,14 +6,16 @@
   <%= javascript_include_tag 'autoc', 'data-turbolinks-track': 'reload' %>
 <% end %>
 
-<div class="container mt-3">
-  <div class="row justify-content-center mb-3">
-    <a href="/home">
-      <%= image_tag(image_path("logo.png"),:class=>"img-fluid",:alt=>"logoRegistro") %>
-    </a>
+<div class="container pb-3">
+  <div class="row pt-3 pb-2">
+    <div class="col-9 col-sm-7 col-md-5 col-lg-4 col-xl-3 center">
+      <a href="/home">
+        <%= image_tag(image_path("logo.png"),:class=>"img-fluid",:alt=>"logoRegistro") %>
+      </a>
+    </div>
   </div>
   <div class="row justify-content-center reg">
-    <div class="col-md-6">
+    <div class="col-12 col-md-10 col-lg-6">
       <div class="card">
       <header class="card-header">
         <%= link_to t(".sign_in"), new_session_path(resource_name) , :class=>"float-right btn btn3 mt-1" %>
@@ -21,55 +23,87 @@
       </header>
       <article class="card-body rale">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= render "devise/shared/error_messages", resource: resource %>
           <%= f.fields_for :contact do |c| %>
             <div class="form-row">
               <div class="field col form-group">
                 <%= c.label :name %>
                 <%= c.text_field :name , autofocus: true, class: 'form-control'%>
+                <% if flash[:errors].present?  && flash[:errors].key?('contact.name') %>
+                  <% flash[:errors]['contact.name'].each do |msg|%>
+                    <small class="rl lato"><%=msg%></small>                  
+                  <%end%>
+                <%end%>
               </div>
               <div class="field col form-group">
                 <%= c.label :lastname %>
                 <%= c.text_field :lastname, class: 'form-control' %>
+                <% if flash[:errors].present?  && flash[:errors].key?('contact.lastname') %>
+                  <% flash[:errors]['contact.lastname'].each do |msg|%>
+                    <small class="rl lato"><%=msg%></small>                  
+                  <%end%>
+                <%end%>
               </div>
             </div>
             <div class="field form-group">
-              <%= c.label :company, 'Compañía'  %>
+              <%= c.label :company %>
               <%= c.text_field :company, class: 'form-control'  %>
+              <% if flash[:errors].present? && flash[:errors].key?('contact.company') %>
+                  <% flash[:errors]['contact.company'].each do |msg|%>
+                    <small class="rl lato"><%=msg%></small>                  
+                  <%end%>
+                <%end%>
             </div>
             <%=c.hidden_field :emailcontact %>
             
             <div class="form-row">
               <div class="field col form-group">
-                <%= c.label :phone1, 'Teléfono 1' %>
+                <%= c.label :phone1%>
                 <%= c.text_field :phone1, class: 'form-control'   %>
+                <% if flash[:errors].present? && flash[:errors].key?('phone1') %>
+                  <% flash[:errors]['contact.phone1'].each do |msg|%>
+                    <small class="rl lato"><%=msg%></small>                  
+                  <%end%>
+                <%end%>
               </div>
               <div class="field col form-group">
-                <%= c.label :phone2, 'Teléfono 2' %>
+                <%= c.label :phone2%>
                 <%= c.text_field :phone2, class: 'form-control'   %>
               </div>
             </div>
           <% end %>
           <div class="field form-group">
-              <%= f.label :email, 'Email' %>
+              <%= f.label :email %>
               <%= f.email_field :email, class: 'form-control'  %>
+              <% if flash[:errors].present?  && flash[:errors].key?('email') %>
+                  <% flash[:errors]['email'].each do |msg|%>
+                    <small class="rl lato"><%=msg%></small>                  
+                  <%end%>
+                <%end%>
             </div>
-            <% if @user_admin %>
               <div class="field form-group">
-                <%= f.label :user_type_id, 'Tipo de Usuario' %>
+                <%= f.label :user_type_id %>
                 <%= f.select(:user_type_id,options_from_collection_for_select(@user_types, 'id', 'tipo',2), {}, { :class => 'form-control' } )%>
               </div>
-            <%end%>
           <div class="field form-group">
-            <%= f.label :password, 'Contraseña' %>
+            <%= f.label :password%>
             <% if @minimum_password_length %>
-            <em>(Mínimo <%= @minimum_password_length %> caracteres)</em>
+            <em>(<%= @minimum_password_length %> <%= t('.characters_minimum') %>)</em>
             <% end %><br />
             <%= f.password_field :password, autocomplete: "new-password", class: 'form-control'   %>
+            <% if flash[:errors].present? && flash[:errors].key?('password')  %>
+                  <% flash[:errors]['password'].each do |msg|%>
+                    <small class="rl lato"><%=msg%></small>                  
+                  <%end%>
+                <%end%>
           </div>
           <div class="field form-group">
-            <%= f.label :password_confirmation, 'Confirmar contraseña' %><br />
+            <%= f.label :password_confirmation %><br />
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+            <% if flash[:errors].present? && flash[:errors].key?('password_confirmation') %>
+                  <% flash[:errors]['password_confirmation'].each do |msg|%>
+                    <small class="rl lato"><%=msg%></small>                  
+                  <%end%>
+                <%end%>
           </div>
           <div class="actions">
             <%= f.submit t(".sign_up"), id: "submit" ,class: "btn btn-block btn2 lato" %>

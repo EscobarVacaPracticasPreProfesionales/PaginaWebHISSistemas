@@ -33,7 +33,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       set_minimum_password_length
-      flash[:errors] = flash[:errors].to_a.concat resource.errors.full_messages
+      flash[:errors] = resource.errors.messages.as_json
       redirect_to '/users/sign_up'
     end
   end
@@ -57,7 +57,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       set_minimum_password_length
-      flash[:errors] = flash[:errors].to_a.concat resource.errors.full_messages
+      flash[:errors] = resource.errors.messages.as_json
       redirect_to '/users/edit'
     end
   end
