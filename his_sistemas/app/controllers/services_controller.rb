@@ -117,9 +117,12 @@ class ServicesController < ApplicationController
     end
 
     def path(bool,model,model_url)
-      if bool
+      if @bool=='true'
         model_url
       else
+        puts "********21212"
+        puts @bool
+        puts "********123123"
         model
       end
     end
