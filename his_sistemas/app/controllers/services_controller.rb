@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update, :destroy, :destroy_picture]
+  before_action :set_service, only: [:show, :edit, :update, :destroy, :destroy_picture, :validate_before]
   before_action :require_admin, only: [:show, :edit, :update, :destroy, :destroy_picture]
   before_action :is_admin, only: [:index]
   # GET /services
@@ -33,18 +33,16 @@ class ServicesController < ApplicationController
         if @upictures=='false'
           format.html { redirect_to @service, notice: t('.service_was_successfully_created') }
           format.json { render :show, status: :created, location: @service }
+          flash[:errors] = nil
         else
           format.html { redirect_to edit_service_path(@service)}
           format.json { render :edit, status: :ok, location: @service }
+          flash[:errors] = nil
         end
       else
-        format.html { render :new }
+        format.js
         format.json { render json: @service.errors, status: :unprocessable_entity }
         flash[:errors] = @service.errors.messages.as_json
-        puts "***********+"
-        puts flash[:errors]
-        puts "***********+"
-
       end
     end
   end
@@ -53,20 +51,38 @@ class ServicesController < ApplicationController
   # PATCH/PUT /services/1.json
   def update
     @upictures=params[:update_pictures].to_s
+    @bool=params[:back].to_s
+    puts "********"
+    puts @bool
+    puts "********"
     updated_params=add_pictures(@service,service_params)
-    
     respond_to do |format|
       if @service.update(updated_params)
         if @upictures=='false'
-          format.html { redirect_to @service, notice: t('.service_was_successfully_updated') }
+          format.html { redirect_to path(@bool,@service,services_url), notice: t('.service_was_successfully_updated') }
           format.json { render :show, status: :ok, location: @service }
+          flash[:errors] = nil
         else
           format.js
           format.json { render :edit, status: :ok, location: @service }
+          flash[:errors] = nil
         end
       else
-        format.html { render :edit }
+        format.js
         format.json { render json: @service.errors, status: :unprocessable_entity }
+        flash[:errors] = @service.errors.messages.as_json
+      end
+    end
+  end
+
+  def validate_before
+    puts "ASHDJAHSEEEEEEEEEEEEEEOOOOOOOOOOOOO"
+    @gg=true
+    respond_to do |format|
+      if @gg
+        format.html { redirect_to "/", notice: t('.webo') }
+      else
+        format.js
       end
     end
   end
@@ -98,5 +114,13 @@ class ServicesController < ApplicationController
 
     def require_admin
       admin_require(services_url)
+    end
+
+    def path(bool,model,model_url)
+      if bool
+        model_url
+      else
+        model
+      end
     end
 end

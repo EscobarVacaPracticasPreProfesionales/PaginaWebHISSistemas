@@ -50,6 +50,7 @@ es:
         phone1: "Teléfono 1"
         phone2: "Teléfono 2"
         characters_minimum: 'carácteres mínimo'
+        do_not_change_it_if_none: 'No modificar si no pertenece a alguna.'
       edit: 
         cancel: "Anular"
         currently_waiting_confirmation_for: 'Esperando la confirmación de: '

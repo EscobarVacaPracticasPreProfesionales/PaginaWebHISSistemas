@@ -5,8 +5,12 @@
 
 	<div class="row rale mb-3">
 		<div class="col-12 col-md-6">
-			<%= render 'form', service: @service %>
-      		<%= link_to '<i class="fas fa-angle-left"></i>'.html_safe, services_path,class: "btn btn1 mt-3"%>
+			<div id="showform">
+				<%= render 'form', service: @service %>
+			</div>
+			<div class="mt-3">
+	      		<span id="validate" class="btn btn2"><i class="fas fa-angle-left"></i></span>
+			</div>
 		</div>
 		<div class="col-12 col-md-6">
 			<% if @service.pictures.any? %>

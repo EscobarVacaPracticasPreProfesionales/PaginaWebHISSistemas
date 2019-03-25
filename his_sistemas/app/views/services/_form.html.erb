@@ -1,39 +1,39 @@
 <%= form_with(model: service) do |form| %>
-  <% if service.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-      <%= I18n.t("errors.messages.not_saved",
-                 count: service.errors.count,
-                 resource: service.class.model_name.human.downcase)
-       %>
-      </h2>
-      <ul>
-      <% service.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-    
   <div class="form row">
     <div class="field col-12 form-group">
       <%= form.label :pictures %>
       <%= form.file_field :pictures, multiple: true, class: 'form-control lato'%>
+      <% if flash[:errors].present?  && flash[:errors].key?('pictures') %>
+        <% flash[:errors]['pictures'].each do |msg|%>
+          <small class="rl lato"><%=msg%></small>                  
+        <%end%>
+      <%end%>
     </div>
 
     <div class="field col-12 form-group">
       <%= form.label :title %>
       <%= form.text_field :title, class: 'form-control lato'%>
+      <% if flash[:errors].present?  && flash[:errors].key?('title') %>
+        <% flash[:errors]['title'].each do |msg|%>
+          <small class="rl lato"><%=msg%></small>                  
+        <%end%>
+      <%end%>
     </div>
 
     <div class="field col-12 form-group">
       <%= form.label :description %>
       <%= form.text_area :description, class: 'form-control lato', rows: 5%>
+      <% if flash[:errors].present?  && flash[:errors].key?('description') %>
+        <% flash[:errors]['description'].each do |msg|%>
+          <small class="rl lato"><%=msg%></small>                  
+        <%end%>
+      <%end%>
     </div>
 
     <%= form.hidden_field :user_id, value: current_user.id %>
 
     <%= hidden_field_tag :update_pictures, false%>
+    <%= hidden_field_tag :back, false%>
 
     <div class="col-12 actions">
       <%= form.submit t('pub'), class: "btn btn2 lato"%>

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   put 'services/destroy_picture'
-  put 'services/update_picture'
   put 'references/destroy_picture'
   put 'articles/destroy_picture'
+  post 'services/validate_before'
   resources :contacts
   resources :articles
   resources :references
