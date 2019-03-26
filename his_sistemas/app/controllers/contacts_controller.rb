@@ -56,6 +56,14 @@ class ContactsController < ApplicationController
     end
   end
 
+  def check_contact
+      Contact.where(id: params[:contacto_id]).update_all(wascontacted: true)
+  end
+
+  def uncheck_contact
+      Contact.where(id: params[:contacto_id]).update_all(wascontacted: false)
+  end
+
   # DELETE /contacts/1
   # DELETE /contacts/1.json
   def destroy
@@ -80,4 +88,6 @@ class ContactsController < ApplicationController
     def require_admin
       admin_require(services_url)
     end
+
+
 end

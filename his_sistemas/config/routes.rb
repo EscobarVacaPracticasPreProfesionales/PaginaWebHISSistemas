@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   put 'services/destroy_picture'
   put 'services/update_picture'
   put 'references/destroy_picture'
+  put 'contacts/check_contact'
   put 'articles/destroy_picture'
   resources :contacts
   resources :articles

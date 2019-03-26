@@ -117,22 +117,31 @@
 			      </tr>
 			    </thead>
 			    <tbody>
+			   	<%= form_tag({controller: "contacts", action: "check_contact"}, method: :put)  do %> 
 			    <% @contacts.each do |contact|%>
-			      <tr class="item">
-			      	<td><%= check_box_tag "contacto_id", contact.id, false, class: 'checkContact' %> </td>
-			        <td><%= contact.name %></td>
-			        <td><%= contact.lastname %></td>
-			        <td><%= contact.company %></td>
-			        <td><%= contact.phone1 %></td>
-			        <td><%= contact.phone2 %></td>
-			        <td><%= contact.emailcontact %></td>
-			        <td>
-			        	<i class="fas fa-eye" data-toggle="tooltip" data-placement="top" title="Contactado"></i>
-						<i class="fas fa-eye-slash" data-toggle="tooltip" data-placement="top" title="No contactado"></i>
-						<i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Borrar"></i>
-			        </td>
+			    	<% if contact.wascontacted? %>
+			    	<tr class="item">
+			    	<% else %>
+			    	<tr class="item font-weight-bold">
+			    	<% end %>
+			    		
+				      	<td><%= check_box_tag "contacto_id[]", contact.id, false, class: 'checkContact' %> </td>
+				      	
+						
+				      	<td><%= contact.name %></td>
+				        <td><%= contact.lastname %></td>
+				        <td><%= contact.company %></td>
+				        <td><%= contact.phone1 %></td>
+				        <td><%= contact.phone2 %></td>
+				        <td><%= contact.emailcontact %></td>
+				        <td>
+				        	<i class="fas fa-eye" data-toggle="tooltip" data-placement="top" title="Contactado"></i>
+							<i class="fas fa-eye-slash" data-toggle="tooltip" data-placement="top" title="No contactado"></i>
+							<i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Borrar"></i>
+				        </td>
 			      </tr>
-			     
+			      <%end%>
+			      <%= submit_tag 'contactado' %>
 			      <%end%>
 			    </tbody>
 			  </table>

@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 2019_03_14_164425) do
     t.string "emailcontact", null: false
     t.string "company", null: false
     t.string "phone1", null: false
+    t.string "phone2"
+    t.boolean "wascontacted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "phone2"
-    t.string "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x00007ffff98c5158>"
   end
 
   create_table "references", force: :cascade do |t|
