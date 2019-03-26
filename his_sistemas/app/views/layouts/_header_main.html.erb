@@ -8,7 +8,7 @@
 				<div class="px-3 d-none d-md-block my-auto">
       				<% if user_signed_in? %>
       				<div class="dropdown">
-					  <button class="btn btn2 dropdown-toggle" type="button" data-toggle="dropdown"><i class="fas fa-user"></i> <%= current_user.contact.name%> <%= current_user.contact.lastname%>
+					  <button class="btn btn2 dropdown-toggle lato" type="button" data-toggle="dropdown"><i class="fas fa-user"> </i> <%= current_user.contact.name%> <%= current_user.contact.lastname%>
 					  <span class="caret"></span></button>
 					  <div class="dropdown-menu dropdown-menu-right px-3">
 					    	<%= link_to(edit_user_registration_path, :class => 'lato dropdown-item mb-2') do %>

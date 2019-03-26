@@ -1,2 +1,14 @@
 $('#result').html("<%= escape_javascript(render 'images') %>")
+$('#showform').html("<%= escape_javascript(render 'form', service: @service) %>")
 $( 'input[type=file]').val("");
+
+$( "input[type=file]" ).change(function() {
+    $('#update_pictures').val(true);
+    form = document.querySelector('form');
+    Rails.fire(form, 'submit');
+});
+
+$( 'input[name=commit]' ).click(function(){
+	$('#update_pictures').val(false);
+});
+

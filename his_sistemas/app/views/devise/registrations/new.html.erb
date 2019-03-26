@@ -45,8 +45,8 @@
               </div>
             </div>
             <div class="field form-group">
-              <%= c.label :company %>
-              <%= c.text_field :company, class: 'form-control'  %>
+              <%= c.label :company %> <small>(<%= t(".do_not_change_it_if_none")%>)</small>
+              <%= c.text_field :company, class: 'form-control' %>
               <% if flash[:errors].present? && flash[:errors].key?('contact.company') %>
                   <% flash[:errors]['contact.company'].each do |msg|%>
                     <small class="rl lato"><%=msg%></small>                  
@@ -59,7 +59,7 @@
               <div class="field col form-group">
                 <%= c.label :phone1%>
                 <%= c.text_field :phone1, class: 'form-control'   %>
-                <% if flash[:errors].present? && flash[:errors].key?('phone1') %>
+                <% if flash[:errors].present? && flash[:errors].key?('contact.phone1') %>
                   <% flash[:errors]['contact.phone1'].each do |msg|%>
                     <small class="rl lato"><%=msg%></small>                  
                   <%end%>

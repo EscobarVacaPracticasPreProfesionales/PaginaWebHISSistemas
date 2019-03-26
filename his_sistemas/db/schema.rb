@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2019_03_14_164425) do
     t.string "title", null: false
     t.text "description", null: false
     t.text "content", null: false
-    t.string "pictures", null: false
+    t.string "pictures"
     t.string "figcaption", null: false
     t.date "fecha", null: false
     t.integer "user_id"
@@ -29,16 +29,17 @@ ActiveRecord::Schema.define(version: 2019_03_14_164425) do
     t.string "name", null: false
     t.string "lastname", null: false
     t.string "emailcontact", null: false
-    t.string "company", null: false
+    t.string "company", default: "N/A"
     t.string "phone1", null: false
-    t.string "phone2"
-    t.boolean "wascontacted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "phone2"
+    t.boolean "wascontacted", default: false
+    t.string "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x00007fffe58c4f50>"
   end
 
   create_table "references", force: :cascade do |t|
-    t.string "pictures", null: false
+    t.string "pictures"
     t.string "title", null: false
     t.string "content", null: false
     t.integer "year", null: false
@@ -49,7 +50,7 @@ ActiveRecord::Schema.define(version: 2019_03_14_164425) do
   end
 
   create_table "services", force: :cascade do |t|
-    t.string "pictures", null: false
+    t.string "pictures"
     t.string "title", null: false
     t.text "description", null: false
     t.integer "user_id"

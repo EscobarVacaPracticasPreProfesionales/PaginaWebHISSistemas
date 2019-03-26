@@ -5,6 +5,7 @@ es:
   description: 'Descripción: '
   year: 'Año: '
   pub: "Publicar"
+  next: "Siguiente"
   picture_was_successfully_deleted: "La imagen se ha eliminado"
   activerecord:
     models:

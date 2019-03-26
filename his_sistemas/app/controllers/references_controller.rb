@@ -20,6 +20,7 @@ class ReferencesController < ApplicationController
 
   # GET /references/1/edit
   def edit
+     @new_record=params[:is_new]
   end
 
   # POST /references
@@ -34,7 +35,7 @@ class ReferencesController < ApplicationController
           format.html { redirect_to @reference, notice: t('.reference_was_successfully_created') }
           format.json { render :show, status: :created, location: @reference }
         else
-          format.html { redirect_to edit_reference_path(@reference)}
+          format.html { redirect_to edit_reference_path(@reference,is_new: true)}
           format.json { render :edit, status: :ok, location: @reference }
         end
       else

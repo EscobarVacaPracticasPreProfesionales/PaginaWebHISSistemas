@@ -4,7 +4,7 @@ class CreateContacts < ActiveRecord::Migration[5.2]
       t.string :name,         null: false
       t.string :lastname,     null: false
       t.string :emailcontact, null: false
-      t.string :company,      null: false
+      t.string :company,      default: "N/A"
       t.string :phone1,       null: false
       t.string :phone2               
       t.boolean :wascontacted, default: false

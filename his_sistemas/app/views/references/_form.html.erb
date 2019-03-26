@@ -1,39 +1,43 @@
 <%= form_with(model: reference) do |form| %>
-  <% if reference.errors.any? %>
-    <div id="error_explanation">
-      <h2> 
-        <%= I18n.t("errors.messages.not_saved",
-                 count: reference.errors.count,
-                 resource: reference.class.model_name.human.downcase)
-        %>
-      </h2>
-      <ul>
-      <% reference.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="form row">
     <div class="field col-12 form-group">
       <%= form.label :pictures %>
       <%= form.file_field :pictures, multiple: true , class: 'form-control lato'%>
+      <% if flash[:errors].present?  && flash[:errors].key?('pictures') %>
+        <% flash[:errors]['pictures'].each do |msg|%>
+          <small class="rl lato"><%=msg%></small>                  
+        <%end%>
+      <%end%>
     </div>
 
     <div class="field col-12 form-group">
       <%= form.label :title %>
       <%= form.text_field :title, required: true, class: 'form-control lato' %>
+      <% if flash[:errors].present?  && flash[:errors].key?('title') %>
+        <% flash[:errors]['title'].each do |msg|%>
+          <small class="rl lato"><%=msg%></small>                  
+        <%end%>
+      <%end%>
     </div>
 
     <div class="field col-12 form-group">
       <%= form.label :content %>
       <%= form.text_area :content, required: true, class: 'form-control lato', rows: 5%>
+      <% if flash[:errors].present?  && flash[:errors].key?('content') %>
+        <% flash[:errors]['content'].each do |msg|%>
+          <small class="rl lato"><%=msg%></small>                  
+        <%end%>
+      <%end%>
     </div>
 
     <div class="field col-12 form-group">
       <%= form.label :year %>
       <%= form.number_field :year, required: true, class: 'form-control lato' %>
+      <% if flash[:errors].present?  && flash[:errors].key?('year') %>
+        <% flash[:errors]['year'].each do |msg|%>
+          <small class="rl lato"><%=msg%></small>                  
+        <%end%>
+      <%end%>
     </div>
 
     <%= form.hidden_field :user_id, value: current_user.id %>
