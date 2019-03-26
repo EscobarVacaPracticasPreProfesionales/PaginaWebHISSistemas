@@ -23,6 +23,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+     @new_record=params[:is_new]
   end
 
   # POST /articles
@@ -37,7 +38,7 @@ class ArticlesController < ApplicationController
           format.html { redirect_to @article, notice: t('.article_was_successfully_created') }
           format.json { render :show, status: :created, location: @article }
         else
-          format.html { redirect_to edit_article_path(@article)}
+          format.html { redirect_to edit_article_path(@article,is_new: true)}
           format.json { render :edit, status: :ok, location: @article }
         end
       else
