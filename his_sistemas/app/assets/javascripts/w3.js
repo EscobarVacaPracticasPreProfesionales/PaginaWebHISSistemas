@@ -2,13 +2,18 @@
 "use strict";
 var w3 = {};
 
-$("#checkAll").click(function () {
+$(document).on('click','#checkAll', {}, function () {
     $(".checkContact").prop('checked', $(this).prop('checked'));
 });
 
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip(); 
 });
+
+
+$('[data-toggle="tooltip"]').on('click', function () {
+    $(this).tooltip('hide')
+}) 
 
 w3.getElements = function (id) {
   if (typeof id == "object") {
