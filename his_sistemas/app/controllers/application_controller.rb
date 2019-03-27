@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
 	before_action :store_user_location!, if: :storable_location?
+	
 	private
 	# Its important that the location is NOT stored if:
 	# - The request method is not GET (non idempotent)
@@ -9,6 +10,7 @@ class ApplicationController < ActionController::Base
 	def storable_location?
 	  request.get? && is_navigational_format? && !devise_controller? && !request.xhr? 
 	end
+
 
 	def store_user_location!
 	  # :user is the scope we are authenticating
