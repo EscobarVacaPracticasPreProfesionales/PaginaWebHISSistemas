@@ -17,8 +17,8 @@
             <div class="center imgServicios">
               <div class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                  <% if service.pictures.any?%>
-                    <% service.pictures.each do |pic| %>
+                  <% if service.picture.files.any?%>
+                    <% service.picture.files.each do |pic| %>
                       <div class="carousel-item">
                         <%= image_tag(pic.url,:alt=>"servicio") %>
                       </div>

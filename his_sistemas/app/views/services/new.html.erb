@@ -12,9 +12,8 @@
 			</div>
 		</div>
 		<div class="col-12 col-md-6">
-			<% if @service.pictures.any? %>
+			<% if @service.picture.present? %>
 				<div class="row" id="result">
-					<%=render 'images'%>
 				</div>
 			<%end%>
 		</div>

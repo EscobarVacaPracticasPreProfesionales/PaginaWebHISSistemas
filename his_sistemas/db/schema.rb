@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_14_164425) do
+ActiveRecord::Schema.define(version: 2019_03_27_160602) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title", null: false
@@ -31,11 +31,16 @@ ActiveRecord::Schema.define(version: 2019_03_14_164425) do
     t.string "emailcontact", null: false
     t.string "company", default: "N/A"
     t.string "phone1", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "phone2"
     t.boolean "wascontacted", default: false
-    t.string "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x00007fffe58c4f50>"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string "files", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "references", force: :cascade do |t|
@@ -50,12 +55,13 @@ ActiveRecord::Schema.define(version: 2019_03_14_164425) do
   end
 
   create_table "services", force: :cascade do |t|
-    t.string "pictures"
     t.string "title", null: false
     t.text "description", null: false
     t.integer "user_id"
+    t.integer "picture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["picture_id"], name: "index_services_on_picture_id"
     t.index ["user_id"], name: "index_services_on_user_id"
   end
 

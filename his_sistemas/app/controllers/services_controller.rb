@@ -15,42 +15,44 @@ class ServicesController < ApplicationController
 
   # GET /services/new
   def new
-    @service = Service.new
-    @@pics=[]
+    @@servicec = Service.new
+    @@pictures= Picture.new
+    @service=@@servicec
+    @@servicec.picture=@@pictures
   end
 
   # GET /services/1/edit
   def edit
-     @new_record=params[:is_new]
   end
 
   # POST /services
   # POST /services.json
   def create
-    @upictures=params[:update_pictures].to_s
-    @@pics+=service_params[:pictures]
-    service_params[:pictures]=@@pics
-    flash[:errors] = nil
-    if @upictures=='false'
-      @service = Service.new(service_params)
-    else
-      puts "*****************"
-      service_params[:pictures]=@@pics
-      puts service_params[:pictures].to_s
-      puts "*****************"
+    @@pictures.files+=params['service']['picture_attributes']['files']
+    
+    if params[:update_pictures].to_s == "true"
+      @@servicec.picture=@@pictures
+      @service=@@servicec
       respond_to do |format|
         format.js
+        format.json { render :new, status: :ok, location: @service }
       end
-      return
-    end
-    respond_to do |format|
-      if @service.save
-        format.html { redirect_to @service, notice: t('.service_was_successfully_created') }
-        format.json { render :show, status: :created, location: @service }
-      else
-        format.js
-        format.json { render json: @service.errors, status: :unprocessable_entity }
-        flash[:errors] = @service.errors.messages.as_json
+    else
+      puts "***********"
+      puts @@pictures.files.to_json
+      puts "***********"
+      @service = Service.new(service_params)
+      @service.picture=@@pictures
+      
+      respond_to do |format|
+        if @service.save
+          format.html { redirect_to @service, notice: t('.service_was_successfully_created') }
+          format.json { render :show, status: :created, location: @service }
+        else
+          format.js
+          format.json { render json: @service.errors, status: :unprocessable_entity }
+          flash[:errors] = @service.errors.messages.as_json
+        end
       end
     end
   end
@@ -100,7 +102,7 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:title, :description, :user_id, {pictures: []})
+      params.require(:service).permit(:title, :description, :user_id, {:picture_attributes => [:files=>[]]})
     end
 
     def require_admin
