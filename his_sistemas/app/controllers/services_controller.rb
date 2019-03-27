@@ -1,7 +1,7 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy, :destroy_picture, :z]
-  before_action :require_admin, only: [:show, :edit, :update, :destroy, :destroy_picture]
-  before_action :is_admin, only: [:index]
+  before_action :require_admin, only: [:show, :edit, :new,:update, :destroy, :destroy_picture]
+  before_action :is_admin
   # GET /services
   # GET /services.json
   def index
@@ -16,6 +16,7 @@ class ServicesController < ApplicationController
   # GET /services/new
   def new
     @service = Service.new
+    @@pics=[]
   end
 
   # GET /services/1/edit
@@ -27,17 +28,25 @@ class ServicesController < ApplicationController
   # POST /services.json
   def create
     @upictures=params[:update_pictures].to_s
-    @service = Service.new(service_params)
+    @@pics+=service_params[:pictures]
+    service_params[:pictures]=@@pics
+    flash[:errors] = nil
+    if @upictures=='false'
+      @service = Service.new(service_params)
+    else
+      puts "*****************"
+      service_params[:pictures]=@@pics
+      puts service_params[:pictures].to_s
+      puts "*****************"
+      respond_to do |format|
+        format.js
+      end
+      return
+    end
     respond_to do |format|
       if @service.save
-        flash[:errors] = nil
-        if @upictures=='false'
-          format.html { redirect_to @service, notice: t('.service_was_successfully_created') }
-          format.json { render :show, status: :created, location: @service }
-        else
-          format.html { redirect_to edit_service_path(@service,is_new: true)}
-          format.json { render :edit, status: :ok, location: @service }
-        end
+        format.html { redirect_to @service, notice: t('.service_was_successfully_created') }
+        format.json { render :show, status: :created, location: @service }
       else
         format.js
         format.json { render json: @service.errors, status: :unprocessable_entity }
