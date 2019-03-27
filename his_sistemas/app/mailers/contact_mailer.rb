@@ -13,7 +13,7 @@ class ContactMailer < ApplicationMailer
 		@asunto=@contact[:asunto]
 		@mensaje=@contact[:mensaje]
 		@doc=@contact[:doc]
-		if @doc!=""
+		if @doc!= nil
 			attachments[@doc.original_filename] = @doc.read
 		end
 		mail(to:"hissistemasgye@gmail.com",subject: "HIS #{@asunto}")

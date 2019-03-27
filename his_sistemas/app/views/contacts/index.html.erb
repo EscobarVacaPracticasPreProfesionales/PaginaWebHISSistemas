@@ -4,6 +4,10 @@
 <% end %>
 <%= render "layouts/header_main" %>
 
+	<div class="container-fluid mt-3" id="tablaContacto">	
+		<%= render 'tablecontact' , contacts: @contacts %>
+	</div>
+
 <div id="formulario">
 	<section class="container" id="consultasHolder">
 		<div class="row">
@@ -31,7 +35,7 @@
 						</div>
 						<div class="form-group col-12 col-md-6">
 							<%=f.label(:phone2,"Teléfono 2: ")%>
-							<%= f.telephone_field(:phone2, :pattern =>"[0-9]{10}" , :placeholder=>"0999999999", :required=>true,:class=>"form-control")%>
+							<%= f.telephone_field(:phone2, :pattern =>"[0-9]{10}" , :placeholder=>"0999999999", :class=>"form-control")%>
 						</div>
 					</div>
 					<div class="form-group">
@@ -87,68 +91,9 @@
 		</div>
 	</section>
 	</div>
-	<div class="container">		
-		<div class="row">
-			<div class="table-responsive">
-			<table id='tabla' class="table table-hover">
-			    <thead class="wl">
-			      <tr>
-			      	<th class="toggle">
-			      		<%= check_box_tag "checkAll" %>
-			      		
-					    <button class="dropdown-toggle" data-toggle="dropdown">
-					    	<span class="caret"></span>
-						</button>
-					    <ul class="dropdown-menu">
-					      <li><i class="fas fa-eye ml-1"></i> Contactado</li>
-					      <li><i class="fas fa-eye-slash ml-1"></i> No Contactado</li>
-					      <li><i class="fas fa-trash-alt ml-1"></i> Borrar</li>
-					    </ul>
-					
-					</th>
-			        <th class="tableHeader"><%=t(".firstname")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(1)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".lastname")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(2)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".company")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(3)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".phone")%> 1<i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(4)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".phone")%> 2<i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(5)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".email")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(6)')" style="cursor:pointer"></i></th>
-			        <th class="buttons"></th>
-
-			      </tr>
-			    </thead>
-			    <tbody>
-			   	<%= form_tag({controller: "contacts", action: "check_contact"}, method: :put)  do %> 
-			    <% @contacts.each do |contact|%>
-			    	<% if contact.wascontacted? %>
-			    	<tr class="item">
-			    	<% else %>
-			    	<tr class="item font-weight-bold">
-			    	<% end %>
-			    		
-				      	<td><%= check_box_tag "contacto_id[]", contact.id, false, class: 'checkContact' %> </td>
-				      	
-						
-				      	<td><%= contact.name %></td>
-				        <td><%= contact.lastname %></td>
-				        <td><%= contact.company %></td>
-				        <td><%= contact.phone1 %></td>
-				        <td><%= contact.phone2 %></td>
-				        <td><%= contact.emailcontact %></td>
-				        <td>
-				        	<i class="fas fa-eye" data-toggle="tooltip" data-placement="top" title="Contactado"></i>
-							<i class="fas fa-eye-slash" data-toggle="tooltip" data-placement="top" title="No contactado"></i>
-							<i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Borrar"></i>
-				        </td>
-			      </tr>
-			      <%end%>
-			      <%= submit_tag 'contactado' %>
-			      <%end%>
-			    </tbody>
-			  </table>
-			</div>
-		</div>
+	
 		
-	</div>
+
 	
 
 

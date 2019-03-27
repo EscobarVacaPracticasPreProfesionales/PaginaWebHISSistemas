@@ -1,0 +1,7 @@
+$('#tablaContacto').html("<%= escape_javascript(render 'tablecontact', contacts: @contacts )%>")
+
+$('[data-toggle="tooltip"]').tooltip();
+
+$('[data-toggle="tooltip"]').on('click', function () {
+    $(this).tooltip('hide')
+}) 

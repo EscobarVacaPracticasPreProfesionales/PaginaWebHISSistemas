@@ -25,14 +25,24 @@
     height: 350px;
 }
 
-.dropdown-toggle{
+#checkToggle{
   background-color: #5CB1F7;
   border: 0;
   padding: 0;
   margin: 0;
+  color:white;
 }
 
-.dropdown-toggle:focus {
+td a{
+  color:black;
+}
+
+td a:hover{
+  color:black;
+}
+
+
+#checkToggle:focus {
   outline: none;
 }
 
@@ -55,6 +65,17 @@ i{
 
 .tableHeader{
   min-width:130px;
+}
+
+#submitContactado, #submitNoContactado{
+  padding-left:0;
+  padding-right:0;
+  padding-top:0;
+}
+
+#submitBorrar{
+  padding:0;
+  
 }
 
 #info{

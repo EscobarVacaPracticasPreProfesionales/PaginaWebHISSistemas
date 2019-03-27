@@ -7,7 +7,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    @contacts=Contact.where.not(id: User.where(user_type_id: 1).select('contact_id'))
     new
   end
 
@@ -57,12 +57,21 @@ class ContactsController < ApplicationController
   end
 
   def check_contact
+    @contacts=Contact.where.not(id: User.where(user_type_id: 1).select('contact_id'))
+    if params[:contactado]
       Contact.where(id: params[:contacto_id]).update_all(wascontacted: true)
+    elsif params[:noContactado]
+      Contact.where(id: params[:contacto_id]).update_all(wascontacted: false)
+    else
+      Contact.where(id: params[:contacto_id]).destroy_all
+    end
+
+    respond_to do |format|
+      format.js
+      format.json { render :index, status: :ok, location: 'index' }
+    end
   end
 
-  def uncheck_contact
-      Contact.where(id: params[:contacto_id]).update_all(wascontacted: false)
-  end
 
   # DELETE /contacts/1
   # DELETE /contacts/1.json
