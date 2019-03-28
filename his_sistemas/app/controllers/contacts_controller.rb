@@ -28,7 +28,7 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    ContactMailer.with(contact: params[:contact]).contact_msg.deliver_now
+    ContactMailer.with(contact: email_params).contact_msg.deliver_later
     @contact = Contact.new(contact_params)
 
     respond_to do |format|
@@ -92,6 +92,10 @@ class ContactsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
       params.require(:contact).permit(:name,:lastname, :company, :phone1, :phone2, :emailcontact)
+    end
+
+    def email_params
+      params.require(:contact).permit(:name,:lastname, :company, :phone1, :phone2, :emailcontact, :asunto, :mensaje, :doc)
     end
 
     def require_admin
