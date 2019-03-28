@@ -8,6 +8,7 @@ class CreateArticles < ActiveRecord::Migration[5.2]
       t.string :figcaption,   null: false
       t.date :fecha,          null: false
       t.references :user, foreign_key: true
+      t.references :picture, foreign_key: true
 
       t.timestamps
     end

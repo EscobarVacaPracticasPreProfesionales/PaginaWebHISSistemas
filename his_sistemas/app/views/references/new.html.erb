@@ -1,15 +1,18 @@
 <%= render "layouts/header_main" %>
-<div class="container">
-	<h1 class="py-3"><%=t('.new_reference')%></h1>
-	<div class="row">
-		<div class="col-12 col-md-6">
-			<%= render 'form', reference: @reference %>
-      		<%= link_to '<i class="fas fa-angle-left"></i>'.html_safe, references_path, class: "btn btn1 mt-3"%>
+<div class="container pb-3">
+	<h1 class="py-3 mont"><%=t('.new_reference')%></h1>
+	<div class="row rale mb-3">
+		<div class="col-12 col-md-7 col-lg-6">
+			<div id="showform">
+				<%= render 'form', reference: @reference %>
+			</div>
+			<div class="mt-3">
+      			<%= link_to '<i class="fas fa-angle-left"></i>'.html_safe, references_path, class: "btn btn1 mt-3"%>
+			</div>
 		</div>
 		<div class="col-12 col-md-6">
-			<% if @reference.pictures.any? %>
+			<% if @reference.picture.present? %>
 				<div class="row" id="result">
-					<%=render 'images'%>
 				</div>
 			<%end%>
 		</div>

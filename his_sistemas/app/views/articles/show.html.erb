@@ -18,21 +18,20 @@
     <div  id="noticia" class="carousel slide imagen" data-ride="carousel">
       
       <div class="carousel-inner">
-        <% if @article.pictures.any?%>  
-          <% @article.pictures.each do |pic| %>
-            <div class="carousel-item">
-              <%= image_tag(pic.url,:class=>"imagen", :alt=>"imgNoticia")%>
-            </div>
-          <%end%>
+        <% @article.picture.files.each do |pic| %>
+          <div class="carousel-item">
+            <%= image_tag(pic.url,:class=>"imagen", :alt=>"imgNoticia")%>
+          </div>
         <%end%>
       </div>
 
-      <% if @article.pictures.length >1 %>
-      <ol class="carousel-indicators">
-        <% @article.pictures.each_with_index do |indicator,index|%>
-        <li data-target="#noticia" data-slide-to="#{index}" class=""></li>
+      <% if @article.picture.files.length >1 %>
+      <ul class="carousel-indicators">
+        <% @article.picture.files.each_with_index do |indicator,index|%>
+        <li data-target="#noticia" data-slide-to='<%= index %>' class=""></li>
         <%end%>           
-      </ol>
+      </ul>
+      <%end%>   
       <a class="carousel-control-prev" href="#noticia" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
@@ -41,7 +40,6 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a> 
-      <%end%>   
 
     </div>
     

@@ -11,6 +11,10 @@ es:
     models:
       contact: "Información de contacto"
     attributes:
+      picture:
+        files: "Imágenes"
+      user:
+        user_type_id: 'Tipo de Usuario'
       contact:
         name: "Nombres"
         lastname: "Apellidos"

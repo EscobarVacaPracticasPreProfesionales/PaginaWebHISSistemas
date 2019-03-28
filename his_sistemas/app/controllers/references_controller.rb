@@ -1,6 +1,6 @@
 class ReferencesController < ApplicationController
-  before_action :set_reference, only: [:show, :edit, :update, :destroy, :destroy_picture]
-  before_action :require_admin, only: [:edit, :update, :destroy, :destroy_picture]
+  before_action :set_reference, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:edit, :edit, :new, :update, :destroy, :destroy_picture]
   before_action :is_admin, only: [:index]
   # GET /references
   # GET /references.json
@@ -15,32 +15,47 @@ class ReferencesController < ApplicationController
 
   # GET /references/new
   def new
-    @reference = Reference.new
+    flash[:errors] = nil
+    @@referencec = Reference.new
+    @@pictures= Picture.new
+    @reference=@@referencec
+    @@referencec.picture=@@pictures
   end
 
   # GET /references/1/edit
   def edit
-     @new_record=params[:is_new]
+    flash[:errors] = nil
+    @@pictures= Picture.new
+    @@pictures.files=@reference.picture.files
   end
 
   # POST /references
   # POST /references.json
   def create
-    @upictures=params[:update_pictures].to_s
-    @reference = Reference.new(reference_params)
-
-    respond_to do |format|
-      if @reference.save
-        if @upictures=='false'
+    if reference_params['picture_attributes']
+      if reference_params['picture_attributes']['files']
+        @@pictures.files+=reference_params['picture_attributes']['files']
+      end
+    end
+    if params[:update_pictures].to_s == "true"
+      @@referencec.picture=@@pictures
+      @reference=@@referencec
+      respond_to do |format|
+        format.js { render 'images' }
+        format.json { render :new, status: :ok, location: @reference }
+      end
+    else
+      @reference = Reference.new(reference_params)
+      @reference.picture=@@pictures
+      respond_to do |format|        
+        if @reference.save
           format.html { redirect_to @reference, notice: t('.reference_was_successfully_created') }
           format.json { render :show, status: :created, location: @reference }
         else
-          format.html { redirect_to edit_reference_path(@reference,is_new: true)}
-          format.json { render :edit, status: :ok, location: @reference }
+          flash[:errors] = @reference.errors.messages.as_json
+          format.js { render 'form' }
+          format.json { render json: @reference.errors, status: :unprocessable_entity }
         end
-      else
-        format.html { render :new }
-        format.json { render json: @reference.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -49,20 +64,34 @@ class ReferencesController < ApplicationController
   # PATCH/PUT /references/1.json
   def update
     @upictures=params[:update_pictures].to_s
-    updated_params=add_pictures(@reference,reference_params)
-
-    respond_to do |format|
-      if @reference.update(updated_params)
-        if @upictures=='false'
-          format.html { redirect_to @reference, notice: t('.reference_was_successfully_updated') }
-          format.json { render :show, status: :ok, location: @reference }
+    if reference_params['picture_attributes']
+      if reference_params['picture_attributes']['files']
+        @@pictures.files+=reference_params['picture_attributes']['files']
+      end
+    end
+    if @upictures=='true'
+      @reference.picture=@@pictures
+      respond_to do |format|
+        format.js { render 'images' }
+        format.json { render :edit, status: :ok, location: @reference }
+      end
+    else
+      @reference.assign_attributes(reference_params);
+      @reference.picture=@@pictures
+      respond_to do |format|
+        if @reference.save
+          if @upictures=='false'
+            format.html { redirect_to @reference, notice: t('.reference_was_successfully_updated') }
+            format.json { render :show, status: :ok, location: @reference }  
+          end
         else
-          format.js
-          format.json { render :edit, status: :ok, location: @reference }
+          format.js { render 'form' }
+          format.json { render json: @reference.errors, status: :unprocessable_entity }
+          flash[:errors] = @reference.errors.messages.as_json
+          puts "***************"
+          puts flash[:errors]
+          puts "***************"
         end
-      else
-        format.html { render :edit }
-        format.json { render json: @reference.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -78,7 +107,14 @@ class ReferencesController < ApplicationController
   end
 
   def destroy_picture
-    delete_picture(@reference,params[:index].to_i)
+    if params[:id]
+      @reference = Reference.find(params[:id])
+    else
+      @reference=@@referencec
+    end
+
+    @reference.picture=@@pictures
+    delete_picture(@@pictures,@reference,params[:index].to_i)
   end
 
   private
@@ -89,10 +125,10 @@ class ReferencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reference_params
-      params.require(:reference).permit(:title, :content, :year, :user_id, {pictures: []})
+      params.require(:reference).permit(:title, :content, :year, :user_id, {:picture_attributes => [:files=>[]]})
     end
 
     def require_admin
-      admin_require(services_url)
+      admin_require(references_url)
     end
 end
