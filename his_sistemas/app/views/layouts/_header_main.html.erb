@@ -57,7 +57,7 @@
 				<div class="input-group col-12 col-md-3">
 			    	<input type="text" class="form-control" placeholder="Buscar...">
 			    	<div class="input-group-append">
-				      	<%= link_to '<i class="fas fa-search"></i>'.html_safe, '/search' ,:class=>"btn btn2" %>
+				      	<%= link_to '<i class="fas fa-search"></i>'.html_safe, {controller: 'search', action: 'search_articles'},method: :get ,:class=>"btn btn2" %>
 			    	</div>
 				</div>
 				<div class="mt-2 d-md-none d-sm-block">
