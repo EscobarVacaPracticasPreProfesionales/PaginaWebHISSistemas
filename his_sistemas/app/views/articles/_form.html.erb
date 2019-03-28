@@ -2,7 +2,7 @@
   <div class="form-row">
     <div class="field col-12 form-group">
       <%= form.label :title %>
-      <%= form.text_field :title, required: true, class: 'form-control lato' %>
+      <%= form.text_field :title, class: 'form-control lato' %>
       <% if flash[:errors].present?  && flash[:errors].key?('title') %>
         <% flash[:errors]['title'].each do |msg|%>
           <small class="rl lato"><%=msg%></small>                  
@@ -12,7 +12,7 @@
 
     <div class="field col-12 form-group">
       <%= form.label :description %>
-      <%= form.text_area :description, required: true, class: 'form-control lato' %>
+      <%= form.text_area :description, class: 'form-control lato' %>
       <% if flash[:errors].present?  && flash[:errors].key?('description') %>
         <% flash[:errors]['description'].each do |msg|%>
           <small class="rl lato"><%=msg%></small>                  
@@ -22,7 +22,7 @@
 
     <div class="field col-12 form-group">
       <%= form.label :content %>
-      <%= form.text_area :content, required: true, class: 'form-control lato', 'id': :summernote %>
+      <%= form.text_area :content, class: 'form-control lato', 'id': :summernote %>
       <% if flash[:errors].present?  && flash[:errors].key?('content') %>
         <% flash[:errors]['content'].each do |msg|%>
           <small class="rl lato"><%=msg%></small>                  
@@ -33,7 +33,7 @@
     <%= form.fields_for :picture do |pic| %>
       <div class="field col-12 form-group">
         <%= pic.label :files %>
-        <%= pic.file_field :files, class: 'form-control lato', multiple: true%>
+        <%= pic.file_field :files, class: 'form-control lato', multiple: true,accept:".jpg, .jpeg, .gif, .png"%>
         <% if flash[:errors].present?  && flash[:errors].key?('picture.files') %>
           <% flash[:errors]['picture.files'].each do |msg|%>
             <small class="rl lato"><%=msg%></small>                  
@@ -44,7 +44,7 @@
 
     <div class="field col-12 form-group">
       <%= form.label :figcaption %>
-      <%= form.text_field :figcaption, required: true, class: 'form-control lato' %>
+      <%= form.text_field :figcaption, class: 'form-control lato' %>
       <% if flash[:errors].present?  && flash[:errors].key?('figcaption') %>
         <% flash[:errors]['figcaption'].each do |msg|%>
           <small class="rl lato"><%=msg%></small>                  
@@ -54,7 +54,7 @@
 
     <div class="field col-12 form-group">
       <%= form.label :fecha %>
-      <%= form.date_select :fecha, required: true, class: 'form-control lato' %>
+      <%= form.date_select :fecha, class: 'form-control lato' %>
       <% if flash[:errors].present?  && flash[:errors].key?('fecha') %>
         <% flash[:errors]['fecha'].each do |msg|%>
           <small class="rl lato"><%=msg%></small>                  

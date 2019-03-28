@@ -56,8 +56,8 @@
                     ¿Está seguro? No se pueden recuperar los datos una vez eliminados.
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn2" data-dismiss="modal">Cancelar</button>
-                    <%= link_to 'Eliminar', service, method: :delete, class: "btn btn-danger" %>
+                    <button type="button" class="btn btn2" data-dismiss="modal"><i class="fas fa-angle-left"></i></button>
+                    <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, service, method: :delete, class: "btn btn-danger" %>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 class ReferencesController < ApplicationController
   before_action :set_reference, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin, only: [:edit, :edit, :new, :update, :destroy, :destroy_picture]
+  before_action :require_admin, only: [:edit, :show, :new, :update, :destroy, :destroy_picture]
   before_action :is_admin, only: [:index]
   # GET /references
   # GET /references.json
@@ -88,9 +88,6 @@ class ReferencesController < ApplicationController
           format.js { render 'form' }
           format.json { render json: @reference.errors, status: :unprocessable_entity }
           flash[:errors] = @reference.errors.messages.as_json
-          puts "***************"
-          puts flash[:errors]
-          puts "***************"
         end
       end
     end

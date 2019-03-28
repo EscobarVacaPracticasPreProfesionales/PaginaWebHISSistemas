@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin, only: [:edit, :edit, :new, :update, :destroy, :destroy_picture]
-  before_action :is_admin, only: [:index]
+  before_action :require_admin, only: [:edit,:edit, :new, :update, :destroy, :destroy_picture]
+  before_action :is_admin, only: [:index, :show]
 
   # GET /articles
   # GET /articles.json
@@ -48,7 +48,7 @@ class ArticlesController < ApplicationController
         format.json { render :new, status: :ok, location: @article }
       end
     else
-    @article = article.new(article_params)
+    @article = Article.new(article_params)
       @article.picture=@@pictures
       respond_to do |format|        
         if @article.save

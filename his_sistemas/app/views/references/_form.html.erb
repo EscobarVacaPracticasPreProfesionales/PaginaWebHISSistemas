@@ -4,7 +4,7 @@
     <%= form.fields_for :picture do |pic| %>
       <div class="field col-12 form-group">
         <%= pic.label :files %>
-        <%= pic.file_field :files, class: 'form-control lato', multiple: true%>
+        <%= pic.file_field :files, class: 'form-control lato', multiple: true,accept:".jpg, .jpeg, .gif, .png"%>
         <% if flash[:errors].present?  && flash[:errors].key?('picture.files') %>
           <% flash[:errors]['picture.files'].each do |msg|%>
             <small class="rl lato"><%=msg%></small>                  
