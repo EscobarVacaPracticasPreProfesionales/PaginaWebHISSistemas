@@ -17,31 +17,14 @@ class ApplicationController < ActionController::Base
 	  store_location_for(:user, request.fullpath)
 	end
 
-	def add_pictures(model,model_params)
-		pictures=model.pictures
-		if model_params[:pictures]
-			pictures+=model_params[:pictures]
-		end
-		pics={pictures: pictures}
-		model_params.merge(pics)
-	end
-
-	def delete_picture(model, index)
-		remain_images=model.pictures
-		if index==0 && model.pictures.size==1
-			return
-		else
-			deleted_images=remain_images.delete_at(index)
-			#deleted_images.try(:remove!)
-		end
+	def delete_picture(pictures,model,index)
+		remain_images=pictures.files
+		deleted_images=remain_images.delete_at(index)
+		pictures.files=remain_images
+		model.picture=pictures
 	    respond_to do |format|
-	      if model.update(:pictures=>remain_images)
-	      	format.js
+	      	format.js {render 'images'}
 	        format.json { render :edit, status: :ok, location: model }
-	      else
-	        format.html { render :edit }
-	        format.json { render json: model.errors, status: :unprocessable_entity }
-	      end
 	    end
 	end
 	

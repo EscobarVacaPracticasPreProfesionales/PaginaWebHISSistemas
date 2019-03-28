@@ -1,6 +1,6 @@
 <%= form_with(model: service) do |form| %>
-  <%= form.fields_for :picture do |pic| %>
-    <div class="row">
+  <div class="form row">
+    <%= form.fields_for :picture do |pic| %>
       <div class="field col-12 form-group">
         <%= pic.label :files %>
         <%= pic.file_field :files, class: 'form-control lato', multiple: true%>
@@ -10,9 +10,7 @@
           <%end%>
         <%end%>
       </div>
-    </div>
-  <%end%>
-  <div class="form row">
+    <%end%>
     <div class="field col-12 form-group">
       <%= form.label :title %>
       <%= form.text_field :title, class: 'form-control lato'%>

@@ -30,15 +30,17 @@
       <%end%>
     </div>
 
-    <div class="field col-12 form-group">
-      <%= form.label :pictures %>
-      <%= form.file_field :pictures, multiple: true, class: 'form-control lato' %>
-      <% if flash[:errors].present?  && flash[:errors].key?('pictures') %>
-        <% flash[:errors]['pictures'].each do |msg|%>
-          <small class="rl lato"><%=msg%></small>                  
+    <%= form.fields_for :picture do |pic| %>
+      <div class="field col-12 form-group">
+        <%= pic.label :files %>
+        <%= pic.file_field :files, class: 'form-control lato', multiple: true%>
+        <% if flash[:errors].present?  && flash[:errors].key?('picture.files') %>
+          <% flash[:errors]['picture.files'].each do |msg|%>
+            <small class="rl lato"><%=msg%></small>                  
+          <%end%>
         <%end%>
-      <%end%>
-    </div>
+      </div>
+    <%end%>
 
     <div class="field col-12 form-group">
       <%= form.label :figcaption %>
