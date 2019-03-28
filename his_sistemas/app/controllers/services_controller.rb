@@ -17,8 +17,8 @@ class ServicesController < ApplicationController
   def new
     @@servicec = Service.new
     @@pictures= Picture.new
-    @service=@@servicec
     @@servicec.picture=@@pictures
+    @service=@@servicec
   end
 
   # GET /services/1/edit
@@ -37,6 +37,7 @@ class ServicesController < ApplicationController
         format.js
         format.json { render :new, status: :ok, location: @service }
       end
+      puts "=)=)=)=)=)=)=)=)"
     else
       puts "***********"
       puts @@pictures.files.to_json
