@@ -1,45 +1,38 @@
 <%= render "layouts/header_main" %>
-
 <div class="container pt-3">
-  <div class="row mont">
-    <div class="col-12">
-       <p>
-        <strong><%=t('pictures')%></strong>
-      </p>
-    </div>
-    <% @service.picture.files.each do |pic| %>
-      <div class="col-6 col-sm-4 col-md-3 col-xl-3 ik">
-        <%= image_tag(pic.url,:alt=>"servicio", :class=>"img-fluid idk") %>
-      </div>
-    <%end%>
-  </div>
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 col-md-6">
       <strong class="mont"><%=t('title')%></strong>
       <p class="rale">
         <%= @service.title %>
       </p>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="col-12">
-        <strong class="mont"><%=t('description')%></strong>          
+      <strong class="mont"><%=t('description')%></strong>          
+      <div>
         <p class="rale jumpline">
           <%= @service.description %>
         </p>
+      </div>
+      <strong class="mont"><%=t('user')%></strong>
+      <p class="rale">
+        <%= @service.user.contact.name %>
+        <%= @service.user.contact.lastname %>
+      </p>
     </div>
-  </div>
-
-  
-
-  <strong class="mont"><%=t('user')%></strong>
-  <p class="rale">
-    <%= @service.user.contact.name %>
-    <%= @service.user.contact.lastname %>
-  </p>
-  <div class="mb-3 gg">
-    <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_service_path(@service), class: 'btn btn1'%>
-    <%= link_to '<i class="fas fa-angle-left"></i>'.html_safe, services_path, class: 'btn btn1'%>
+    <div class="col-12 col-md-6">
+      <strong class="mont"><%=t('pictures')%></strong>
+      <div class="row">
+        <% @service.picture.files.each do |pic| %>
+          <div class="col-6 col-sm-4 col-md-6 col-lg-4 p-2">
+            <div class="cont">
+              <%= image_tag(pic.url,:alt=>"servicio", :class=>"img-fluid idk") %>
+            </div>
+          </div>
+        <%end%>
+      </div>
+    </div>
+    <div class="col my-3 gg">
+        <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_service_path(@service), class: 'btn btn1'%>
+        <%= link_to '<i class="fas fa-angle-left"></i>'.html_safe, services_path, class: 'btn btn1'%>
+    </div>
   </div>
 </div>

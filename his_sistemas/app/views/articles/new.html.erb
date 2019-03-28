@@ -1,7 +1,7 @@
 <%= render "layouts/header_main" %>
 <div class="container pb-3">
-	<h1 class="py-3"><%=t(".new_article")%></h1>
-	<div class="row">
+	<h1 class="py-3 mont"><%=t(".new_article")%></h1>
+	<div class="row rale mb-3">
 		<div class="col-12 col-md-7 col-lg-6">
 			<div id="showform">
 				<%= render 'form', article: @article %>
@@ -11,9 +11,8 @@
 			</div>
 		</div>
 		<div class="col-12 col-md-6">
-			<% if @article.pictures.any? %>
+			<% if @article.picture.present? %>
 				<div class="row" id="result">
-					<%=render 'images'%>
 				</div>
 			<%end%>
 		</div>

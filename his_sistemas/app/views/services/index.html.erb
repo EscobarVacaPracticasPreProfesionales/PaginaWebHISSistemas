@@ -20,7 +20,7 @@
                   <% if service.picture.files.any?%>
                     <% service.picture.files.each do |pic| %>
                       <div class="carousel-item">
-                        <%= image_tag(pic.url,:alt=>"servicio") %>
+                        <%= image_tag(pic.url,:alt=>"servicio", class: "img-fluid") %>
                       </div>
                     <%end%>
                   <%end%>

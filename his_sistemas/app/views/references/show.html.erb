@@ -1,54 +1,43 @@
 <%= render "layouts/header_main" %>
 <div class="container pt-3">
   <div class="row">
-    <div class="col-12 mont">
-      <p>
-        <strong><%=t('pictures')%></strong>
-      </p>
-    </div>
-    <% @reference.pictures.each do |pic| %>
-      <div class="col-6 col-lg-4 col-xl-3">
-        <%= image_tag(pic.url,:alt=>"servicio", :class=>"img-fluid") %>
-      </div>
-    <%end%>
-  </div>
-  <div class="row">
-    <div class="col-12">
+    
+    <div class="col-12 col-md-6">
       <strong class="mont"><%=t('title')%></strong>
       <p class="rale">
         <%= @reference.title %>
       </p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
       <strong class="mont"><%=t('description')%></strong>          
       <div>
         <p class="rale jumpline">
           <%= @reference.content %>
         </p>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
       <strong class="mont"><%=t('year') %></strong>
       <p class="rale">
         <%= @reference.year %>
       </p>
+      <strong class="mont"><%=t('user')%></strong>
+      <p class="rale">
+        <%= @reference.user.contact.name %>
+        <%= @reference.user.contact.lastname %>
+      </p>
     </div>
-  </div>
-  <strong class="mont"><%=t('user')%></strong>
-  <p class="rale">
-    <%= @reference.user.contact.name %>
-    <%= @reference.user.contact.lastname %>
-  </p>
-  <div class="mb-3 gg">
-    <span class="btn btn1">
-        <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_reference_path(@reference) %>
-    </span>
-    <span class="btn btn1">
-      <%= link_to '<i class="fas fa-angle-left"></i>'.html_safe, references_path%>
-    </span>
+    <div class="col-12 col-md-6">
+      <p class="mont">
+        <strong><%=t('pictures')%></strong>
+      </p>
+      <% @reference.picture.files.each do |pic| %>
+        <div class="col-6 col-lg-4 col-xl-3">
+          <div class="cont">
+            <%= image_tag(pic.url,:alt=>"servicio", :class=>"img-fluid") %>
+          </div>
+        </div>
+      <%end%>
+    </div>
+    <div class="mb-3 gg">
+        <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_reference_path(@reference), class: 'btn btn1'%>
+        <%= link_to '<i class="fas fa-angle-left"></i>'.html_safe, references_path, class: 'btn btn1'%>
+    </div>
   </div>
 </div>

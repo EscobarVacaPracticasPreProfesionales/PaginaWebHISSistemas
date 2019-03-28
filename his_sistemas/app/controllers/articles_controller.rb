@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy, :destroy_picture]
-  before_action :require_admin, only: [:edit, :update, :destroy, :destroy_picture]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:edit, :edit, :new, :update, :destroy, :destroy_picture]
   before_action :is_admin, only: [:index]
 
   # GET /articles
@@ -18,32 +18,47 @@ class ArticlesController < ApplicationController
 
   # GET /articles/new
   def new
-    @article = Article.new
+    flash[:errors] = nil
+    @@articlec = Article.new
+    @@pictures= Picture.new
+    @article=@@articlec
+    @@articlec.picture=@@pictures
   end
 
   # GET /articles/1/edit
   def edit
-     @new_record=params[:is_new]
+    flash[:errors] = nil
+    @@pictures= Picture.new
+    @@pictures.files=@article.picture.files
   end
 
   # POST /articles
   # POST /articles.json
   def create
-    @upictures=params[:update_pictures].to_s
-    @article = Article.new(article_params)
-
-    respond_to do |format|
-      if @article.save
-        if @upictures=='false'
+    if article_params['picture_attributes']
+      if article_params['picture_attributes']['files']
+        @@pictures.files+=article_params['picture_attributes']['files']
+      end
+    end
+    if params[:update_pictures].to_s == "true"
+      @@articlec.picture=@@pictures
+      @article=@@articlec
+      respond_to do |format|
+        format.js { render 'images' }
+        format.json { render :new, status: :ok, location: @article }
+      end
+    else
+    @article = article.new(article_params)
+      @article.picture=@@pictures
+      respond_to do |format|        
+        if @article.save
           format.html { redirect_to @article, notice: t('.article_was_successfully_created') }
           format.json { render :show, status: :created, location: @article }
         else
-          format.html { redirect_to edit_article_path(@article,is_new: true)}
-          format.json { render :edit, status: :ok, location: @article }
+          flash[:errors] = @article.errors.messages.as_json
+          format.js { render 'form' }
+          format.json { render json: @article.errors, status: :unprocessable_entity }
         end
-      else
-        format.html { render :new }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -52,21 +67,34 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1.json
   def update
     @upictures=params[:update_pictures].to_s
-    updated_params=add_pictures(@article,article_params)
-
-    respond_to do |format|
-      if @article.update(updated_params)
-        if @upictures=='false'
-          format.html { redirect_to @article, notice: t('.article_was_successfully_updated') }
-          format.json { render :show, status: :ok, location: @article }
+    if article_params['picture_attributes']
+      if article_params['picture_attributes']['files']
+        @@pictures.files+=article_params['picture_attributes']['files']
+      end
+    end
+    if @upictures=='true'
+      @article.picture=@@pictures
+      respond_to do |format|
+        format.js { render 'images' }
+        format.json { render :edit, status: :ok, location: @article }
+      end
+    else
+      @article.assign_attributes(article_params);
+      @article.picture=@@pictures
+      respond_to do |format|
+        if @article.save
+          if @upictures=='false'
+            format.html { redirect_to @article, notice: t('.article_was_successfully_updated') }
+            format.json { render :show, status: :ok, location: @article }  
+          end
         else
-          format.js
-          format.json { render :edit, status: :ok, location: @article }
+          format.js { render 'form' }
+          format.json { render json: @article.errors, status: :unprocessable_entity }
+          flash[:errors] = @article.errors.messages.as_json
+          puts "***************"
+          puts flash[:errors]
+          puts "***************"
         end
-        
-      else
-        format.html { render :edit }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -82,7 +110,14 @@ class ArticlesController < ApplicationController
   end
 
   def destroy_picture
-    delete_picture(@article,params[:index].to_i)
+    if params[:id]
+      @article = Article.find(params[:id])
+    else
+      @article=@@articlec
+    end
+
+    @article.picture=@@pictures
+    delete_picture(@@pictures,@article,params[:index].to_i)
   end
 
   private
@@ -93,10 +128,10 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :description, :content, {pictures: []}, :figcaption, :fecha, :user_id)
+      params.require(:article).permit(:title, :description, :content, :figcaption, :fecha, :user_id,{:picture_attributes => [:files=>[]]})
     end
 
     def require_admin
-      admin_require(services_url)
+      admin_require(articles_url)
     end
 end

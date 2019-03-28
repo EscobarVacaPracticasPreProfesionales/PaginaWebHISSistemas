@@ -6,7 +6,6 @@ class Service < ApplicationRecord
 	accepts_nested_attributes_for :picture
 	validates_associated :picture
 
-
-	validates_presence_of :title, 		on: :update
-	validates_presence_of :description, on: :update
+	validates_presence_of :title, 		on: [:create, :update]
+	validates_presence_of :description, on: [:create, :update]
 end

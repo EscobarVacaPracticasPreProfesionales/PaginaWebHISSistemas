@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(version: 2019_03_27_160602) do
     t.string "figcaption", null: false
     t.date "fecha", null: false
     t.integer "user_id"
+    t.integer "picture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["picture_id"], name: "index_articles_on_picture_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
@@ -29,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_03_27_160602) do
     t.string "name", null: false
     t.string "lastname", null: false
     t.string "emailcontact", null: false
-    t.string "company", default: "N/A"
+    t.string "company"
     t.string "phone1", null: false
     t.string "phone2"
     t.boolean "wascontacted", default: false
@@ -44,13 +46,14 @@ ActiveRecord::Schema.define(version: 2019_03_27_160602) do
   end
 
   create_table "references", force: :cascade do |t|
-    t.string "pictures"
     t.string "title", null: false
     t.string "content", null: false
     t.integer "year", null: false
     t.integer "user_id"
+    t.integer "picture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["picture_id"], name: "index_references_on_picture_id"
     t.index ["user_id"], name: "index_references_on_user_id"
   end
 
