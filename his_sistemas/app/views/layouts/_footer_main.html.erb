@@ -1,9 +1,16 @@
 <footer class="lato footer">
 	<div class="container">
-		<div class="row pt-1 pb-1">
-				<%= image_tag(image_path("logo-icono.png"),:id => "logofooter",:class=>"d-none d-md-block", :alt=>"iconHIS") %>		
-			<div class="col p-2">
-				<small class="my-3">©<%= Date.today.year %> HIS Sistemas Cia. Ltda. Desarrollado por Jose Escobar & Fernando Vaca. Todos los derechos reservados.</small>	
+		<div class="row pt-2">
+			<div class="col-12 col-md-10">
+				<div class="row">
+					<%= image_tag(image_path("logo-icono.png"),:id => "logofooter",:class=>"d-none d-md-block", :alt=>"iconHIS") %>		
+					<div class="col p-2">
+						<small class="my-3">©<%= Date.today.year %> HIS Sistemas Cia. Ltda. Desarrollado por Jose Escobar & Fernando Vaca. Todos los derechos reservados.</small>	
+					</div>
+				</div>
+			</div>
+			<div class="col py-2 center">
+				<a href="https://wa.me/13013669418?text=Saludos,%20HIS%20Sistemas.%20Deseo%20contactarme%20con%20ustedes." class="icon mr-3"><i class="fa-2x fab fa-whatsapp"></i></a>
 			</div>
 		</div>
 	</div>

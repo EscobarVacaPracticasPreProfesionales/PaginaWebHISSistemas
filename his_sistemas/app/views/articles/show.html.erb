@@ -5,7 +5,7 @@
 
 <div class="container mt-4" id="content">
   <div class="row justify-content-between">
-    <div class="col-lg-7 col-xl-7">
+    <div class="col-lg-7 col-xl-7 mb-3">
     <div class="titulo">
       <h1 class='mont'><%= @article.title %></h1>
     </div>
@@ -47,11 +47,13 @@
 
     
     <div class="info rale">
-      <%= sanitize @article.content %>
+      <p>
+        <%= sanitize @article.content %>
+      </p>  
     </div>
     <% if @user_admin %>
       <div>
-        <div class="my-3">
+        <div class="mb-3">
           <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_article_path(@article), class: "btn btn2 mr-md-3"%>  
           <%= link_to '<i class="fas fa-angle-left"></i>'.html_safe, articles_path, class:"btn btn2"%>
         </div>
@@ -60,7 +62,7 @@
   
   </div>
     <aside class="col-lg-5 col-xl-4">
-      <h5 class="mont">Noticias Relevantes</h5><hr class="hrCel">
+      <h2 class="mont">Noticias Relevantes</h2><hr class="hrCel">
       <% @articles.each do |article| %>
       <div class="row justify-content-between mb-3">
         <div class="col-8">
