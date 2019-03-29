@@ -1,10 +1,10 @@
 $(document).ready(function(){
-  var initial_form_state = $('form').serialize();
+  var initial_form_state = $('#myform').serialize();
   var clicked=false;
 
   $(this).on('change',"input[type=file]" ,{},function(){
       $('#update_pictures').val(true);
-      form = document.querySelector('form');
+      form = document.querySelector('#myform');
       Rails.fire(form, 'submit');
   });
 
@@ -14,9 +14,7 @@ $(document).ready(function(){
   });
 
   $(window).bind('beforeunload', function(e) {
-    var form_state = $('form').serialize();
-    console.log(initial_form_state);
-    console.log(form_state);
+    var form_state = $('#myform').serialize();
     if(initial_form_state != form_state && !clicked){
       e.preventDefault();
       var message = "¿Seguro?";

@@ -31,6 +31,15 @@ Rojito, celestito,gris oscuro, blanquito hueso, gris medio, celestito medio
 	font-size: 0.9rem;
 }
 
+#word{
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+.input-group-append button{
+	height: 35px;
+}
+
 .navbar{
 	padding: 0.3rem;
 }

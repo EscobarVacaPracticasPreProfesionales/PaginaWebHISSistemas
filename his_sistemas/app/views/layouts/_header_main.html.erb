@@ -19,8 +19,6 @@
 				        	<%end%>
 					  </div>
 					</div>
-			        	
-
 			      	<% else %>
 			        	<%= link_to  new_user_session_path, :class => 'lato btn btn1' do %>
 			        		<i class="fas fa-sign-in-alt"></i> <%= t(".sign_in")%>
@@ -53,13 +51,15 @@
 					<li class="list-inline-item nav-item"><a class="nav-link" href="/us">Nosotros</a></li>
 					<li class="list-inline-item nav-item"><a class="nav-link" href="/articles">Noticias</a></li>
 					<li class="list-inline-item nav-item"><a class="nav-link" href="/contacts">Contactos</a></li>
+					<li></li>
 				</ul>
-				<div class="input-group col-12 col-md-3">
-			    	<input type="text" class="form-control" placeholder="Buscar...">
-			    	<div class="input-group-append">
-				      	<%= link_to '<i class="fas fa-search"></i>'.html_safe, {controller: 'search', action: 'search_articles'},method: :get ,:class=>"btn btn2" %>
+	    		<%=form_tag search_articles_search_index_path, :method => :get, class: "input-group col-12 col-md-3" do%>
+		    		<%=text_field_tag(:word,"",class: 'form-control', placeholder: "Buscar...")%>
+		    		<div class="input-group-append">
+			    		<%= button_tag '<i class="fas fa-search"></i>'.html_safe,type: 'submit', class: "btn btn2"%>
 			    	</div>
-				</div>
+			    <%end%>
+
 				<div class="mt-2 d-md-none d-sm-block">
 					<% if user_signed_in? %>
 			        	<%= link_to  edit_user_registration_path, :class => 'lato btn btn2' do %>
