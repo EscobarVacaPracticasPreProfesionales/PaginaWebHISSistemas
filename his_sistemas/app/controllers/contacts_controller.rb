@@ -28,7 +28,15 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    ContactMailer.with(contact: email_params).contact_msg.deliver_later
+    @param=params[:contact][:doc]
+    if @param.nil?
+      ContactMailer.with(contact: email_params).contact_msg.deliver_later
+
+    else
+      @doc=Picture.new(:files => [@param])
+      @doc.save
+      ContactMailer.with(contact: email_params, doc: @doc.id).contact_msg.deliver_later
+    end
     @contact = Contact.new(contact_params)
 
     respond_to do |format|
@@ -95,7 +103,7 @@ class ContactsController < ApplicationController
     end
 
     def email_params
-      params.require(:contact).permit(:name,:lastname, :company, :phone1, :phone2, :emailcontact, :asunto, :mensaje, :doc)
+      params.require(:contact).permit(:name,:lastname, :company, :phone1, :phone2, :emailcontact, :asunto, :mensaje)
     end
 
     def require_admin

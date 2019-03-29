@@ -3,11 +3,11 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <% end %>
 <%= render "layouts/header_main" %>
-
+<% if @user_admin %>
 	<div class="container-fluid mt-3" id="tablaContacto">	
 		<%= render 'tablecontact' , contacts: @contacts %>
 	</div>
-
+<%else%>
 <div id="formulario">
 	<section class="container" id="consultasHolder">
 		<div class="row">
@@ -92,7 +92,7 @@
 	</section>
 	</div>
 	
-		
+<%end%>	
 
 	
 

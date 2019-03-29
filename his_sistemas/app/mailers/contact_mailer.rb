@@ -12,12 +12,12 @@ class ContactMailer < ApplicationMailer
 		@email=@contact[:emailcontact]
 		@asunto=@contact[:asunto]
 		@mensaje=@contact[:mensaje]
-		@doc=@contact[:doc]
+		@doc=params[:doc]
 		if @doc!= nil
-			attachments[@doc.original_filename] = @doc.read
+			attach=Picture.find(@doc).files[0]
+			attachments[attach.file.filename] = attach.read
 		end
 		mail(to:"hissistemasgye@gmail.com",subject: "HIS #{@asunto}")
-
 	end
 
 end
