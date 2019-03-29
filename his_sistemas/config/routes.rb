@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :contacts do
     collection do
-      get :check_contact
+      put :check_contact
     end
   end
 
