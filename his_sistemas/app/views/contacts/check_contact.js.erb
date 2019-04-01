@@ -1,4 +1,5 @@
 $('#tablaContacto').html("<%= escape_javascript(render 'tablecontact', contacts: @contacts )%>")
+$('#tablaCliente').html("<%= escape_javascript(render 'tablecustomer', customers: @customers )%>")
 
 $('[data-toggle="tooltip"]').tooltip();
 

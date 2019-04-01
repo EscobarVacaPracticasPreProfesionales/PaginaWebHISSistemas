@@ -1,5 +1,5 @@
 class Contact < ApplicationRecord
-	has_one :user
+	has_one :user, dependent: :destroy
 	validates_presence_of :name
 	validates_presence_of :lastname
 	validates_presence_of :phone1

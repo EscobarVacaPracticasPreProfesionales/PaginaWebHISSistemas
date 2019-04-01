@@ -1,10 +1,10 @@
-		<div class="col-12">
-			<h1>Contactos</h1>
+		<div class="col-12 mt-5">
+			<h1>Clientes</h1>
 		</div>
 		<div class="row">
 			<div class="table-responsive">
 			 <%= form_tag({controller: "contacts", action: "check_contact"}, method: :put, remote: true)  do %> 
-			<table id='tabla' class="table table-hover">
+			<table id='tablaC' class="table table-hover">
 			    <thead class="wl">
 			      <tr>
 			      	<th class="toggle">
@@ -19,25 +19,23 @@
 							<%end%></li>
 						  <li><%= button_tag(type: "submit", class: "btn", name: "noContactado", id:"submitNoContactado") do %>
 							<i class="fas fa-eye-slash"></i> No Contactado<%end%></li>
-						  <li><%= button_tag(type: "submit", class: "btn", name: "borrar", id:"submitBorrar") do %>
-							<i class="fas fa-trash-alt"></i> Eliminar<%end%></li>
 					    </ul>
 					
 					</th>
-			        <th class="tableHeader"><%=t(".name")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(2)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".lastname")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(3)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".company")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(4)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".phone1")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(5)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".phone2")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(6)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".email")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(7)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".sent_date")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(8)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".status")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tabla','.item', 'td:nth-child(9)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".name")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(2)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".lastname")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(3)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".company")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(4)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".phone1")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(5)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".phone2")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(6)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".email")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(7)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".sent_date")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(8)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".status")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(9)')" style="cursor:pointer"></i></th>
 			        <th class="buttons"></th>
 
 			      </tr>
 			    </thead>
 			    <tbody>
-			    <% contacts.each do |contact|%>
+			    <% customers.each do |contact|%>
 			    	<% if contact.wascontacted? %>
 			    	<tr class="item">
 			    	<% else %>
@@ -60,8 +58,6 @@
 				        <td>
 				        	<%= link_to '<i class="fas fa-eye" data-toggle="tooltip" data-placement="top" title="Contactado"></i>'.html_safe, {controller: 'contacts', action: 'check_contact', contacto_id: contact, contactado: ""}, method: 'put', remote: true%>
 				        	<%= link_to '<i class="fas fa-eye-slash mr-1" data-toggle="tooltip" data-placement="top" title="No Contactado"></i>'.html_safe, {controller: 'contacts', action: 'check_contact', contacto_id: contact, noContactado: ""}, method: 'put', remote: true%>
-				        	<%= link_to '<i class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Eliminar"></i>'.html_safe, {controller: 'contacts', action: 'check_contact', contacto_id: contact, borrar: ""}, method: 'put', remote: true%>
-							
 				        </td>
 			      </tr>
 			      <%end%>

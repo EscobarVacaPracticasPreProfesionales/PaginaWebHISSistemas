@@ -7,7 +7,8 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts=Contact.where.not(id: User.where(user_type_id: 1).select('contact_id'))
+    @customers = Contact.where(id: User.where(user_type_id: 2).select('contact_id'))
+    @contacts = Contact.where.not(id: User.joins(:contact).select('contact_id'))
     new
   end
 
@@ -28,6 +29,7 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
+=begin
     @param=params[:contact][:doc]
     if @param.nil?
       ContactMailer.with(contact: email_params).contact_msg.deliver_later
@@ -37,11 +39,12 @@ class ContactsController < ApplicationController
       @doc.save
       ContactMailer.with(contact: email_params, doc: @doc.id).contact_msg.deliver_later
     end
+=end
     @contact = Contact.new(contact_params)
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
+        format.js
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new }
@@ -65,7 +68,8 @@ class ContactsController < ApplicationController
   end
 
   def check_contact
-    @contacts=Contact.where.not(id: User.where(user_type_id: 1).select('contact_id'))
+    @customers = Contact.where(id: User.where(user_type_id: 2).select('contact_id'))
+    @contacts = Contact.where.not(id: User.joins(:contact).select('contact_id'))
     if params[:contactado]
       Contact.where(id: params[:contacto_id]).update_all(wascontacted: true)
     elsif params[:noContactado]

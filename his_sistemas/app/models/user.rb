@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 	belongs_to :user_type
-	belongs_to :contact, dependent: :destroy, autosave: true
+	belongs_to :contact, autosave: true
 	has_many :services
 	has_many :references
 	has_many :articles

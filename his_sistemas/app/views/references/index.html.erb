@@ -15,12 +15,8 @@
             </div> 
             <% if @user_admin %>
             <div class="center">
-              <span class="btn btn3 mr-3">
-                <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_reference_path(reference) %>
-              </span>
-              <span class="btn btn3">
-                <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, reference, method: :delete, data: { confirm: 'Are you sure?' }%>
-              </span>
+              <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_reference_path(reference), class: "btn btn3 mr-3" %>
+              <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, reference, class:"btn btn3" ,method: :delete, data: { confirm: 'Are you sure?' }%>
             </div>
             <%end%>
           </div>

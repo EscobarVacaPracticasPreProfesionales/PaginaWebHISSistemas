@@ -99,6 +99,14 @@ es:
       phone2: "Teléfono 2"
       sent_date: "Fecha"
       status: "Estado"
+    tablecustomer:
+      name: "Nombres"
+      lastname: "Apellidos"
+      company: "Empresa"
+      phone1: "Teléfono 1"
+      phone2: "Teléfono 2"
+      sent_date: "Fecha"
+      status: "Estado"
   date:
     abbr_day_names:
     - dom
