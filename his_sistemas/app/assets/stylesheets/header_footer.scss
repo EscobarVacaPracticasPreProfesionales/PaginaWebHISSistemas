@@ -9,6 +9,12 @@ font-family: 'Raleway', sans-serif;
 Rojito, celestito,gris oscuro, blanquito hueso, gris medio, celestito medio
 #F92222. #5CB1F7, #272C30, #FBFBFB, #9AABB8, #39BDDC
 */
+.icon {
+	color:black;
+	:hover{
+		color: #FBFBFB; 
+	}
+}
 
 #top button{
 	font-size: 0.9rem;
@@ -27,7 +33,7 @@ Rojito, celestito,gris oscuro, blanquito hueso, gris medio, celestito medio
 	z-index: 9;
 }
 
-.sticky-top input,div[class^=container] a,.footer p{
+.sticky-top input,div[class^=container] a{
 	font-size: 0.9rem;
 }
 

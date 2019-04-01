@@ -3,17 +3,16 @@ class SearchController < ApplicationController
 	end
 
 	def search_articles
-		if params[:word].blank?
+		if search_params[:word].blank?
 			@articles=Article.all
 		else
-    		@articles = Article.where('title LIKE ?', params[:word])
+    		@articles = Article.where("title LIKE '%#{params[:word]}%' OR description LIKE '%#{params[:word]}%' OR content LIKE '%#{params[:word]}%'"  )
 		end
-		puts "*************"
-		puts @articles.to_json
-		puts "*************"
-		respond_to do |format|
-			format.html { redirect_to "/search"}
-          	format.json { render :show, status: :ok, location: '/search' }
-		end
+		render 'index'
 	end
+	
+	private
+		def search_params
+			params.permit(:word)
+		end
 end

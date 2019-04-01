@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 2019_03_27_160602) do
     t.string "title", null: false
     t.text "description", null: false
     t.text "content", null: false
-    t.string "pictures"
     t.string "figcaption", null: false
     t.date "fecha", null: false
     t.integer "user_id"
@@ -40,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_03_27_160602) do
   end
 
   create_table "pictures", force: :cascade do |t|
-    t.string "files", default: "", null: false
+    t.string "files"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

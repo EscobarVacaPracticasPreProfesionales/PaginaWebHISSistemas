@@ -3,7 +3,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
   after :store, :delete_old_tmp_file
-
+  #after :store, :delete_tmp_dir
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -36,9 +36,9 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_whitelist
-  #   %w(jpg jpeg gif png)
-  # end
+  def extension_whitelist
+    %w(jpg jpeg gif png pdf odt doc docx)
+  end
 
 
   # remember the tmp file
@@ -49,24 +49,10 @@ class PictureUploader < CarrierWave::Uploader::Base
   
   def delete_old_tmp_file(dummy)
     @old_tmp_file.try :delete
-    puts "***************************************"
-    puts @old_tmp_file
-    puts "***************************************"
   end
 
-  before :store, :remember_cache_id
-  after :store, :delete_tmp_dir
-
-  # store! nil's the cache_id after it finishes so we need to remember it for deletion
-  def remember_cache_id(new_file)
-    @cache_id_was = cache_id
-  end
-  
   def delete_tmp_dir(new_file)
-    # make sure we don't delete other things accidentally by checking the name pattern
-    if @cache_id_was.present? && @cache_id_was =~ /\A[\d]{8}\-[\d]{4}\-[\d]+\-[\d]{4}\z/
-      FileUtils.rm_rf(File.join(root, cache_dir, @cache_id_was))
-    end
+    FileUtils.rm_rf Dir.glob("#{Rails.root}/public/uploads/tmp/*")
   end
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

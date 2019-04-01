@@ -16,37 +16,37 @@ class ReferencesController < ApplicationController
   # GET /references/new
   def new
     flash[:errors] = nil
-    @@referencec = Reference.new
-    @@pictures= Picture.new
-    @reference=@@referencec
-    @@referencec.picture=@@pictures
+    @reference=Reference.new
+    @@picid=-1;
   end
 
   # GET /references/1/edit
   def edit
     flash[:errors] = nil
-    @@pictures= Picture.new
-    @@pictures.files=@reference.picture.files
   end
 
   # POST /references
   # POST /references.json
   def create
-    if reference_params['picture_attributes']
-      if reference_params['picture_attributes']['files']
-        @@pictures.files+=reference_params['picture_attributes']['files']
-      end
-    end
     if params[:update_pictures].to_s == "true"
-      @@referencec.picture=@@pictures
-      @reference=@@referencec
+      if @@picid>=0
+        @picture=Picture.find(@@picid)
+        updated_params=add_pictures(@picture,reference_params['picture_attributes'])
+        @picture.update(updated_params)
+      else
+        @picture=Picture.new(reference_params['picture_attributes'])
+        @picture.save
+        @@picid=@picture.id
+      end
       respond_to do |format|
         format.js { render 'images' }
-        format.json { render :new, status: :ok, location: @reference }
+        format.json { render :new, status: :ok, location: @picture }
       end
     else
-      @reference = Reference.new(reference_params)
-      @reference.picture=@@pictures
+      @reference=Reference.new(reference_params)
+      if @@picid>=0
+        @reference.picture = Picture.find(@@picid)
+      end
       respond_to do |format|        
         if @reference.save
           format.html { redirect_to @reference, notice: t('.reference_was_successfully_created') }
@@ -58,32 +58,25 @@ class ReferencesController < ApplicationController
         end
       end
     end
+    return
   end
 
   # PATCH/PUT /references/1
   # PATCH/PUT /references/1.json
   def update
     @upictures=params[:update_pictures].to_s
-    if reference_params['picture_attributes']
-      if reference_params['picture_attributes']['files']
-        @@pictures.files+=reference_params['picture_attributes']['files']
-      end
-    end
     if @upictures=='true'
-      @reference.picture=@@pictures
+      updated_params=add_pictures(@picture,reference_params['picture_attributes'])
+      @picture.update(updated_params)
       respond_to do |format|
         format.js { render 'images' }
-        format.json { render :edit, status: :ok, location: @reference }
+        format.json { render :edit, status: :ok, location: @picture }
       end
     else
-      @reference.assign_attributes(reference_params);
-      @reference.picture=@@pictures
       respond_to do |format|
-        if @reference.save
-          if @upictures=='false'
-            format.html { redirect_to @reference, notice: t('.reference_was_successfully_updated') }
-            format.json { render :show, status: :ok, location: @reference }  
-          end
+        if @reference.update(reference_params)
+          format.html { redirect_to @reference, notice: t('.reference_was_successfully_updated') }
+          format.json { render :show, status: :ok, location: @reference }  
         else
           format.js { render 'form' }
           format.json { render json: @reference.errors, status: :unprocessable_entity }
@@ -91,6 +84,7 @@ class ReferencesController < ApplicationController
         end
       end
     end
+    return
   end
 
   # DELETE /references/1
@@ -104,20 +98,16 @@ class ReferencesController < ApplicationController
   end
 
   def destroy_picture
-    if params[:id]
-      @reference = Reference.find(params[:id])
-    else
-      @reference=@@referencec
-    end
-
-    @reference.picture=@@pictures
-    delete_picture(@@pictures,@reference,params[:index].to_i)
+    @picture = Picture.find(params[:id])
+    delete_picture(@picture,params[:index].to_i)
+    return
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reference
       @reference = Reference.find(params[:id])
+      @picture = @reference.picture
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

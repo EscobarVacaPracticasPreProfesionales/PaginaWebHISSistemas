@@ -24,18 +24,18 @@
       </p>
     </div>
     <div class="col-12 col-md-6">
-      <p class="mont">
-        <strong><%=t('pictures')%></strong>
-      </p>
-      <% @reference.picture.files.each do |pic| %>
-        <div class="col-6 col-lg-4 col-xl-3">
-          <div class="cont">
-            <%= image_tag(pic.url,:alt=>"servicio", :class=>"img-fluid") %>
+      <strong class="mont"><%=t('pictures')%></strong>
+      <div class="row">
+        <% @reference.picture.files.each do |pic| %>
+          <div class="col-6 col-sm-4 col-md-6 col-lg-4 p-2">
+            <div class="cont">
+              <%= image_tag(pic.url,:alt=>"servicio", :class=>"img-fluid") %>
+            </div>
           </div>
         </div>
       <%end%>
     </div>
-    <div class="mb-3 gg">
+    <div class="col mb-3">
         <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_reference_path(@reference), class: 'btn btn1'%>
         <%= link_to '<i class="fas fa-angle-left"></i>'.html_safe, references_path, class: 'btn btn1'%>
     </div>

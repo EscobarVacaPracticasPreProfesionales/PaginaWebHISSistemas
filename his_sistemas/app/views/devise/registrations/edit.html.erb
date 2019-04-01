@@ -7,9 +7,9 @@
   <%= javascript_include_tag 'autoc', 'data-turbolinks-track': 'reload' %>
 <% end %>
 
-<div class="container mt-4">
+<div class="container py-4">
   <div class="row justify-content-between">
-    <div class="col-md-5 rale mb-5">
+    <div class="col-md-6">
       <h1 class="mont"><%=t('.title', resource: resource.model_name.human)%></h1>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put ,class: 'reg'}) do |f| %>
         <%= f.fields_for :contact do |c| %>

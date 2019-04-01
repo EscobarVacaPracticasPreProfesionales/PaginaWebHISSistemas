@@ -17,13 +17,8 @@
 //= require bootstrap
 //= require summernote/summernote-bs4.min
 
-$(function() {
-	console.log($("p[class^=alert]"));
-    // setTimeout() function will be fired after page is loaded
-    // it will wait for 5 sec. and then will fire
-    // $("#successMessage").hide() function
-    	setTimeout(function() {
-        	$(".alert").hide('blind', {}, 500);
-    	}, 5000);
+$(document).ready(function(){
+	if($(".alert"))
+		$(".alert").slideUp(2500);
 });
 
