@@ -1,9 +1,10 @@
-<%@reference.picture.files.each_with_index do |pic,index|%>
+<div class="col-12"><small id="pic-msg" class="rl"></small></div>	
+<%@picture.files.each_with_index do |pic,index|%>
 	<div class="col-6 col-sm-4 col-md-6 col-lg-4 p-2">
 		<div class="cont">
 			<%= image_tag(pic.url, class: "img-fluid")%>
 			<div class="middle">
-				<%= link_to '<i class="fas fa-times"></i>'.html_safe, {controller: 'references', action: 'destroy_picture', index:index, id:@reference}, method: 'put', remote: true%>
+				<%= link_to '<i class="fas fa-times"></i>'.html_safe, {controller: 'references', action: 'destroy_picture', index:index, id:@picture}, method: 'put', remote: true%>
 			</div>
 		</div>
 	</div>

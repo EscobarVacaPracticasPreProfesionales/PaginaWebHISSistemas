@@ -53,7 +53,7 @@
 					<li class="list-inline-item nav-item"><a class="nav-link" href="/contacts">Contactos</a></li>
 					<li></li>
 				</ul>
-	    		<%=form_tag({controller: 'search', action: 'search_articles'}, method: 'get', class: "input-group col-12 col-md-3") do%>
+	    		<%=form_tag({controller: '/search', action: 'search_articles'}, method: 'get', class: "input-group col-12 col-md-3") do%>
 		    		<%=text_field_tag(:word,"",class: 'form-control', placeholder: "Buscar...")%>
 		    		<div class="input-group-append">
 			    		<%= button_tag '<i class="fas fa-search"></i>'.html_safe,type: 'submit', class: "btn btn2"%>

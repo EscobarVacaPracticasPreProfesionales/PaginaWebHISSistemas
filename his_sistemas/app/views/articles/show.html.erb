@@ -3,7 +3,7 @@
 <% end %>
 <%= render "layouts/header_main" %>
 
-<div class="container mt-4" id="content">
+<div class="container pt-3" id="content">
   <div class="row justify-content-between">
     <div class="col-lg-7 col-xl-7 mb-3">
     <div class="titulo">
@@ -46,9 +46,9 @@
     <div class="mb-4"><figcaption class="lato"><%= @article.figcaption %></figcaption></div>
 
     
-    <div class="info rale">
+    <div class="info">
       <p>
-        <%= sanitize @article.content %>
+        <%= @article.content.html_safe %>
       </p>  
     </div>
     <% if @user_admin %>

@@ -19,37 +19,37 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     flash[:errors] = nil
-    @@articlec = Article.new
-    @@pictures= Picture.new
-    @article=@@articlec
-    @@articlec.picture=@@pictures
+    @article = Article.new
+    @@picid=-1;
   end
 
   # GET /articles/1/edit
   def edit
     flash[:errors] = nil
-    @@pictures= Picture.new
-    @@pictures.files=@article.picture.files
   end
 
   # POST /articles
   # POST /articles.json
   def create
-    if article_params['picture_attributes']
-      if article_params['picture_attributes']['files']
-        @@pictures.files+=article_params['picture_attributes']['files']
-      end
-    end
     if params[:update_pictures].to_s == "true"
-      @@articlec.picture=@@pictures
-      @article=@@articlec
+      if @@picid>=0
+        @picture=Picture.find(@@picid)
+        updated_params=add_pictures(@picture,article_params['picture_attributes'])
+        @picture.update(updated_params)
+      else
+        @picture=Picture.new(article_params['picture_attributes'])
+        @picture.save
+        @@picid=@picture.id
+      end
       respond_to do |format|
         format.js { render 'images' }
-        format.json { render :new, status: :ok, location: @article }
+        format.json { render :new, status: :ok, location: @picture }
       end
     else
-    @article = Article.new(article_params)
-      @article.picture=@@pictures
+      @article=Article.new(article_params)
+      if @@picid>=0
+        @article.picture = Picture.find(@@picid)
+      end
       respond_to do |format|        
         if @article.save
           format.html { redirect_to @article, notice: t('.article_was_successfully_created') }
@@ -61,42 +61,33 @@ class ArticlesController < ApplicationController
         end
       end
     end
+    return
   end
 
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
     @upictures=params[:update_pictures].to_s
-    if article_params['picture_attributes']
-      if article_params['picture_attributes']['files']
-        @@pictures.files+=article_params['picture_attributes']['files']
-      end
-    end
     if @upictures=='true'
-      @article.picture=@@pictures
+      updated_params=add_pictures(@picture,article_params['picture_attributes'])
+      @picture.update(updated_params)
       respond_to do |format|
         format.js { render 'images' }
-        format.json { render :edit, status: :ok, location: @article }
+        format.json { render :edit, status: :ok, location: @picture }
       end
     else
-      @article.assign_attributes(article_params);
-      @article.picture=@@pictures
       respond_to do |format|
-        if @article.save
-          if @upictures=='false'
-            format.html { redirect_to @article, notice: t('.article_was_successfully_updated') }
-            format.json { render :show, status: :ok, location: @article }  
-          end
+        if @article.update(article_params)
+          format.html { redirect_to @article, notice: t('.article_was_successfully_updated') }
+          format.json { render :show, status: :ok, location: @article }  
         else
           format.js { render 'form' }
           format.json { render json: @article.errors, status: :unprocessable_entity }
           flash[:errors] = @article.errors.messages.as_json
-          puts "***************"
-          puts flash[:errors]
-          puts "***************"
         end
       end
     end
+    return
   end
 
   # DELETE /articles/1
@@ -110,20 +101,16 @@ class ArticlesController < ApplicationController
   end
 
   def destroy_picture
-    if params[:id]
-      @article = Article.find(params[:id])
-    else
-      @article=@@articlec
-    end
-
-    @article.picture=@@pictures
-    delete_picture(@@pictures,@article,params[:index].to_i)
+    @picture = Picture.find(params[:id])
+    delete_picture(@picture,params[:index].to_i)
+    return
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
+      @picture = @article.picture
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

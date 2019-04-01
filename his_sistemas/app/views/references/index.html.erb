@@ -2,7 +2,7 @@
     <%= stylesheet_link_tag "references", media: 'all', 'data-turbolinks-track': 'reload' %>
 <% end %>
 <%= render "layouts/header_main" %>
-<div class="container" id="news">
+<div class="container pb-3" id="news">
   <% @references.each_with_index do |reference,indice| %>
     <div class="row" id="noticia<%= reference.id %>">
       <% if indice%2!=0 %>

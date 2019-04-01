@@ -17,14 +17,37 @@ class ApplicationController < ActionController::Base
 	  store_location_for(:user, request.fullpath)
 	end
 
-	def delete_picture(pictures,model,index)
-		remain_images=pictures.files
-		deleted_images=remain_images.delete_at(index)
-		pictures.files=remain_images
-		model.picture=pictures
+	def add_pictures(model,pic_params)
+		pictures=model.files
+		if pic_params[:files]
+			pictures+=pic_params[:files]
+		end
+		pics={files: pictures}
+		pic_params.merge(pics)
+	end
+
+	def delete_picture(model, index)
+		remain_images=model.files
+		if index==0 && model.files.size==1
+	    	respond_to do |format|
+				format.js
+		        format.json { render json: model.errors, status: :unprocessable_entity }
+				flash[:errors] = {'picture.files': {"caca": "pepe"}}
+			end
+			return
+		else
+			deleted_images=remain_images.delete_at(index)
+			#deleted_images.try(:remove!)
+		end
 	    respond_to do |format|
-	      	format.js {render 'images'}
-	        format.json { render :edit, status: :ok, location: model }
+	      if model.update(:files=>remain_images)
+	      	format.js { render 'images'}
+  			format.json { head :no_content }
+	      else
+	        format.html { render :edit }
+	        format.json { render json: model.errors, status: :unprocessable_entity }
+          	flash[:errors] = @service.errors.messages.as_json
+	      end
 	    end
 	end
 	

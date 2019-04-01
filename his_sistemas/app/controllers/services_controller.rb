@@ -17,38 +17,37 @@ class ServicesController < ApplicationController
   # GET /services/new
   def new
     flash[:errors] = nil
-    @@servicec = Service.new
-    @@pictures= Picture.new
-    @@servicec.picture=@@pictures
-    @service=@@servicec
+    @service=Service.new
+    @@picid=-1;
   end
 
   # GET /services/1/edit
   def edit
     flash[:errors] = nil
-    @@pictures= Picture.new
-    @@pictures.files=@service.picture.files
   end
 
   # POST /services
   # POST /services.json
-  def create    
-    if service_params['picture_attributes']
-      if service_params['picture_attributes']['files']
-        @@pictures.files+=service_params['picture_attributes']['files']
-      end
-    end
+  def create  
     if params[:update_pictures].to_s == "true"
-      @@servicec.picture=@@pictures
-      @service=@@servicec
+      if @@picid>=0
+        @picture=Picture.find(@@picid)
+        updated_params=add_pictures(@picture,service_params['picture_attributes'])
+        @picture.update(updated_params)
+      else
+        @picture=Picture.new(service_params['picture_attributes'])
+        @picture.save
+        @@picid=@picture.id
+      end
       respond_to do |format|
         format.js { render 'images' }
-        format.json { render :new, status: :ok, location: @service }
+        format.json { render :new, status: :ok, location: @picture }
       end
-      puts "=)=)=)=)=)=)=)=)"
     else
-      @service = Service.new(service_params)
-      @service.picture=@@pictures
+      @service=Service.new(service_params)
+      if @@picid>=0
+        @service.picture = Picture.find(@@picid)
+      end
       respond_to do |format|        
         if @service.save
           format.html { redirect_to @service, notice: t('.service_was_successfully_created') }
@@ -60,32 +59,25 @@ class ServicesController < ApplicationController
         end
       end
     end
+    return
   end
 
   # PATCH/PUT /services/1
   # PATCH/PUT /services/1.json
   def update
     @upictures=params[:update_pictures].to_s
-    if service_params['picture_attributes']
-      if service_params['picture_attributes']['files']
-        @@pictures.files+=service_params['picture_attributes']['files']
-      end
-    end
     if @upictures=='true'
-      @service.picture=@@pictures
+      updated_params=add_pictures(@picture,service_params['picture_attributes'])
+      @picture.update(updated_params)
       respond_to do |format|
         format.js { render 'images' }
-        format.json { render :edit, status: :ok, location: @service }
+        format.json { render :edit, status: :ok, location: @picture }
       end
     else
-      @service.assign_attributes(service_params);
-      @service.picture=@@pictures
       respond_to do |format|
-        if @service.save
-          if @upictures=='false'
-            format.html { redirect_to @service, notice: t('.service_was_successfully_updated') }
-            format.json { render :show, status: :ok, location: @service }  
-          end
+        if @service.update(service_params)
+          format.html { redirect_to @service, notice: t('.service_was_successfully_updated') }
+          format.json { render :show, status: :ok, location: @service }  
         else
           format.js { render 'form' }
           format.json { render json: @service.errors, status: :unprocessable_entity }
@@ -93,6 +85,7 @@ class ServicesController < ApplicationController
         end
       end
     end
+    return
   end
 
   # DELETE /services/1
@@ -103,28 +96,24 @@ class ServicesController < ApplicationController
       format.html { redirect_to services_url, notice: t('.service_was_successfully_destroyed') }
       format.json { head :no_content }
     end
+    return
   end
 
   def destroy_picture
-    if params[:id]
-      @service = Service.find(params[:id])
-    else
-      @service=@@servicec
-    end
-
-    @service.picture=@@pictures
-    delete_picture(@@pictures,@service,params[:index].to_i)
+    @picture = Picture.find(params[:id])
+    delete_picture(@picture,params[:index].to_i)
+    return
   end
   
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_service
       @service = Service.find(params[:id])
+      @picture = @service.picture
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:title, :description, :user_id, {:picture_attributes => [:files=>[]]})
+      params.require(:service).permit(:title, :description, :user_id, picture_attributes: [:id,:files=>[]])
     end
 
     def require_admin
