@@ -65,6 +65,11 @@ img[id^=logo]{
 	z-index: 10;
 }
 
+.dropdown-item:active{
+	background-color:transparent;
+	color:black;
+}
+
 
 /*Small devices (smartphones, 576 and up)*/
 @media (min-width: 576px) {
