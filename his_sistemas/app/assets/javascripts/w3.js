@@ -2,8 +2,12 @@
 "use strict";
 var w3 = {};
 
-$(document).on('click','#checkAll', {}, function () {
-    $(".checkContact").prop('checked', $(this).prop('checked'));
+$(document).on('click','#checkAllContact', {}, function () {
+    $(".checkContactC").prop('checked', $(this).prop('checked'));
+});
+
+$(document).on('click','#checkAllUser', {}, function () {
+    $(".checkContactU").prop('checked', $(this).prop('checked'));
 });
 
 $(document).ready(function(){

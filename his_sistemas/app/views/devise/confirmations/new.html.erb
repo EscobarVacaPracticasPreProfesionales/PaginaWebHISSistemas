@@ -1,16 +1,46 @@
-<h2>Resend confirmation instructions</h2>
-
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
+<% content_for :head do %>
+    <%= stylesheet_link_tag "registration", media: 'all', 'data-turbolinks-track': 'reload' %>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="container">
+  <div class="row  pt-3 pb-2">
+    <div class="col-9 col-sm-7 col-md-5 col-lg-4 col-xl-3 center">
+      <a href="/home">
+        <%= image_tag(image_path("logo.png"),:class=>"img-fluid",:alt=>"logoRegistro") %>
+      </a>
+    </div>
+  </div>
+  <div class="row justify-content-center reg">
+    <div class="col-12 col-sm-9 col-md-8 col-lg-5">
+      <div class="card">
+      <header class="card-header">
+        <h2 class="card-title mt-2 wl mont"><%=t(".need_help_to_verify_your_account?")%></h2>
+      </header>
+      <article class="card-body rale">
+        <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+
+		  <div class="field form-group">
+		    <%= f.label :email %><br />
+		    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: 'form-control' %>
+		  </div>
+
+		  <div class="actions">
+		    <%= f.submit t(".resend_confirmation_instructions"), class: "btn btn-block btn2 lato" %>
+		  </div>
+		<% end %>
+      </article> <!-- card-body end .// -->
+      <div class="border-top card-body text-center lato">
+        <%= link_to t(".having_trouble_with_your_password?"), new_user_password_url  %><br>
+
+        <%= link_to t(".return_to_login"), new_user_session_url  %>
+        
+      </div>
+      </div> <!-- card.// -->
+    </div> <!-- col.//-->
+
+  </div> <!-- row.//-->
+
+</div> 
+
+
+

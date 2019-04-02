@@ -6,6 +6,11 @@ es:
       confirmed: "Tu correo electrónico ha sido confirmado exitosamente."
       send_instructions: "Recibirás un email con las instrucciones para confirmar tu correo electrónico en unos minutos."
       send_paranoid_instructions: "Si tu correo electrónico existe en nuestra base de datos, recibirás un email con las instrucciones para confirmar tu correo electrónico en unos minutos."
+      new:
+        having_trouble_with_your_password?: "¿Tiene problemas con su contraseña?"
+        need_help_to_verify_your_account?: "¿Necesita verificar su cuenta?"
+        return_to_login: "Volver a iniciar sesión"
+
     failure:
       already_authenticated: "Ya iniciaste sesión."
       inactive: "Tu cuenta aún no ha sido activada."
@@ -31,6 +36,10 @@ es:
       failure: "No pudimos autentificar tu cuenta de %{kind} por la siguiente razón: \"%{reason}\"."
       success: "Te autentificaste correctamente con tu cuenta de %{kind}."
     passwords:
+      new:
+        need_help_with_your_password?: "¿Necesita ayuda con su contraseña?"
+        having_trouble_verifying_your_account?: "¿Tiene problemas verificando su cuenta?"
+        return_to_login: "Volver a iniciar sesión"
       no_token: "No puedes acceder a esta página sin venir desde el email de reinicio de contraseña. Si vienes desde ahí, por favor asegúrate de usar la url completa que aparece."
       send_instructions: "Recibirás un email con instrucciones para reiniciar tu contraseña en unos minutos."
       send_paranoid_instructions: "Si tu email existe en el sistema, recibirás un email con instrucciones para reiniciar tu contraseña en unos minutos."
@@ -63,6 +72,7 @@ es:
       new:
         sign_up: "Registrarse"
         you_dont_have_an_account?: "¿No tienes una cuenta?"
+        having_trouble_logging_in?: "¿Tiene problemas para iniciar sesión?"
     unlocks:
       send_instructions: "Recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos"
       send_paranoid_instructions: "Si tu cuenta existe, recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos"
