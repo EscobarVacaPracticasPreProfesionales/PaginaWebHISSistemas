@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2019_03_27_160602) do
 
   create_table "pictures", force: :cascade do |t|
     t.string "files"
+    t.boolean "linked", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

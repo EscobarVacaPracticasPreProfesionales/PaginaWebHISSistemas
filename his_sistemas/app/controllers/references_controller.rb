@@ -112,7 +112,7 @@ class ReferencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reference_params
-      params.require(:reference).permit(:title, :content, :year, :user_id, {:picture_attributes => [:files=>[]]})
+      params.require(:reference).permit(:title, :content, :year, :user_id, {:picture_attributes => [:id,:linked,:files=>[]]})
     end
 
     def require_admin

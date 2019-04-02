@@ -32,6 +32,7 @@
 
     <%= form.fields_for :picture do |pic| %>
       <div class="field col-12 form-group">
+        <%= pic.hidden_field :linked, value: true %>
         <%= pic.label :files %>
         <%= pic.file_field :files, class: 'form-control lato', multiple: true,accept:".jpg, .jpeg, .gif, .png"%>
         <% if flash[:errors].present?  && flash[:errors].key?('picture.files') %>

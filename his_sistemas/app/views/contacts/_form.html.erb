@@ -1,0 +1,46 @@
+<%= form_with(model: contact, remote: true,id: "myform",:class=>"wl lato mt-4") do |f| %>
+	<div class="row">
+		<div class="form-group col-12 col-md-6">
+			<%=f.label(:name,"Nombre: ")%>
+			<%=f.text_field(:name,:class=>"form-control",:pattern=>"[A-za-z ]+", :placeholder=>"John", :required=>true)%>
+		</div>
+		<div class="form-group col-12 col-md-6">
+			<%=f.label(:lastname,"Apellido: ")%>
+			<%=f.text_field(:lastname,:class=>"form-control",:pattern=>"[A-za-z ]+", :placeholder=>"Doe", :required=>true)%>
+		</div>
+	</div>
+	<div class="form-group">
+		<%=f.label(:company,"Empresa: ")%>
+		<%=f.text_field(:company,:class=>"form-control", :placeholder=>"Nombre empresa")%>
+	</div>
+	<div class="row">
+		<div class="form-group col-12 col-md-6">
+			<%=f.label(:phone1,"Teléfono 1: ")%>
+			<%= f.telephone_field(:phone1, :pattern =>"[0-9]{10}" , :placeholder=>"0999999999", :required=>true,:class=>"form-control")%>
+		</div>
+		<div class="form-group col-12 col-md-6">
+			<%=f.label(:phone2,"Teléfono 2: ")%>
+			<%= f.telephone_field(:phone2, :pattern =>"[0-9]{10}" , :placeholder=>"0999999999", :class=>"form-control")%>
+		</div>
+	</div>
+	<div class="form-group">
+		<%=f.label(:emailcontact,"Email: ")%>
+		<%=f.email_field(:emailcontact,:class=>"form-control", :pattern=>"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$", :placeholder=>"your@email.com",:required=>true)%>
+	</div>
+	<div class="form-group">
+		<%=f.label(:asunto,"Asunto: ")%>
+		<%=f.text_field(:asunto,:class=>"form-control", :placeholder=>"Servicio de cableado", :required=>true)%>
+	</div>
+	<div class="form-group">
+		<%=f.label(:mensaje,"Mensaje: ")%>
+		<%=f.text_area(:mensaje,:class=>"form-control jumpline",:placeholder=>"Escribe tu mensaje/consulta aquí", :required=>true)%>
+	</div>
+	<div class="form-group">
+		<%=f.label(:doc,"Adjuntar documento: ")%>
+		<%=f.file_field('doc',:class=>"form-control-file",accept:".doc,.docx,.pdf,.odt,image/*")%>
+	</div>
+	<div>
+		<%= f.submit("Enviar",:class => "btn btn2") %>
+	</div>
+	<br>
+<%end%>
