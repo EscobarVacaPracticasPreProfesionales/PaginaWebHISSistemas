@@ -1,17 +1,15 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, only: [:edit, :update, :destroy]
-  before_action :set_contacts_customers, only: [:index, :check_contact]
-  before_action :is_admin, only: [:index]
+  before_action :set_contacts_customers, only: [:index, :check_contact, :change_user_type]
+  before_action :is_admin, only: [:index, :check_contact]
+  before_action :is_super, only: [:index, :check_contact, :change_user_type]
   
 
   # GET /contacts
   # GET /contacts.json
   def index
     @user_types=UserType.all
-    puts "****************************"
-    puts @user_types
-    puts "****************************"
     new
   end
 
@@ -56,17 +54,17 @@ class ContactsController < ApplicationController
 
   # PATCH/PUT /contacts/1
   # PATCH/PUT /contacts/1.json
-  def update
-    respond_to do |format|
-      if @contact.update(contact_params)
-        format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
-        format.json { render :show, status: :ok, location: @contact }
-      else
-        format.html { render :edit }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @contact.update(contact_params)
+  #       format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @contact }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @contact.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   def check_contact
     
@@ -86,18 +84,26 @@ class ContactsController < ApplicationController
 
 
   def change_user_type
-    puts "******************************"
+    @user_types=UserType.all
+    @new_user_type=params[:user_type_id].to_i
+    @contact=params[:contacto_id].to_i
+    @user=User.where(contact_id: @contact).first
+    respond_to do |format|
+      @user.update(:user_type_id => @new_user_type)
+        format.js
+        format.json { render :index, status: :ok, location: 'index' }
+    end
   end
 
   # DELETE /contacts/1
   # DELETE /contacts/1.json
-  def destroy
-    @contact.destroy
-    respond_to do |format|
-      format.html { redirect_to contacts_url, notice: 'Contact was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   @contact.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to contacts_url, notice: 'Contact was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -106,7 +112,7 @@ class ContactsController < ApplicationController
     end
 
     def set_contacts_customers
-      @users = Contact.where(id: User.where(user_type_id: 2).select('contact_id'))
+      @users = Contact.where(id: User.where.not(user_type_id: 3).select('contact_id'))
       @contacts = Contact.where.not(id: User.joins(:contact).select('contact_id'))
     end
 

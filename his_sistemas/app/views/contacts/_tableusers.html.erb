@@ -8,7 +8,7 @@
 			    <thead class="wl">
 			      <tr>
 			      	<th class="toggle">
-			      		<%= check_box_tag "checkAll" %>
+			      		<%= check_box_tag "checkAllUser" %>
 			      		
 					    <button class="dropdown-toggle" data-toggle="dropdown" id="checkToggle">
 					    	<span class="caret"></span>
@@ -42,7 +42,7 @@
 			    	<tr class="item font-weight-bold">
 			    	<% end %>
 			    		
-				      	<td><%= check_box_tag "contacto_id[]", contact.id, false, class: 'checkContact' %> </td>
+				      	<td><%= check_box_tag "contacto_id[]", contact.id, false, class: 'checkContactU' %> </td>
 				      	<td><%= contact.name %></td>
 				        <td><%= contact.lastname %></td>
 				        <td><%= contact.company %></td>
@@ -58,28 +58,9 @@
 				        <td>
 				        	<%= link_to '<i class="fas fa-eye" data-toggle="tooltip" data-placement="top" title="Contactado"></i>'.html_safe, {controller: 'contacts', action: 'check_contact', contacto_id: contact, contactado: ""}, method: 'put', remote: true%>
 				        	<%= link_to '<i class="fas fa-eye-slash mr-1" data-toggle="tooltip" data-placement="top" title="No Contactado"></i>'.html_safe, {controller: 'contacts', action: 'check_contact', contacto_id: contact, noContactado: ""}, method: 'put', remote: true%>
-				        	<%= link_to '<i class="fas fa-user"></i>'.html_safe, contact,data: {toggle: "modal", target: "#confirmar#{contact.id}"}%>
+				        	<%= link_to '<i class="fas fa-user" data-toggle="tooltip" data-placement="top" title="Tipo de usuario"></i>'.html_safe, contact,data: {toggle: "modal", target: "#confirmar#{contact.id}"}%>
 				        </td>
 			      </tr>
-      			  	<div class="modal fade" id="confirmar<%=contact.id%>">
-				        <div class="modal-dialog" role="document">
-				          <div class="modal-content">
-				            <div class="modal-header">
-				              <h5 class="modal-title">Cambiar de tipo</h5>
-				              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				                <span aria-hidden="true">&times;</span>
-				              </button>
-				            </div>
-				            <div class="modal-body">
-				              <%= select_tag :user_type,options_from_collection_for_select(@user_types, 'id', 'tipo'), { :class => 'form-control' } %>
-				            </div>
-				            <div class="modal-footer">
-				            	<%= link_to '<i class="fas fa-eye-slash mr-1" data-toggle="tooltip" data-placement="top" title="No Contactado"></i>'.html_safe, {controller: 'contacts', action: 'check_contact', contacto_id: contact, noContactado: ""}, method: 'put', remote: true%>
-				            </div>
-				            <%end%>
-				          </div>
-				        </div>
-			      	</div>
 			      <%end%>
 			      
 			      <%end%>

@@ -59,7 +59,11 @@ class ApplicationController < ActionController::Base
   	end
 
   	def is_admin
-  		@user_admin=is_logged("Administrador")
+  		@user_admin=(is_logged("Administrador") || is_logged("SuperAdministrador"))
+  	end
+
+  	def is_super
+  		@user_super=is_logged("SuperAdministrador")
   	end
 
   	def admin_require(resource_path)
