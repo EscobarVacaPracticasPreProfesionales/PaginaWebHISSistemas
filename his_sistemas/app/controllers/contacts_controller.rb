@@ -10,7 +10,7 @@ class ContactsController < ApplicationController
   def index
     @user_types=UserType.all
     puts "****************************"
-    puts @user_types
+    puts @user_types.to_json
     puts "****************************"
     new
   end
@@ -69,6 +69,7 @@ class ContactsController < ApplicationController
   end
 
   def check_contact
+    @user_types=UserType.all
     
     if params[:contactado]
       Contact.where(id: params[:contacto_id]).update_all(wascontacted: true)
@@ -86,7 +87,7 @@ class ContactsController < ApplicationController
 
 
   def change_user_type
-    puts "******************************"
+    puts params
   end
 
   # DELETE /contacts/1
