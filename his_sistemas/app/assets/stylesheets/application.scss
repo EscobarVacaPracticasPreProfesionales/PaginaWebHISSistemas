@@ -5,6 +5,13 @@
 
 html, body{ height:100%;}
 
+.alert{
+	position: fixed;
+	width: 60%;
+	z-index: 1051;
+	border-radius: 4px;
+}
+
 #contenido {
   min-height: calc(100vh - 72px);
 }

@@ -1,14 +1,17 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, only: [:edit, :update, :destroy]
+  before_action :set_contacts_customers, only: [:index, :check_contact]
   before_action :is_admin, only: [:index]
   
 
   # GET /contacts
   # GET /contacts.json
   def index
-    @customers = Contact.where(id: User.where(user_type_id: 2).select('contact_id'))
-    @contacts = Contact.where.not(id: User.joins(:contact).select('contact_id'))
+    @user_types=UserType.all
+    puts "****************************"
+    puts @user_types
+    puts "****************************"
     new
   end
 
@@ -29,7 +32,6 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-=begin
     @param=params[:contact][:doc]
     if @param.nil?
       ContactMailer.with(contact: email_params).contact_msg.deliver_later
@@ -39,15 +41,14 @@ class ContactsController < ApplicationController
       @doc.save
       ContactMailer.with(contact: email_params, doc: @doc.id).contact_msg.deliver_later
     end
-=end
     @contact = Contact.new(contact_params)
 
     respond_to do |format|
       if @contact.save
-        format.js
-        format.json { render :show, status: :created, location: @contact }
+        format.js {render 'create'}
+        format.json { render :index, status: :ok}
       else
-        format.html { render :new }
+        format.html { render :index }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
@@ -68,8 +69,7 @@ class ContactsController < ApplicationController
   end
 
   def check_contact
-    @customers = Contact.where(id: User.where(user_type_id: 2).select('contact_id'))
-    @contacts = Contact.where.not(id: User.joins(:contact).select('contact_id'))
+    
     if params[:contactado]
       Contact.where(id: params[:contacto_id]).update_all(wascontacted: true)
     elsif params[:noContactado]
@@ -85,6 +85,10 @@ class ContactsController < ApplicationController
   end
 
 
+  def change_user_type
+    puts "******************************"
+  end
+
   # DELETE /contacts/1
   # DELETE /contacts/1.json
   def destroy
@@ -99,6 +103,11 @@ class ContactsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
       @contact = Contact.find(params[:id])
+    end
+
+    def set_contacts_customers
+      @users = Contact.where(id: User.where(user_type_id: 2).select('contact_id'))
+      @contacts = Contact.where.not(id: User.joins(:contact).select('contact_id'))
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -7,8 +7,8 @@
 	<div class="container-fluid mt-3" id="tablaContacto">
 		<%= render 'tablecontact' , contacts: @contacts %>
 	</div>
-	<div class="container-fluid mt-3" id="tablaCliente">
-		<%= render 'tablecustomer' , customers: @customers %>
+	<div class="container-fluid mt-3" id="tablaUsuario">
+		<%= render 'tableusers' , users: @users %>
 	</div>
 
 <%else%>
@@ -17,58 +17,28 @@
 		<div class="row">
 			<div class="col col-12 col-sm-12 col-md-12 col-lg-8">
 				<h1 class="wl mt-3">Consultas</h1>
-				<%= form_with(model: @contact, local: true, :class=>"wl lato mt-4") do |f| %>
-					<div class="row">
-						<div class="form-group col-12 col-md-6">
-							<%=f.label(:name,"Nombre: ")%>
-							<%=f.text_field(:name,:class=>"form-control",:pattern=>"[A-za-z ]+", :placeholder=>"John", :required=>true)%>
-						</div>
-						<div class="form-group col-12 col-md-6">
-							<%=f.label(:lastname,"Apellido: ")%>
-							<%=f.text_field(:lastname,:class=>"form-control",:pattern=>"[A-za-z ]+", :placeholder=>"Doe", :required=>true)%>
-						</div>
-					</div>
-					<div class="form-group">
-						<%=f.label(:company,"Empresa: ")%>
-						<%=f.text_field(:company,:class=>"form-control",:pattern=>"[A-za-z ]+", :placeholder=>"HIS Sistemas")%>
-					</div>
-					<div class="row">
-						<div class="form-group col-12 col-md-6">
-							<%=f.label(:phone1,"Teléfono 1: ")%>
-							<%= f.telephone_field(:phone1, :pattern =>"[0-9]{10}" , :placeholder=>"0999999999", :required=>true,:class=>"form-control")%>
-						</div>
-						<div class="form-group col-12 col-md-6">
-							<%=f.label(:phone2,"Teléfono 2: ")%>
-							<%= f.telephone_field(:phone2, :pattern =>"[0-9]{10}" , :placeholder=>"0999999999", :class=>"form-control")%>
-						</div>
-					</div>
-					<div class="form-group">
-						<%=f.label(:emailcontact,"Email: ")%>
-						<%=f.email_field(:emailcontact,:class=>"form-control", :pattern=>"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$", :placeholder=>"your@email.com",:required=>true)%>
-					</div>
-					<div class="form-group">
-						<%=f.label(:asunto,"Asunto: ")%>
-						<%=f.text_field(:asunto,:class=>"form-control",:pattern=>"[A-za-z ]+", :placeholder=>"Servicio de cableado", :required=>true)%>
-					</div>
-					<div class="form-group">
-						<%=f.label(:mensaje,"Mensaje: ")%>
-						<%=f.text_area(:mensaje,:class=>"form-control jumpline",:placeholder=>"Escribe tu mensaje/consulta aquí", :required=>true)%>
-					</div>
-					<div class="form-group">
-						<%=f.label(:doc,"Adjuntar documento: ")%>
-						<%=f.file_field('doc',:class=>"form-control-file",accept:".doc,.docx,.pdf,.odt,image/*")%>
-					</div>
-					<div>
-						<%= f.submit("Enviar",:class => "btn btn2") %>
-					</div>
-					<br>
-				<%end%>
+				<%= render 'form', contact: @contact%>					
 			</div>
 			<div id="corr" class="col col-12 col-lg-4 d-none d-lg-block">
 				<%= image_tag(image_path("mail.png"),:class=>"img-fluid",:alt=>"correo") %>		
 			</div>
 		</div>
 	</section>
+	<div class="modal fade" id="msj-modal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Correo enviado</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Su correo ha sido enviado. Pronto estaremos en contacto con usted.
+            </div>
+          </div>
+        </div>
+      </div>
 </div>
 <div class="container">
 	<section class ="row mt-3 mb-3" id="datos">
@@ -94,25 +64,6 @@
 			<iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.807305629318!2d-79.89472308524472!3d-2.226100798377445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902d6f72355727e7%3A0xa2d46c47543dd4f0!2sHIS+Sistemas!5e0!3m2!1ses!2sec!4v1552582603798" frameborder="0" allowfullscreen></iframe>
 		</div>
 	</section>
-	<div class="modal fade" id="msj">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Eliminar</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ¿Está seguro? No se puede recuperar una vez se eliminen los datos.
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn2" data-dismiss="modal"><i class="fas fa-angle-left"></i></button>
-              <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, reference, method: :delete, class: "btn btn-danger" %>
-            </div>
-          </div>
-        </div>
-      </div>
 </div>
 	
 <%end%>	

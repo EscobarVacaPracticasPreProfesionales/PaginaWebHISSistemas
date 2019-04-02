@@ -50,6 +50,9 @@ es:
               confirmation: "La contraseña no coincide."
             contact:
               invalid: "Los datos no son válidos."
+            email:
+              taken: "Un usuario registrado con ese correo ya existe. Ingrese uno nuevo"
+
 
   layouts:
     header_main:
@@ -99,7 +102,7 @@ es:
       phone2: "Teléfono 2"
       sent_date: "Fecha"
       status: "Estado"
-    tablecustomer:
+    tableusers:
       name: "Nombres"
       lastname: "Apellidos"
       company: "Empresa"
