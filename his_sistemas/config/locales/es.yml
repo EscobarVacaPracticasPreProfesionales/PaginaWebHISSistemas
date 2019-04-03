@@ -52,6 +52,8 @@ es:
               invalid: "Los datos no son válidos."
             email:
               taken: "Un usuario registrado con ese correo ya existe. Ingrese uno nuevo"
+            password:
+              too_short: "La contraseña es muy corta."
 
 
   layouts:

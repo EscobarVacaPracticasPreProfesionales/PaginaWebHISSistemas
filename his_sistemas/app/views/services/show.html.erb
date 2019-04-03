@@ -4,18 +4,18 @@
     <div class="col-12 col-md-6">
       <strong class="mont"><%=t('title')%></strong>
       <p class="rale">
-        <%= @service.title %>
+        <%= sanitize @service.title %>
       </p>
       <strong class="mont"><%=t('description')%></strong>          
       <div>
         <p class="rale jumpline">
-          <%= @service.description %>
+          <%= sanitize @service.description %>
         </p>
       </div>
       <strong class="mont"><%=t('user')%></strong>
       <p class="rale">
-        <%= @service.user.contact.name %>
-        <%= @service.user.contact.lastname %>
+        <%= sanitize @service.user.contact.name %>
+        <%= sanitize @service.user.contact.lastname %>
       </p>
     </div>
     <div class="col-12 col-md-6">
