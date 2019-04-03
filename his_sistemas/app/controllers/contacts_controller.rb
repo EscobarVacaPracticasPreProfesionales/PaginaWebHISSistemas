@@ -10,12 +10,6 @@ class ContactsController < ApplicationController
   # GET /contacts.json
   def index
     @user_types=UserType.all
-<<<<<<< HEAD
-    puts "****************************"
-    puts @user_types.to_json
-    puts "****************************"
-=======
->>>>>>> 3654844f6830906e0cbd3639a0c5ee4ea7c6e8c6
     new
   end
 
