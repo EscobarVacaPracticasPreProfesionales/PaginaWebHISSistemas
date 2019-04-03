@@ -13,14 +13,18 @@
 		<%=f.label(:company,"Empresa: ")%>
 		<%=f.text_field(:company,:class=>"form-control", :placeholder=>"Nombre empresa")%>
 	</div>
-	<div class="row">
-		<div class="form-group col">
-			<%=f.label(:phone1,"Teléfono 1: ")%>
+	<div class="row bl">
+		<div class="form-group col-12 col-md-6">
+			<div class="row">
+				<%=f.label(:phone1,"Teléfono 1: ", class: "wl col-12")%>
+			</div>
 			<%= f.telephone_field(:p1,:required=>true,:class=>"form-control phone")%>
             <%= f.hidden_field :phone1 ,class: 'phonehidden'%>
 		</div>
-		<div class="form-group col">
-			<%=f.label(:phone2,"Teléfono 2: ")%>
+		<div class="form-group col-12 col-md-6">
+			<div class="row">
+				<%=f.label(:phone2,"Teléfono 2: ", class: "wl col-12")%>
+			</div>
 			<%= f.telephone_field(:p2, :class=>"form-control phone")%>
             <%= f.hidden_field :phone2 ,class: 'phonehidden'%>
 		</div>

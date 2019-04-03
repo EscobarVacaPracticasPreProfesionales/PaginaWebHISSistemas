@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       put :check_contact
       put :change_user_type
+      get :change_user
     end
   end
 

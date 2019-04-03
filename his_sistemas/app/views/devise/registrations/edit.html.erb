@@ -48,6 +48,7 @@
             </div>
             <div class="form-row">
               <div class="field col form-group">
+                <%= c.label :phone1%>
                 <%= telephone_field_tag :p1 ,nil,class: 'form-control phone'%>
                 <%= c.hidden_field :phone1 ,class: 'phonehidden'%>
                 <% if flash[:errors].present?  && flash[:errors].key?('contact.phone1') %>
@@ -57,6 +58,7 @@
                 <%end%>
               </div>
               <div class="field col form-group">
+                <%= c.label :phone2%>
                 <%= telephone_field_tag :p2 ,nil,class: 'form-control phone'%>
                 <%= c.hidden_field :phone2 ,class: 'phonehidden'%>
               </div>

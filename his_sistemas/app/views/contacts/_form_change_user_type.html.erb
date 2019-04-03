@@ -1,23 +1,20 @@
-<%= form_tag({controller: "contacts", action: "change_user_type"}, method: 'put', remote: true)  do %> 
-<% users.each do |contact|%>
-	<div class="modal fade" id="confirmar<%=contact.id%>">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Cambiar de tipo</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-    		<%= select_tag(:user_type_id,options_from_collection_for_select(@user_types, 'id', 'tipo',2), { :class => 'form-control' } )%>
-			<%= hidden_field_tag :contacto_id ,contact.id%>
-            </div>
-            <div class="modal-footer">
-            	<%= submit_tag 'Cambiar', class:"btn btn2" %>
-            </div>
-          </div>
-        </div>
-  	</div>
-	<%end%>
-	<%end%>
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Cambiar de tipo</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <%= form_tag({controller: "contacts", action: "change_user_type"}, method: 'put', remote: true)  do %> 
+    <div class="modal-body">
+      <p>Tipo actual: <%=@user_type.tipo%></p>
+  		<%= select_tag(:user_type_id,options_from_collection_for_select(@user_types, 'id', 'tipo',@contacto.user_type_id), { :class => 'form-control' } )%>
+		   <%= hidden_field_tag :contacto_id ,@contacto.id%>
+    </div>
+    <div class="modal-footer">
+    	<%= submit_tag 'Cambiar', class:"btn btn2" %>
+    </div>
+    <%end%>
+  </div>
+</div>

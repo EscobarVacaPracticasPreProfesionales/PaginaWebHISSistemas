@@ -22,14 +22,14 @@
 					    </ul>
 					
 					</th>
-			        <th class="tableHeader"><%=t(".name")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(2)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".lastname")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(3)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".company")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(4)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".phone1")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(5)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".phone2")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(6)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".email")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(7)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".sent_date")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(8)')" style="cursor:pointer"></i></th>
-			        <th class="tableHeader"><%=t(".status")%><i class="fa fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(9)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".name")%><i class="fas fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(2)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".lastname")%><i class="fas fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(3)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".company")%><i class="fas fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(4)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".phone1")%><i class="fas fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(5)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".phone2")%><i class="fas fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(6)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".email")%><i class="fas fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(7)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".sent_date")%><i class="fas fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(8)')" style="cursor:pointer"></i></th>
+			        <th class="tableHeader"><%=t(".status")%><i class="fas fa-fw fa-sort" onclick="w3.sortHTML('#tablaC','.item', 'td:nth-child(9)')" style="cursor:pointer"></i></th>
 			        <th class="buttons"></th>
 
 			      </tr>
@@ -58,7 +58,7 @@
 				        <td>
 				        	<%= link_to '<i class="fas fa-eye" data-toggle="tooltip" data-placement="top" title="Contactado"></i>'.html_safe, {controller: 'contacts', action: 'check_contact', contacto_id: contact, contactado: ""}, method: 'put', remote: true%>
 				        	<%= link_to '<i class="fas fa-eye-slash mr-1" data-toggle="tooltip" data-placement="top" title="No Contactado"></i>'.html_safe, {controller: 'contacts', action: 'check_contact', contacto_id: contact, noContactado: ""}, method: 'put', remote: true%>
-				        	<%= link_to '<i class="fas fa-user" data-toggle="tooltip" data-placement="top" title="Tipo de usuario"></i>'.html_safe, contact,data: {toggle: "modal", target: "#confirmar#{contact.id}"}%>
+				        	<%= link_to '<i class="fas fa-user" data-toggle="tooltip" data-placement="top" title="Tipo de usuario"></i>'.html_safe,controller: "contacts", action: "change_user",id: contact.id, remote: true%>
 				        </td>
 			      </tr>
 			      <%end%>

@@ -85,7 +85,6 @@ class ContactsController < ApplicationController
 
 
   def change_user_type
-    @user_types=UserType.all
     @new_user_type=params[:user_type_id].to_i
     @contact=params[:contacto_id].to_i
     @user=User.where(contact_id: @contact).first
@@ -94,6 +93,12 @@ class ContactsController < ApplicationController
         format.js
         format.json { render :index, status: :ok, location: 'index' }
     end
+  end
+
+  def change_user
+    @user_types=UserType.all
+    @user_type=User.where(contact_id: params[:id]).joins(:user_type).select('user_types.tipo').first
+    @contacto=Contact.where(id: params[:id]).joins(:user).select('contacts.*, users.user_type_id').first
   end
 
   # DELETE /contacts/1

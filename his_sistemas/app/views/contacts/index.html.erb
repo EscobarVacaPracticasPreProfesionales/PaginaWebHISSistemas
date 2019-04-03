@@ -20,9 +20,8 @@
 		<div class="container-fluid mt-3" id="tablaUsuario">
 			<%= render 'tableusers' , users: @users %>
 		</div>
-		<div id='change_user'>
-			<%= render 'form_change_user_type', users: @users%>
-		</div>
+			<div class="modal fade" id="change_user">
+		  	</div>
 	<%end%>
 <%else%>
 
