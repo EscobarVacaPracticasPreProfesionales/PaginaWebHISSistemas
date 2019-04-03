@@ -6,9 +6,9 @@
   <% @articles.each do |article| %>
     <div class="row new mr-lg-5 ml-lg-5 pr-lg-5 pl-lg-5">
         <div class="col-7 col-md-9">
-          <h1 class="mont"><%= link_to article.title, article %></h1>
+          <h1 class="mont"><%= link_to sanitize article.title, article %></h1>
           <small class="rale">
-            <%= article.description %>
+            <%= sanitize article.description %>
           </small>
         </div>
         <div class="col-5 col-md-3">

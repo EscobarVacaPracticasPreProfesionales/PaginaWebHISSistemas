@@ -26,6 +26,7 @@ es:
         subject: "Instrucciones de confirmación"
       reset_password_instructions:
         subject: "Instrucciones de cambio de contraseña"
+        change_my_password: 'Cambiar mi contraseña'
       unlock_instructions:
         subject: "Instrucciones de desbloqueo"
       email_changed:
@@ -45,6 +46,16 @@ es:
       send_paranoid_instructions: "Si tu email existe en el sistema, recibirás un email con instrucciones para reiniciar tu contraseña en unos minutos."
       updated: "Tu contraseña fue modificada correctamente. Has iniciado sesión."
       updated_not_active: "Tu contraseña fue modificada correctamente."
+      edit:
+        change_password: 'Cambiar contraseña'
+        return_to_login: 'Volver a iniciar sesión'
+        characters_minimum: 'carácteres mínimo'
+      form:
+        new_password: 'Nueva contraseña'
+        confirm_new_password: 'Confirmar nueva contraseña'
+        change_my_password: 'Cambiar contraseña'
+        return_to_login: 'Volver a iniciar sesión'
+        characters_minimum: 'carácteres mínimo'
     registrations:
       destroyed: "Adiós, tu cuenta ha sido eliminada. Esperamos verte de vuelta pronto!"
       signed_up: "Bienvenido! Te has registrado correctamente."
@@ -65,6 +76,8 @@ es:
         currently_waiting_confirmation_for: 'Esperando la confirmación de: '
         password: "Nueva contraseña"
         characters_minimum: 'carácteres mínimo'
+        change_password: 'Cambiar contraseña'
+        return_to_login: 'Volver a iniciar sesión'
     sessions:
       signed_in: "Iniciaste sesión correctamente."
       signed_out: "Cerraste sesión correctamente."

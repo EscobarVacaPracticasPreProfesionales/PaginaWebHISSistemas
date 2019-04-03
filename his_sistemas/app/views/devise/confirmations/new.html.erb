@@ -22,6 +22,11 @@
 		  <div class="field form-group">
 		    <%= f.label :email %><br />
 		    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: 'form-control' %>
+        <% if flash[:errors].present?  && flash[:errors].key?('email') %>
+                  <% flash[:errors]['email'].each do |msg|%>
+                    <small class="rl lato"><%=msg%></small>                  
+                  <%end%>
+                <%end%>
 		  </div>
 
 		  <div class="actions">
