@@ -11,3 +11,12 @@
 	padding-bottom: 0.6rem;
 }
 
+input[type=tel]{
+	padding-right: 10px !important;
+}
+
+@media (min-width: 576px) {  
+	input[type=tel]{
+		padding-right: 36px !important;
+	}
+}

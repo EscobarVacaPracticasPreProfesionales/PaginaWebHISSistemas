@@ -2,6 +2,15 @@
     <%= stylesheet_link_tag "contactus", media: 'all', 'data-turbolinks-track': 'reload' %>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <% end %>
+
+
+<% content_for :foot do %>
+	<%= javascript_include_tag 'w3', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'intlTelInput', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'utils', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'initTel', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
 <%= render "layouts/header_main" %>
 <% if @user_admin %>
 	<div class="container-fluid mt-3" id="tablaContacto">
@@ -77,7 +86,3 @@
 	
 
 
-
-<% content_for :foot do %>
-    <%= javascript_include_tag 'w3', 'data-turbolinks-track': 'reload' %>
-<% end %>
