@@ -5,12 +5,12 @@
     <div class="col-12 col-md-6">
       <strong class="mont"><%=t('title')%></strong>
       <p class="rale">
-        <%= @reference.title %>
+        <%= sanitize @reference.title %>
       </p>
       <strong class="mont"><%=t('description')%></strong>          
       <div>
         <p class="rale jumpline">
-          <%= @reference.content %>
+          <%= sanitize @reference.content %>
         </p>
       </div>
       <strong class="mont"><%=t('year') %></strong>
@@ -19,8 +19,8 @@
       </p>
       <strong class="mont"><%=t('user')%></strong>
       <p class="rale">
-        <%= @reference.user.contact.name %>
-        <%= @reference.user.contact.lastname %>
+        <%= sanitize @reference.user.contact.name %>
+        <%= sanitize @reference.user.contact.lastname %>
       </p>
     </div>
     <div class="col-12 col-md-6">

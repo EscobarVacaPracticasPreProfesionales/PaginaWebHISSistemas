@@ -92,7 +92,7 @@ class ReferencesController < ApplicationController
   def destroy
     @reference.destroy
     respond_to do |format|
-      format.html { redirect_to references_url, notice: 'Reference was successfully destroyed.' }
+      format.html { redirect_to references_url, notice: t('.reference_was_successfully_destroyed') }
       format.json { head :no_content }
     end
   end

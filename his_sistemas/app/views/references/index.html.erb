@@ -8,8 +8,8 @@
       <% if indice%2!=0 %>
       <div class="info col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
           <div class="contenido">
-            <h2 class="mont wl"><%= reference.title %></h2>
-            <p class="fecha pt-2 lato wl"><%= reference.year %></p>
+            <h2 class="mont wl"><%= sanitize reference.title %></h2>
+            <p class="fecha pt-2 lato wl"><%= sanitize reference.year %></p>
             <div class="boton pb-2">
                 <button type="button" class="btn btn3" data-toggle="modal" data-target="#modalReferencia<%= reference.id %>">Conoce más</button>
             </div> 
@@ -37,7 +37,7 @@
             <li data-target="#slides<%= reference.id %>" data-slide-to='<%= index %>' class=""></li>
             <%end%>           
           </ul>
-        <%end%>
+        
           <a class="carousel-control-prev" href="#slides<%= reference.id %>" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -46,12 +46,13 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
+          <%end%>
       </div>
       <% if indice%2==0 %>
       <div class="info col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
           <div class="contenido">
-            <h2 class="mont wl"><%= reference.title %></h2>
-            <p class="fecha pt-2 lato wl"><%= reference.year %></p>
+            <h2 class="mont wl"><%= sanitize reference.title %></h2>
+            <p class="fecha pt-2 lato wl"><%=  reference.year %></p>
             <div class="boton pb-2">
                 <button type="button" class="btn btn3" data-toggle="modal" data-target="#modalReferencia<%= reference.id %>">Conoce más</button>
             </div> 
@@ -69,10 +70,10 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title mont" id="modalTitulo"><%= reference.title %></h5>
+              <h5 class="modal-title mont" id="modalTitulo"><%= sanitize reference.title %></h5>
             </div>
             <div class="modal-body">
-              <p class="textoModal rale jumpline"><%= reference.content %></p>
+              <p class="textoModal rale jumpline"><%= sanitize reference.content %></p>
               
             </div>
             <div class="modal-footer">

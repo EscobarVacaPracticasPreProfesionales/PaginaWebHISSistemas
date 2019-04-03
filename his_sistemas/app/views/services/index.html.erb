@@ -29,10 +29,10 @@
             </div>
             <div class="center infoServicios">
               <div class="titulo">
-                <h2 class="mont"><%= service.title %></h2>
+                <h2 class="mont"><%= sanitize service.title %></h2>
               </div>  
               <div>
-                <p class="rale parrafo jumpline"><%= service.description %></p>
+                <p class="rale parrafo jumpline"><%= sanitize service.description %></p>
               </div>
             </div>
           </div>
