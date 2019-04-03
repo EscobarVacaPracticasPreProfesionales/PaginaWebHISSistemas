@@ -13,4 +13,13 @@
 
 a {
 	color: #5CB1F7;
+
+input[type=tel]{
+	padding-right: 10px !important;
+}
+
+@media (min-width: 576px) {  
+	input[type=tel]{
+		padding-right: 36px !important;
+	}
 }

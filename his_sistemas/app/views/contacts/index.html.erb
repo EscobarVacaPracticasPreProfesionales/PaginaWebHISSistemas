@@ -2,16 +2,30 @@
     <%= stylesheet_link_tag "contactus", media: 'all', 'data-turbolinks-track': 'reload' %>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <% end %>
+
+
+<% content_for :foot do %>
+	<%= javascript_include_tag 'w3', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'intlTelInput', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'utils', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'initTel', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
 <%= render "layouts/header_main" %>
 <% if @user_admin %>
 	<div class="container-fluid mt-3" id="tablaContacto">
 		<%= render 'tablecontact' , contacts: @contacts %>
 	</div>
-	<div class="container-fluid mt-3" id="tablaUsuario">
-		<%= render 'tableusers' , users: @users %>
-	</div>
-
+	<% if @user_super %>
+		<div class="container-fluid mt-3" id="tablaUsuario">
+			<%= render 'tableusers' , users: @users %>
+		</div>
+		<div id='change_user'>
+			<%= render 'form_change_user_type', users: @users%>
+		</div>
+	<%end%>
 <%else%>
+
 <div id="formulario">
 	<section class="container" id="consultasHolder">
 		<div class="row">
@@ -24,6 +38,7 @@
 			</div>
 		</div>
 	</section>
+	
 	<div class="modal fade" id="msj-modal">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -71,7 +86,3 @@
 	
 
 
-
-<% content_for :foot do %>
-    <%= javascript_include_tag 'w3', 'data-turbolinks-track': 'reload' %>
-<% end %>

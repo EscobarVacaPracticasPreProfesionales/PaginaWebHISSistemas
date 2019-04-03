@@ -7,13 +7,13 @@
   <div class="row justify-content-between">
     <div class="col-lg-7 col-xl-7 mb-3">
     <div class="titulo">
-      <h1 class='mont'><%= @article.title %></h1>
+      <h1 class='mont'><%= sanitize @article.title %></h1>
     </div>
     <div>
-      <p class="mb-0 mt-2 rale"><%= @article.user.contact.name %> <%= @article.user.contact.lastname %></p>
+      <p class="mb-0 mt-2 rale"><%= sanitize @article.user.contact.name %> <%= sanitize @article.user.contact.lastname %></p>
     </div>
     <div class="fecha rale">
-      <p class="mb-4"><%= I18n.localize @article.fecha, format: :long %></p>
+      <p class="mb-4"><%= I18n.localize sanitize @article.fecha, format: :long %></p>
     </div>
     <div  id="noticia" class="carousel slide imagen" data-ride="carousel">
       

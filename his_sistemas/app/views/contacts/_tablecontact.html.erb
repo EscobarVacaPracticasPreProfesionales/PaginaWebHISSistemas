@@ -8,7 +8,7 @@
 			    <thead class="wl">
 			      <tr>
 			      	<th class="toggle">
-			      		<%= check_box_tag "checkAll" %>
+			      		<%= check_box_tag "checkAllContact" %>
 			      		
 					    <button class="dropdown-toggle" data-toggle="dropdown" id="checkToggle">
 					    	<span class="caret"></span>
@@ -44,7 +44,7 @@
 			    	<tr class="item font-weight-bold">
 			    	<% end %>
 			    		
-				      	<td><%= check_box_tag "contacto_id[]", contact.id, false, class: 'checkContact' %> </td>
+				      	<td><%= check_box_tag "contacto_id[]", contact.id, false, class: 'checkContactC' %> </td>
 				      	<td><%= contact.name %></td>
 				        <td><%= contact.lastname %></td>
 				        <td><%= contact.company %></td>
