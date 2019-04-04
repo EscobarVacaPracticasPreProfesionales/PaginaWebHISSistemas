@@ -22,13 +22,13 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   # Añadido para configurar Ruby On Rails para PostgreSQL
   host: localhost
-  username: adminhis
-  password: marketgarden1
+  username: <%= ENV["PS_USERNAME"]%>
+  password: <%= ENV["PS_PASSWORD"]%>
 
 development:
   <<: *default
-  username: adminhis
-  password: marketgarden1
+  username: <%= ENV["PS_USERNAME"]%>
+  password: <%= ENV["PS_PASSWORD"]%>
   database: his_development
 
 # The specified database role being used to connect to postgres.
@@ -63,8 +63,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  username: adminhis
-  password: marketgarden1
+  username: <%= ENV["PS_USERNAME"]%>
+  password: <%= ENV["PS_PASSWORD"]%>
   database: his_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
@@ -89,5 +89,5 @@ test:
 production:
   <<: *default
   database: his_production
-  username: adminhis
-  password: marketgarden1
+  username: <%= ENV["PS_USERNAME"]%>
+  password: <%= ENV["PS_PASSWORD"]%>
