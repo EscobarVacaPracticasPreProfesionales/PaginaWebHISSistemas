@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  	after_create :set_admin
+
 	belongs_to :user_type
 	belongs_to :contact, autosave: true
 	has_many :services
@@ -13,6 +15,14 @@ class User < ApplicationRecord
 	after_initialize do
 		build_contact if new_record? && contact.blank?
 	end
+
+  	private
+    	def set_admin
+  			@user=User.first
+      		if @user.user_type.tipo != "SuperAdministrador"
+    			@user.update(user_type_id: 3)
+      		end
+    	end
 
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

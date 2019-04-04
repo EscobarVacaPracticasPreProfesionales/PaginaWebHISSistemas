@@ -19,6 +19,6 @@
 
 $(document).ready(function(){
 	if($(".alert"))
-		$(".alert").delay( 3500 ).slideUp('slow');
+		$(".alert").delay( 3000 ).slideUp('slow');
 });
 

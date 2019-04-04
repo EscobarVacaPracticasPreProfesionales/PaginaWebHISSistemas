@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_27_160602) do
+ActiveRecord::Schema.define(version: 2019_03_14_164425) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "articles", force: :cascade do |t|
     t.string "title", null: false
@@ -18,8 +21,8 @@ ActiveRecord::Schema.define(version: 2019_03_27_160602) do
     t.text "content", null: false
     t.string "figcaption", null: false
     t.date "fecha", null: false
-    t.integer "user_id"
-    t.integer "picture_id"
+    t.bigint "user_id"
+    t.bigint "picture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["picture_id"], name: "index_articles_on_picture_id"
@@ -49,8 +52,8 @@ ActiveRecord::Schema.define(version: 2019_03_27_160602) do
     t.string "title", null: false
     t.string "content", null: false
     t.integer "year", null: false
-    t.integer "user_id"
-    t.integer "picture_id"
+    t.bigint "user_id"
+    t.bigint "picture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["picture_id"], name: "index_references_on_picture_id"
@@ -60,8 +63,8 @@ ActiveRecord::Schema.define(version: 2019_03_27_160602) do
   create_table "services", force: :cascade do |t|
     t.string "title", null: false
     t.text "description", null: false
-    t.integer "user_id"
-    t.integer "picture_id"
+    t.bigint "user_id"
+    t.bigint "picture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["picture_id"], name: "index_services_on_picture_id"
@@ -89,8 +92,8 @@ ActiveRecord::Schema.define(version: 2019_03_27_160602) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.integer "user_type_id"
-    t.integer "contact_id"
+    t.bigint "user_type_id"
+    t.bigint "contact_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contact_id"], name: "index_users_on_contact_id"
@@ -99,4 +102,10 @@ ActiveRecord::Schema.define(version: 2019_03_27_160602) do
     t.index ["user_type_id"], name: "index_users_on_user_type_id"
   end
 
+  add_foreign_key "articles", "pictures"
+  add_foreign_key "articles", "users"
+  add_foreign_key "references", "pictures"
+  add_foreign_key "references", "users"
+  add_foreign_key "services", "pictures"
+  add_foreign_key "services", "users"
 end

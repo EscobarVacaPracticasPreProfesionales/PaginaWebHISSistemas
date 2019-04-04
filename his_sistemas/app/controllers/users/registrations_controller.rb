@@ -3,7 +3,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-  after_action :set_admin, only: [:create]
   # GET /resource/sign_up
   # def new
   #   super
@@ -74,13 +73,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
-  private
-    def set_admin
-      @user=User.first
-      if @user.user_type.tipo != "SuperAdministrador"
-        @user.update(user_type_id: 3)
-      end
-    end
+
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
