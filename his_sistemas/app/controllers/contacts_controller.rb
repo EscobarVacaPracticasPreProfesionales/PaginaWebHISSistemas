@@ -37,7 +37,7 @@ class ContactsController < ApplicationController
     else
       @doc=Picture.new(:files => [@param])
       @doc.save
-      attachment_tmp_path = File.absolute_path(@doc.files[0])
+      attachment_tmp_path = File.expand_path(@doc.files[0])
       ContactMailer.with(contact: email_params, doc: attachment_tmp_path).contact_msg.deliver_later
     end
     @contact = Contact.new(contact_params)
