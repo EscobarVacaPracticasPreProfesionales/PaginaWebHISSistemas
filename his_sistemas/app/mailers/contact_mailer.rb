@@ -13,9 +13,10 @@ class ContactMailer < ApplicationMailer
 		@asunto=@contact[:asunto]
 		@mensaje=@contact[:mensaje]
 		@doc=params[:doc]
+		@url=params[:url]
 		if @doc!= nil
-			attach=Picture.find(@doc).files[0]
-			attachments[attach.file.filename] = attach.read
+			attach=Picture.find(@doc)
+			attachments[@url] = attach.retrieve_from_store!(@url)
 		end
 		mail(to:"hissistemasgye@gmail.com",subject: "HIS #{@asunto}")
 	end
