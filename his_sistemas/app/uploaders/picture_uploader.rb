@@ -11,7 +11,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "public/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -21,9 +21,6 @@ class PictureUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
-  def cache_dir
-    "#{Rails.root}/tmp/uploads"
-  end
   # Process files as they are uploaded:
   # process scale: [200, 300]
   #
@@ -51,10 +48,6 @@ class PictureUploader < CarrierWave::Uploader::Base
   
   def delete_old_tmp_file(dummy)
     @old_tmp_file.try :delete
-  end
-
-  def delete_tmp_dir(new_file)
-    FileUtils.rm_rf Dir.glob("#{Rails.root}/tmp/uploads/*")
   end
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
