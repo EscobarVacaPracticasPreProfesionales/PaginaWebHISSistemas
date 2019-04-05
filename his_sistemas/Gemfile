@@ -29,9 +29,6 @@ gem 'figaro'
 gem 'summernote-rails'
 gem 'sidekiq'
 gem "devise-async"
-gem 'carrierwave-aws'
-
-gem 'aws-sdk-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
