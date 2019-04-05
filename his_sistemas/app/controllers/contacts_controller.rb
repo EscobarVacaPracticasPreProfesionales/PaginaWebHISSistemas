@@ -37,7 +37,7 @@ class ContactsController < ApplicationController
     else
       @doc=Picture.new(:files => [@param])
       @doc.save
-      ContactMailer.with(contact: email_params, doc: @doc.id).contact_msg.deliver_later
+      ContactMailer.with(contact: email_params, doc: @doc.id.to_i).contact_msg.deliver_later
     end
     @contact = Contact.new(contact_params)
 

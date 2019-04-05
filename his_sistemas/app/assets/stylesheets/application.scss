@@ -4,10 +4,10 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Montserrat|Raleway');
 @import "intlTelInput";
 
-.iti-flag {background-image: url("/images/flags.png");}
+.iti-flag {background-image: url(asset_path("flags.png"));}
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .iti-flag {background-image: url("/images/flags@2x.png");}
+  .iti-flag {background-image: url(asset_path("flags@2x.png"));}
 }
 
 html, body{ height:100%;}
